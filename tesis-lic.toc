@@ -1,0 +1,15 @@
+\select@language {english}
+\select@language {spanish}
+\contentsline {chapter}{\tocchapter {Cap\'{\i }tulo}{}{Introducci\'on}}{1}
+\contentsline {chapter}{\tocchapter {Cap\'{\i }tulo}{1}{F\'ormulas y ecuaciones}}{2}
+\contentsline {section}{\tocsection {}{1}{Alineaci\'on}}{2}
+\contentsline {section}{\tocsection {}{2}{Ejemplos de f\'ormulas y ecuaciones}}{3}
+\contentsline {section}{\tocsection {}{3}{Citas}}{3}
+\contentsline {chapter}{\tocchapter {Cap\'{\i }tulo}{2}{Teoremas, Lemas, Proposiciones ... }}{4}
+\contentsline {section}{\tocsection {}{1}{Algunos comandos para un texto matem\'atico}}{4}
+\contentsline {section}{\tocsection {}{2}{Manejo de referencias cruzadas.}}{5}
+\contentsline {chapter}{\tocchapter {Cap\'{\i }tulo}{3}{Gr\'aficos.}}{6}
+\contentsline {section}{\tocsection {}{1}{Las ecuaciones de Lotka y Volterra.}}{6}
+\contentsline {section}{\tocsection {}{2}{Superficies.}}{8}
+\contentsline {section}{\tocsection {}{3}{Elaboraci\'on de los gr\'aficos.}}{8}
+\contentsline {chapter}{\tocchapter {\chaptername }{}{Bibliograf\'{\i }a}}{10}

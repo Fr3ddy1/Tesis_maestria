@@ -1,0 +1,140 @@
+\documentclass[12pt, oneside, letterpaper]{amsbook}
+
+%a continuación el paquete que permite incluir gráficos
+\usepackage{graphics}
+
+%el siguiente paquete permite acentuar de la manera usual
+%se recomienda usarlo porque facilita la corrección de la tesis
+%con un diccionario de español
+\usepackage[ansinew]{inputenc}
+
+%a continuación el paquete y el comando para que las figuras no se
+%ubiquen siempre en la parte de arriba de la página
+\usepackage{float}
+\floatplacement{figure}{ht}
+
+%el uso del siguiente paquete (babel) va a permitir que las palabras
+%se separen correctamente
+%no olvide seleccionar "spanish" al principio del documento
+\usepackage[spanish,english]{babel}
+
+%el siguiente comando permite la elaboración del índice analítico
+\makeindex
+
+%el siguiente grupo de comandos fija los márgenes del documento
+
+% Set left margin - The default is 1 inch, so the following
+\setlength{\oddsidemargin}{0in}
+%\setlength{\evensidemargin}{-0.1in}
+
+% Set width of the text - What is left will be the right margin.
+\setlength{\textwidth}{6.5in}
+
+% Set top margin - The default is 1 inch, so the following
+% command sets a 0.75-inch top margin.
+\setlength{\topmargin}{-.4in}
+
+% Set height of the text - What is left will be the bottom margin.
+% In this case, bottom margin is 11in - 0.75in - 9.5in = 0.75in
+\setlength{\textheight}{9in}
+
+% Set height of the header
+%\setlength{\headheight}{0.3in}
+
+% Set vertical distance between the header and the text
+\setlength{\headsep}{0.4in}
+
+% Set vertical distance between the text and the
+% bottom of footer
+\setlength{\footskip}{0.4in}
+
+%el siguiente comando define el espacio entre lineas
+\renewcommand{\baselinestretch}{1.5}
+
+%los siguientes comando cambian los nombres "Chapter", "Proof", etc
+%a "Capítulo", "Demostración", etc.
+%NO hacen falta si usa el paquete "babel"
+
+\renewcommand{\chaptername}{Cap\'{\i}tulo}
+\renewcommand{\contentsname}{CONTENIDO}
+\renewcommand{\proofname}{Demostraci\'on}
+\renewcommand{\bibname}{Bibliograf\'{\i}a}
+\renewcommand{\indexname}{\'Indice}
+\renewcommand{\figurename}{Figura}
+
+%el siguiente comando define "seno" como función (esta función
+%no la trae LaTeX porque es inglés es "sine")
+%igual para arcoseno
+\newcommand{\sen}{\operatorname{sen}}
+\newcommand{\arcsen}{\operatorname{arcsen}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{proposition}[theorem]{Proposici\'on}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolario}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definici\'on}
+\newtheorem{example}[theorem]{Ejemplo}
+
+
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Observaci\'on}
+
+\numberwithin{equation}{chapter} \numberwithin{figure}{chapter}
+
+
+%Optativo
+%el siguiente paquete hace que el documento tenga hipervínculos
+%es muy útil a la hora de tipear y hace la versión electrónica
+%mucho más atractiva
+%se debe colocar justo antes de "\begin{document}"
+
+%\usepackage[letterpaper,backref,plainpages=false,pagebackref]{hyperref}
+
+
+\begin{document}
+
+\selectlanguage{spanish}
+
+\frontmatter
+
+\input{titulo}
+
+\input{jurado}
+
+\input{ded}
+
+\input{agrad}
+
+
+\tableofcontents
+
+
+\mainmatter
+
+\include{intro}
+
+\include{cap1}
+
+
+
+\include{cap2}
+
+\include{cap3}
+
+
+
+
+\backmatter
+
+\input{biblio}
+
+
+\end{document}
+
+
+\end{document}

@@ -1,0 +1,69 @@
+\chapter{Teoremas, Lemas, Proposiciones ... }
+
+\section{Algunos comandos para un texto matem\'atico}
+
+En los textos matem\'aticos se encuentran las siguientes estructuras:
+
+Teorema, Proposici\'on, Lema, Corolario, Definici\'on, Ejemplo, Ejercicio, Notaci\'on,
+Observaci\'on, Resumen, Demostraci\'on, Bibliograf\'{\i}a.
+
+Para presentarlas en espa\~nol se deben dar algunas instrucciones como comandos de encabezado
+que comienzan con theoremstyle, newtheorem.
+
+Cuando queramos dar una definici\'on y una proposici\'on en el cuerpo del documento
+procedemos como se indica a continuaci\'on.
+
+\begin{definition} \index{espacio!m\'etrico}
+Un \textit{espacio m\'etrico} es un par $(X, d)$ donde $X$ es un conjunto y $d: X \times X
+\rightarrow {\mathbb R}$ es una funci\'on tal que:
+\begin{itemize}
+\item[(i)]   $d(x, y) \geq 0$  para todo $x, y \in X$, \item[(ii)]  $d(x, y) = 0$ si y s\'olo
+si $x = y$, \item[(iii)]  $d(x, y) = d(y, x)$  para todo $x, y \in X$, \item[(iv)]  $d(x, z)
+\leq d(x, y) + d(y, z)$  para todo $x, y, z \in X$.
+\end{itemize}
+\end{definition}
+
+\
+
+La instrucci\'on index tiene que ver con la creaci\'on del \'{\i}ndice anal\'{\i}tico.
+
+\
+
+En la definici\'on escribimos textit con la intenci\'on de obtener en it\'alicas el nombre
+del objeto que se define.
+
+\
+
+\begin{proposition} \label{norma-met}
+Sea $V$ un espacio vectorial y sea $\parallel \: \parallel$ una norma en $V$. Entonces  la
+funci\'on $d$ definida por $$d(x,y) = \parallel x - y \parallel$$ es una m\'etrica en $V$.
+\end{proposition}
+
+\
+
+Ejemplo de referencias cruzadas:
+
+Note que hemos colocado label{norma-met} despu\'es del inicio de la Proposici\'on.   Esto es
+para etiquetar esta porposici\'on y poder hacer referencia a ella posteriormente. Si queremos
+hacer referencia al resultado anterior, usamos hablamos de la Proposici\'on
+(\ref{norma-met}).
+
+
+\section{Manejo de referencias cruzadas.}
+
+A veces se quiere hacer referencia a una f\'ormula. En ese caso se debe etiquetar la
+f\'ormula:
+
+\begin{align}
+y = ax + b \label{rec}
+\end{align}
+
+La ecuaci\'on (\ref{rec}) es la ecuaci\'on de una recta de pendiente $a$.
+
+Las rectas paralelas a los ejes se pueden expresar con
+\begin{align}
+y & = b \label{rec-hor}\\
+x & = c \label{rec-ver}
+\end{align}
+La ecuaci\'on (\ref{rec-hor}) es la ecuaci\'on de una recta horizontal y la ecuaci\'on
+(\ref{rec-ver}) es la ecuaci\'on de una recta vertical.

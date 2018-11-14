@@ -1,0 +1,103 @@
+\chapter{F\'ormulas y ecuaciones}
+
+\section{Alineaci\'on}
+
+Es muy importante alinear correctamente las f\'ormulas, no es lo mismo
+
+
+$$\lim_{\vec{h} \rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) \| = \lim_{\vec{h}
+\rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h}) +
+df_{\vec{x}_o}(\vec{h}) \|$$
+$$ \leq  \lim_{\vec{h} \rightarrow\vec{0}}\,\left[ \:\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
+df_{\vec{x}_o}(\vec{h}) \| + \| df_{\vec{x}_o}(\vec{h}) \|\: \right]$$
+$$ =  \lim_{\vec{h} \rightarrow\vec{0}}\,\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
+df_{\vec{x}_o}(\vec{h}) \|$$
+$$ = \lim_{\vec{h} \rightarrow\vec{0}}\left[ \: \| \vec{h}\|\left( \frac{\| f(\vec{x}_o
++\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h})\| }{\| \vec{h}\| }
+ \right)   \:\right]$$
+$$= \left( \lim_{\vec{h} \rightarrow\vec{0}}   \| \vec{h}\|\right) \left( \lim_{\vec{h}
+\rightarrow\vec{0}} \frac{\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
+df_{\vec{x}_o}(\vec{h})\|}{\| \vec{h}\| }  \right) $$
+  $$= 0.$$
+
+que
+\begin{align*}
+\lim_{\vec{h} \rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) \|& = \lim_{\vec{h}
+\rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h}) +
+df_{\vec{x}_o}(\vec{h}) \|\\
+& \leq  \lim_{\vec{h} \rightarrow\vec{0}}\,\left[ \:\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
+df_{\vec{x}_o}(\vec{h}) \| + \| df_{\vec{x}_o}(\vec{h}) \|\: \right]\\
+& =  \lim_{\vec{h} \rightarrow\vec{0}}\,\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
+df_{\vec{x}_o}(\vec{h}) \|  \\
+& = \lim_{\vec{h} \rightarrow\vec{0}}\left[ \: \| \vec{h}\|\left( \frac{\| f(\vec{x}_o
++\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h})\| }{\| \vec{h}\| }
+ \right)   \:\right]\\
+& = \left( \lim_{\vec{h} \rightarrow\vec{0}}   \| \vec{h}\|\right) \left( \lim_{\vec{h}
+\rightarrow\vec{0}} \frac{\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
+df_{\vec{x}_o}(\vec{h})\|}{\| \vec{h}\| }  \right)\\
+ & = 0.
+\end{align*}
+
+\newpage
+
+\section{Ejemplos de f\'ormulas y ecuaciones}
+
+\
+
+En esta secci\'on ofrecemos algunos ejemplos que pueden servir de gu\'ia.
+
+\begin{align*}
+d(x, y) =
+\begin{cases}
+0 &   \text{si $x = y$} \\
+1 &   \text{si $x \ne y$}
+\end{cases}
+\end{align*}
+
+\
+
+\begin{enumerate}
+\item $\| \nabla f (r \cos \theta, r \sen \theta) \|^2 = \left( \dfrac{\partial g}{\partial
+r} \right)^2 + \dfrac{1}{r^2} \left( \dfrac{\partial g}{\partial \theta} \right)^2.$
+
+\
+
+\item $\dfrac{\partial^2 f }{\partial x^2} + \dfrac{\partial^2 f }{\partial y^2} =
+\dfrac{\partial^2 g }{\partial r^2} + \dfrac{1}{r^2} \dfrac{\partial^2 g }{\partial \theta^2}
++ \dfrac{1}{r} \dfrac{\partial g }{\partial r}.$
+\end{enumerate}
+
+\
+
+\begin{align*}
+0_{mxn} & = \begin{bmatrix} \dfrac{\partial F_1}{\partial x_1}(\vec{x},f(\vec{x})) & \dots &
+\dfrac{\partial F_1}{\partial x_n}(\vec{x},f(\vec{x})) & \dfrac{\partial
+F_1}{\partial y_1}(\vec{x},f(\vec{x})) & \dots & \dfrac{\partial F_1}{\partial y_m}(\vec{x},f(\vec{x})) \\
+\vdots & \vdots \: \vdots \: \vdots  & \vdots & \vdots & \vdots \: \vdots \: \vdots  &
+\vdots\\  \dfrac{\partial F_m}{\partial x_1}(\vec{x},f(\vec{x})) & \dots  & \dfrac{\partial
+F_m}{\partial x_n}(\vec{x},f(\vec{x})) & \dfrac{\partial F_m}{\partial y_1}
+(\vec{x},f(\vec{x}))& \dots & \dfrac{\partial F_m}{\partial y_m}(\vec{x},f(\vec{x}))
+\end{bmatrix}\\
+   & \qquad  \cdot  \begin{bmatrix}  1 & \dots & 0\\ \vdots & \vdots \: \vdots \: \vdots  &
+\vdots \\ 0 & \dots & 1\\
+\dfrac{\partial f_1}{\partial x_1}(\vec{x}) &  \dots  & \dfrac{\partial f_1}{\partial x_n}(\vec{x}) \\
+\vdots & \vdots \: \vdots \: \vdots  &
+\vdots \\
+\dfrac{\partial f_m}{\partial x_1}(\vec{x}) &  \dots  & \dfrac{\partial f_m}{\partial
+x_n}(\vec{x})
+\end{bmatrix}
+  \\
+ & = \begin{bmatrix} F_{\vec{x}}(\vec{x}, f(\vec{x})) &
+F_{\vec{y}}(\vec{x}, f(\vec{x})) \end{bmatrix} \cdot  \begin{bmatrix}   I \\
+f'(\vec{x})
+\end{bmatrix} \\
+ & = F_{\vec{x}}(\vec{x},f(\vec{x})) + F_{\vec{y}}(\vec{x},f(\vec{x})) \cdot f'(\vec{x}).
+\end{align*}
+
+
+
+
+
+\section{Citas}
+
+Para citar un libro o un art\'{\i}culo se hace as\'{\i} : \cite{ADRS} \cite{Ar}
