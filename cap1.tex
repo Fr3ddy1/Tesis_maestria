@@ -1,333 +1,93 @@
-\chapter{Marco te\'orico.}
+\chapter{Introducci\'on.}
 
-\section{Teor\'ia de interpolaci\'on.}
+\section{Antecedentes y motivaci\'on.}
 
-
-\hspace{0.4cm}Asumamos que se tiene una tabla con n puntos, $(x_{1},y_{1})...,(x_{n},y_{n})$, donde los valores $x_{i}$, para $i=1,...,n$ est\'an ordenados de forma creciente y todos ellos son distintos. Supongamos que dichos puntos se representan en un plano cartesiano y se quiere determinar una curva suave que interpole dichos valores. As\'i, se desea determinar una curva que est\'e definida para todos los $x$ y tome los valores correspondientes de $y$, esto es, que interpole todos los datos de la tabla. Cabe destacar que los puntos considerados se les conoce como nodos.
-
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} La primera idea natural es usar una funci\'on polinomial que represente esta curva, la cual se puede representar como sigue,
-
-\vspace{0.5cm}
-\begin{center}
-
-$\displaystyle{P_{n} = \sum_{i=0}^{n-1} a_{i}x^{i}}$
-
-\end{center}
-
-\noindent tal curva se le conoce como funci\'on polinomial interpoladora de grado n. N\'otese que en cada nodo se satisface que $P_{n}(x_{k})=y_{k}$, donde $k=1,...,n$.
+\hspace*{0.4 cm} La curva de redimientos es una herramienta ampliamente utilizada por las autoridades de los bancos centrales en sus decisiones de pol\'itica monetaria, as\'i como tambi\'en por los agentes privados en la planificaci\'on de sus inversiones en instrumentos financieros [1]. La misma tiene una importancia capital
+para el mundo acad\'emico y pr\'actico desde el punto de vista econ\'omico y financiero, al reflejar el precio intertemporal del dinero.
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} As\'i, se tiene que si la tabla es representada mediante una funci\'on subyacente $f(x)$ tal que $f(x_{k})=y_{k}$, para todo k, entonces esta funci\'on puede ser aproximada mediante $P_{n}$, en los puntos intermedios.
+\hspace*{0.4 cm} Uno de los principales objetivos que se persigue mediante el uso de esta herramienta, es el de estimar los precios de los t\'itulos de la deuda p\'ublica nacional que posee una instituci\'on financiera en su portafolio de inversiones en un per\'iodo determinado. Para ello es importante conocer las caracter\'isticas de los t\'itulos \'o instrumentos que existen en el mercado venezolano, entre ellos tenemos los siguientes,
 
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} No ser\'ia descabellado pensar que a medida que los nodos se incrementan, la aproximaci\'on ser\'ia cada vez mejor, lamentablemente esto no siempre es cierto, debido a que en el caso de tener una data con mucho ruido la interpolaci\'on no tendr\'ia mucho sentido ya que la varianza de los valores interpolados ser\'ia muy grande. En este caso, los polinomios interpoladores resultantes ser\'ian una mala representaci\'on de la funci\'on subyacente.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Para evitar este fen\'omeno, puede ser de utilidad relajar la condici\'on de que $f(x)$ deber\'ia ser una funci\'on que interpole todos los valores dados y en su lugar usar un trozo de un polinomio local de interpolaci\'on. La funci\'on mediante la cual se logra esta interpolaci\'on se le conoce como spline.
-
-
-\section{Splines.}
-
-\vspace{1 cm}
-
-\hspace{0.4cm} Una funci\'on spline $S(x)$ es una funci\'on que consta de trozos de polinomios unidos por ciertas condiciones de suavizado. Un ejemplo simple, es una funci\'on poligonal (spline de primer grado), la cual se forma por polinomios lineales unidos, los cuales se definen entre cada par de nodos. Entre los nodos $x_{j}$ y $x_{j+1}$ se define un spline de primer grado como sigue, \\
-
-\begin{center}
-
-$\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
-
-\end{center}
-
-\vspace{0.5cm}
-
-\noindent este spline es lineal. Usualmente $S(x)$ se define como $S_{1}(x)$ para $x<x_{1}$ y como $S_{n-1}(x)$ para $x>x_{n}$, donde $x_{1}$ y $x_{n}$ son nodos frontera.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas. Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas. Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm}Formalmente un spline c\'ubico con nodos $x_{1},...x_{n}$ se define a partir de un conjunto de polinomios de la forma,\\
-
-\begin{center}
-
-$\displaystyle{S_{j}(x) = a_{j} + b_{j}x +c_{j}x^2 +d_{j}x^3}$
-\end{center}
-
-
-\vspace{0.5cm}
-
-\noindent con $x_{j}<x<x_{j+1}$, sujeto a las siguientes condiciones,\\
-
-
-\begin{center}
-
-$\displaystyle{a_{j-1} + b_{j-1}x_{j} +c_{j-1}x_{j}^2 +d_{j-1}x_{j}^3 = a_{j} + b_{j}x_{j} +c_{j}x_{j}^2 +d_{j}x_{j}^3}$\\
-$\displaystyle{ b_{j-1} +2c_{j-1}x_{j} +3d_{j-1}x_{j}^2 = b_{j} +2c_{j}x_{j} +3d_{j}x_{j}^2}$\\
-$\displaystyle{ 2c_{j-1} +6d_{j-1}x_{j} = 2c_{j} +6d_{j}x_{j}}$\\
-$\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
-
-\end{center}
-
-
-\hspace{0.4cm}As\'i para n nodos, existen $4(n-1)$ variables y $4(n-1)-2$ restricciones. Las mismas se deben a la necesidad de que el spline c\'ubico sea igual en los valores dados en cada nodo. Las primeras tres restricciones aseguran que la funci\'on resultante en su primera y segunda derivada sean continuas en los nodos. La restricci\'on final significa que el spline c\'ubico es lineal en el punto inicial y final de la muestra. Sin embargo, es importante resaltar que el spline c\'ubico tiene tercera derivada discontinua en los nodos.
-
-\hspace{0.4cm}Debido a que hacen falta dos restricciones de borde, estas se deben a\~nadir. As\'i  $S^{(2)}(x_{1}) = S^{(2)}(x_{n}) = 0$ son las restricciones faltantes, estan hacen referencia a que el spline sea un spline c\'ubico natural. Como se mencion\'o al inicio si se considera una interpolaci\'on polinomial global de un conjunto de datos con mucho ruido pueden surgir aproximaciones no deseables e inestables. En constrate, un spline c\'ubico de interpolaci\'on encaja perfectamente con la suavidad de la funci\'on subyacente.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Otra caracter\'istica de los splines es que con la adici\'on de un par\'ametro s\'olo se aumenta la dimensionalidad del espacio de par\'ametros en una unidad, ya que tres de los cuatro par\'ametros est\'an restringidos. De igual forma, al incrementar el n\'umero de nodos los splines toman formas funcionales m\'as flexibles, lo cual muestra la relaci\'on entre el grado aproximaci\'on que se logra con el spline y el n\'umero de nodos que lo definen.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Mientras que las funciones spline son una herramienta interesante para interpolar funciones suaves, encontrarlas num\'ericamente no es tarea f\'acil. Una manera eficiente y muy estable para generar los splines necesarios para aproximar la funci\'on subyacente $f(x)$, es usando las bases de los B-splines c\'ubicos.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Supongamos que tenemos un conjunto infinito de nodos $...<x_{-2}<x_{-1}<x_{0}<x_{1}<x_{2}<...$, entonces el j-\'esimo B-spline de grado cero es igual a $B^{0}_{j}(x)=1$, si $x_{j} \leq x \leq x_{j+1}$ y $B^{0}_{j}(x)=0$ en otro caso. Con la funci\'on $B^{0}_{j}(x)$ como punto de partida se puede generar B-splines de grados mayores mediante la siguiente f\'ormula recursiva,\\
-
-\begin{center}
-
-$\displaystyle{B^{k}_{j}(x) = \frac{(x-x_{j})B^{k-1}_{j}(x)}{x_{j+k}-x_{j}} + \frac{(x_{j+k+1}-x)B^{k-1}_{j+1}(x)}{x_{j+k+1}-x_{j+1}}}$
-\end{center}
-
-\vspace{0.5cm}
-
-\noindent para $k\geq 1$. As\'i un B-spline de grado $k$ se define como,\\
-
-\begin{center}
-
-$\displaystyle{S^{k}(x) = \sum_{j=-\infty}^{\infty} \theta^{k}_{j} B^{k}_{j-k}(x)}$
-\end{center}
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Una buena interrogante ser\'ia el como se determina los coeficientes $\theta^{k}_{j}$ en la expresi\'on anterior. Note que los B-splines de grado positivo no son ortogonales y por ende no poseen una expresi\'on simple para sus coeficientes.
-
-
-Sin embargo, los c\'alculos empleados para los B-splines interpoladores de grado cero y uno, son bastante sencillos,\\
-
-\begin{center}
-
-$\displaystyle{S^{0}(x) = \sum_{j=-\infty}^{\infty} y_{j} B^{0}_{j}(x),\hspace{0.4cm} S^{1}(x) = \sum_{j=-\infty}^{\infty} y_{j} B^{1}_{j-1}(x) }$
-\end{center}
-
-\vspace{0.5cm}
-
-\hspace{0.4cm}Para splines de grados m\'as elevados, algunas arbitrariedades surgen al momento de calcular estos coeficientes. Por lo tanto, debido a que en las aplicaciones estadisticas existe un mayor inter\'es por encontrar una aproximaci\'on que una interpolaci\'on, la t\'ecnica de minimos cuadros puede ser empleada para calcular estos valores.
-
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Ahora bien, supongamos que se tiene un conjunto de $m$ funciones diferenciables $f(x)$, con soporte en el intervalo $[a,b]$, las cuales satifacen las siguientes condiciones,
-
-% begin{itemize}
-%   \item $f(x_{i})=y_{i}$, para i=1...,n
-%   \item La m-1 derivada $f^{(m-1)}(x)$, es continua en x.
-% \end{itemize}
+\vspace{0.4cm}
 
 \begin{itemize}
-  \item[(i)] $f(x_{i})=y_{i}$, para $i=1...,n$.
-  \item[(ii)] La m-1 derivada $f^{(m-1)}(x)$, es continua en x.
+  \item T\'itulos de inter\'es fijo (TIF): son instrumentos que se caracterizan por tener una renta fija, y se emiten en moneda nacional.
+  \item T\'itulos de inter\'es variable (VEBONO): se caracterizan por poseer una renta variable, e igual que los TIF se emiten en Bol\'ivares.
+  \item Bonos PDVSA : son instrumentos emitidos en d\'olares.
 \end{itemize}
-
-\hspace{0.4cm} El problema es encontrar entre todas esas funciones, una funci\'on tal que tenga la m\'inima integral del cuadro de su segunda derivada, esto es, una funci\'on que tenga el valor m\'as peque\~no de $\int_{a}^{b} (f^{(m)}(x))^2 dx$. Dicha funci\'on ser\'a la elecci\'on m\'as \'optima al momento de hallar un balance entre suavidad y ajuste de los datos.
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} Se puede desmostrar que la soluci\'on de este problema es \'unica y la funci\'on en cuesti\'on es un spline polinomial que cumple la condici\'on i), y adem\'as satisface que,
+\noindent cabe destacar que en el presente trabajo s\'olo  se considerar\'an aquellos instrumentos emitidos en Bol\'ivares.
+
+\vspace{0.5cm}
+
+\hspace*{0.4 cm}Asociado a cada t\'itulo hay un monto de dinero que se invierte, el cual es entregado al ente emisor por el t\'itulo en s\'i, existe tambi\'en una fecha de emisi\'on, y una fecha de vencimiento, d\'ia en el cual el ente emisor retorna el monto invertido inicialmente. Es importante destacar que estos t\'itulos pagan un inter\'es al portador cada tres meses, y esta representa la ganancia que tiene el inversionista.
+
+\vspace{0.5cm}
+
+\hspace*{0.4 cm} Con el fin de determinar en que t\'itulo es mejor invertir, es necesario conocer el rendimiento al vencimiento que posee dicho t\'itulo, este valor nos da un idea de cu\'al ser\'a el retorno que recibir\'a el portador del t\'itulo por la tenencia o compra del mismo. Para calcular este valor es necesario conocer la fecha de vencimiento del t\'itulo as\'i como su valor nominal y su precio.
+
+
+ \hspace*{0.4 cm} A partir de la siguiente f\'ormula podemos hallar dicho valor,
+
+\vspace{0.5cm}
+
+\begin{center}
+
+$\displaystyle{P_{t,m} = \sum_{i=1}^{m-1}{\frac{c}{(1+R_{t,i})^i} + \frac{1+c}{(1+R_{t,m})^m}} }$
+
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent donde $P_{t,m}$ representa el precio del t\'itulo al tiempo t, y que tiene un vencimiento de m a\~nos, c representa el cup\'on asociado al t\'itulo, el \'indice $i = 1,...,m$ representa cuantos cupones todav\'ia le quedan al t\'itulo por pagar antes de su vencimiento. Por su parte $R_{t,m}$ representa el rendimiento al vencimiento del t\'itulo en el tiempo t y que tiene un vencimiento de m a\~nos.
+
+\vspace{0.5cm}
+
+\hspace*{0.4 cm}A partir de la f\'ormula anterior podemos afirmar que para calcular el rendimiento al vencimiento de un t\'itulo es necesario conocer su precio es una fecha espec\'ifica, pero esto no siempre es posible, esto se debe a las caracter\'isticas del mercado venezolano ya que son pocos los t\'itulos que cotizan y por ende no se conoce su precio. Dicho precio puede conocerse a diario mediante la informaci\'on suministrada en la pesta\~na ``0-22" del documento ``resumersec" del Banco Central de Venezuela, este ente publica cada d\'ia las operaciones realizadas con estos instrumentos, en este documento se puede obtener el precio de aquellos t\'itulos que coticen ese d\'ia, el problema radica en conocer los precios de aquellos t\'itulos que no est\'en en dicho documento.
+
+
+
+\vspace{0.5cm}
+
+\hspace*{0.4 cm} La curva de rendimientos presenta emp\'iricamente una serie de dificultades, debido a que se construye a trav\'es de una serie de precios (tasas) de instrumentos financieros discontinuos en el tiempo que, por lo general, est\'an lejos de ser una curva suave. Para su estimaci\'on existen diversas metodolog\'ias, las param\'etricas y las no param\'etricas. Las metodolog\'ias param\'etricas se basan en modelos asociados a una familia funcional que obedece al comportamiento de alguna distribuci\'on de probabilidad, sobre la cual suponemos que las caracter\'isticas de la poblaci\'on de inter\'es pueden ser descritas. Es as\'i como, los modelos dise\~nados en este contexto, basados en regresi\'on, buscan describir el comportamiento de una variable de inter\'es con otras llamadas ex\'ogenas, a trav\'es de funciones de v\'inculo lineales o no lineales.
+
+\vspace{0.5cm}
+
+\hspace*{0.4 cm}Entre estas metodolog\'ias destacan, la de Nelson y Siegel introducida en $1987$ [2], la de Svesson desarrollada en $1994$ [3], la metodolog\'ia de los polinomios por componentes principales propuesta por Hunt y Terry en $1998$ [4], as\'i como los polinomios trigonom\'etricos desarrollada por Nocedal y Wright en $1999$ [5].
+
+
+
+\hspace*{0.4 cm} Por su parte, las metodolog\'ias no param\'etricas se han convertido en los \'ultimos a\~nos en un
+\'area de gran estudio debido a sus ventajas relativas respecto a los modelos de regresi\'on basado en funciones. Entre las caracter\'isticas m\'as importantes de estos modelos tenemos, la flexibilidad en los supuestos y el ajuste dirigido espec\'ificamente a trav\'es de los datos. Entre estas metodolog\'ias se destacan la de regresi\'on Kernel, polinomios locales, splines de polinomios (Fan y Gibels, $1996$ [6]), splines c\'ubicos suavizados (B.W. Silverman, $1985$ [7]), super suavizador de Friedmann (Friedmann, $1984$ [8]) y redes neuronales artificiales (Sharda, $1994$ [9]).
+
+\vspace{0.5cm}
+
+\hspace*{0.4 cm} En el siguiente trabajo se propone el uso de la metodolog\'ia de splines c\'ubicos suavizados, la cual posee la ventaja de contar un factor de penalizaci\'on el cu\'al es muy \'util al momento de tener un balance entre la suavidad de la curva y su bondad de ajuste. A grandes rasgos estas metodolog\'ias se basan en estimar la curva de rendimientos de dichos t\'itulos, curva que relaciona el rendimiento al vencimiento con la maduraci\'on o fecha de vencimiento, con el fin de estimar los precios de los t\'itulos a un d\'ia en espec\'ifico. De esta manera a partir de una determinada fecha es posible mediante estas metodolog\'ias estimar el rendimiento al vencimiento de un t\'itulo y por ende saber su precio estimado.
+
+\newpage
+
+\section{Objetivos.}
+
+\subsection{Objetivos  generales del trabajo.}
 
 \begin{itemize}
-  \item[(a)] f es un pilinomio de grado no mayor que $m-1$ cuando $x \in [a,x_{1}]$ y $x \in [x_{n},b]$ .
-  \item[(b)] F es un polinomio de grado no mayor a $2m-1$ para puntos interiores, $x \in [x_{i},x_{i+1}]$ con i=1,...,n.
-  \item[(c)] f(x) tiene $2m-2$ derivadas continuas en el eje real.
+  \item Estimar la curva de rendimientos mediante el uso de los Splines C\'ubicos Suavizados.
 \end{itemize}
 
-\hspace{0.4cm} En resumen, la funci\'on $f$ m\'inima es un spline el cual est\'a conformado por trozos de polinomios unidos en los nodos $x_{i}$, donde dicha funci\'on tiene $2m-2$ derivadas continuas. N\'otese que en muchas aplicaciones $m=2$ es un valor muy utilizado y cuya soluci\'on viene dada mediante el spline c\'ubico natural.
+\subsection{Objetivos espec\'ificos del trabajo.}
 
+\begin{itemize}
+  \item Generar un hist\'orico para los t\'itulos de tasa de inter\'es fija (TIF), pertenecientes a la deuda p\'ublica nacional (DPN).
+  \item Estimar la curva de rendimientos para los TIF.
+  \item Generar un hist\'orico para los t\'itulos de tasa de inter\'es variable (VEBONO), pertenecientes a la deuda p\'ublica nacional (DPN).
+  \item Estimar la curva de rendimientos para los VEBONO.
+  \item Estimar los precios de los TIF pertenecientes a un portafolio en un momento espec\'ifico.
+  \item Estimar los precios de los VEBONO pertenecientes a un portafolio en un momento espec\'ifico.
 
-\newpage
-
-\section{Regresi\'on no param\'etrica mediante splines de suavizado.}
-
-\hspace{0.4cm} Consideremos el siguiente modelo de regresi\'on homoced\'astico,\\
-
-\begin{center}
-
-$\displaystyle{Y_{i}=f(X_{i})+\epsilon_{i}}, \hspace{0.3cm} para \hspace{0.2cm} i=1,...,n$
-\end{center}
-
-\vspace{0.5cm}
-
-\noindent donde los $\epsilon_{i}$ son errores de media cero independientes e id\'enticamente distribuidos.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Uno de los posibles m\'etodos para emplear splines es aproximar la funci\'on de regresi\'on subyacente mediante las bases de splines, por ejemplo, la base de los B-splines c\'ubicos. As\'i, se escoge una secuencia fija de nodos $-\infty<t_{1}<t_{2}<...<t_{J}<\infty$, los cuales pueden diferir de los predictores. Luego, se calculan los elementos de la base c\'ubica de spline correspondiente.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm}Es posible mostrar que s\'olo son necesarios $J+4$ elementos de esta base. Denotemos a estos elementos por $B_{j}(x)$, as\'i el spline polinomial lo podemos expresar como sigue,
-
-\begin{center}
-
-$\displaystyle{S(x)=\sum_{j=1}^{J+4} \theta_{j}B_{j}(x)}$
-\end{center}
-
-\vspace{0.5cm}
-
-\hspace{0.4cm}Entonces los coeficientes $\theta_{j}$ pueden ser calculados al ser considerados como los par\'ametros que se obtienen al minimizar la suma de los errores al cuadrado,
-
- \begin{center}
-
-$\displaystyle{\sum_{i=1}^{n} \left[ Y_{i} - \sum_{j=1}^{J+4} \theta_{j}B_{j}(X_{j})\right]^2}$
-\end{center}
-
-\vspace{0.5cm}
-
-\hspace{0.4cm}Denotamos por $\hat{\theta_{j}}$ al estimador de m\'inimos cuadrados y definimos el estimador del spline polinomial como sigue,
-
- \begin{center}
-
-$\displaystyle{ \hat{f}_{n}(x) = \sum_{j=1}^{J+4} \hat{\theta_{j}}B_{j}(x)}$
-\end{center}
-
-\vspace{0.5cm} Otro enfoque, se basa en la idea de encontrar un curva suave que minimize la suma penalizada de errores al cuadrado, es decir, que minimize la siguiente expresi\'on,
-
-\begin{equation}\label{min}
-  n^{-1}\sum_{j=1}^{n}(Y_{j}-f(X_{j}))^2+\mu \int_{a}^{b} [f^{(m)} (x)]^2 dx
-\end{equation}
-
-\vspace{0.5cm}
-
-
-\noindent para alg\'un $\mu > 0$. As\'i como el enfoque de interpolaci\'on anterior, la soluci\'on de este problema de minimizaci\'on es un spline, el cual recibe el nombre de estimador de spline de suavizado.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} En particular, para el caso $m=2$ el minimizador de (\ref{min}), es un spline c\'ubico natural. Note que $\mu$ juega el papel de par\'ametro de suavizado, este t\'ermino se puede interpretar como una penalizaci\'on por rugosidad de la funci\'on. Curvas que cambian lenta o suavemente presentan un valor peque\~no de la integral, por ejemplo, en una funci\'on lineal la integral toma el valor de cero.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} De hecho, la primera suma en (\ref{min}) penaliza la falta de fidelidad de la aproximaci\'on de la data mediante el spline. El segundo t\'ermino es el responsable de la suavidad de la aproximaci\'on obtenida mediante el spline. Para ver esto consid\'erese los casos extremos, es decir, cuando $\mu =0$ y $\mu=\infty$. El primer caso conduce a una interpolaci\'on, esto es $\hat{f}(X_{i})=Y_{i}$ para $i=1,...,n$. El otro caso, conduce a una regresi\'on lineal pues $f^{(2)}(x)\equiv 0$.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} Por lo tanto $\mu$ es el par\'ametro de suavizado que controla la medida del estimador del spline polinomial, el cual puede variar desde el modelo m\'as complicado e inestable hasta el modelo m\'as simple. En otras palabras, la ecuaci\'on (\ref{min}) representa un balance entre la fidelidad o ajuste de los datos, representado mediante la suma de los residuos al cuadrado y la suavidad de la curva resultante, la cual se representa por la integral del cuadrado de la m-\'emisa derivada.
+\end{itemize}
 
 
 
-
-
-
-
-
-\newpage
-
-Es muy importante alinear correctamente las f\'ormulas, no es lo mismo
-
-
-$$\lim_{\vec{h} \rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) \| = \lim_{\vec{h}
-\rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h}) +
-df_{\vec{x}_o}(\vec{h}) \|$$
-$$ \leq  \lim_{\vec{h} \rightarrow\vec{0}}\,\left[ \:\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
-df_{\vec{x}_o}(\vec{h}) \| + \| df_{\vec{x}_o}(\vec{h}) \|\: \right]$$
-$$ =  \lim_{\vec{h} \rightarrow\vec{0}}\,\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
-df_{\vec{x}_o}(\vec{h}) \|$$
-$$ = \lim_{\vec{h} \rightarrow\vec{0}}\left[ \: \| \vec{h}\|\left( \frac{\| f(\vec{x}_o
-+\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h})\| }{\| \vec{h}\| }
- \right)   \:\right]$$
-$$= \left( \lim_{\vec{h} \rightarrow\vec{0}}   \| \vec{h}\|\right) \left( \lim_{\vec{h}
-\rightarrow\vec{0}} \frac{\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
-df_{\vec{x}_o}(\vec{h})\|}{\| \vec{h}\| }  \right) $$
-  $$= 0.$$
-
-que
-\begin{align*}
-\lim_{\vec{h} \rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) \|& = \lim_{\vec{h}
-\rightarrow\vec{0}} \| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h}) +
-df_{\vec{x}_o}(\vec{h}) \|\\
-& \leq  \lim_{\vec{h} \rightarrow\vec{0}}\,\left[ \:\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
-df_{\vec{x}_o}(\vec{h}) \| + \| df_{\vec{x}_o}(\vec{h}) \|\: \right]\\
-& =  \lim_{\vec{h} \rightarrow\vec{0}}\,\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
-df_{\vec{x}_o}(\vec{h}) \|  \\
-& = \lim_{\vec{h} \rightarrow\vec{0}}\left[ \: \| \vec{h}\|\left( \frac{\| f(\vec{x}_o
-+\vec{h}) - f(\vec{x}_o) - df_{\vec{x}_o}(\vec{h})\| }{\| \vec{h}\| }
- \right)   \:\right]\\
-& = \left( \lim_{\vec{h} \rightarrow\vec{0}}   \| \vec{h}\|\right) \left( \lim_{\vec{h}
-\rightarrow\vec{0}} \frac{\| f(\vec{x}_o +\vec{h}) - f(\vec{x}_o) -
-df_{\vec{x}_o}(\vec{h})\|}{\| \vec{h}\| }  \right)\\
- & = 0.
-\end{align*}
-
-\newpage
-
-\section{Ejemplos de f\'ormulas y ecuaciones}
-
-\
-
-En esta secci\'on ofrecemos algunos ejemplos que pueden servir de gu\'ia.
-
-\begin{align*}
-d(x, y) =
-\begin{cases}
-0 &   \text{si $x = y$} \\
-1 &   \text{si $x \ne y$}
-\end{cases}
-\end{align*}
-
-\
-
-\begin{enumerate}
-\item $\| \nabla f (r \cos \theta, r \sen \theta) \|^2 = \left( \dfrac{\partial g}{\partial
-r} \right)^2 + \dfrac{1}{r^2} \left( \dfrac{\partial g}{\partial \theta} \right)^2.$
-
-\
-
-\item $\dfrac{\partial^2 f }{\partial x^2} + \dfrac{\partial^2 f }{\partial y^2} =
-\dfrac{\partial^2 g }{\partial r^2} + \dfrac{1}{r^2} \dfrac{\partial^2 g }{\partial \theta^2}
-+ \dfrac{1}{r} \dfrac{\partial g }{\partial r}.$
-\end{enumerate}
-
-\
-
-\begin{align*}
-0_{mxn} & = \begin{bmatrix} \dfrac{\partial F_1}{\partial x_1}(\vec{x},f(\vec{x})) & \dots &
-\dfrac{\partial F_1}{\partial x_n}(\vec{x},f(\vec{x})) & \dfrac{\partial
-F_1}{\partial y_1}(\vec{x},f(\vec{x})) & \dots & \dfrac{\partial F_1}{\partial y_m}(\vec{x},f(\vec{x})) \\
-\vdots & \vdots \: \vdots \: \vdots  & \vdots & \vdots & \vdots \: \vdots \: \vdots  &
-\vdots\\  \dfrac{\partial F_m}{\partial x_1}(\vec{x},f(\vec{x})) & \dots  & \dfrac{\partial
-F_m}{\partial x_n}(\vec{x},f(\vec{x})) & \dfrac{\partial F_m}{\partial y_1}
-(\vec{x},f(\vec{x}))& \dots & \dfrac{\partial F_m}{\partial y_m}(\vec{x},f(\vec{x}))
-\end{bmatrix}\\
-   & \qquad  \cdot  \begin{bmatrix}  1 & \dots & 0\\ \vdots & \vdots \: \vdots \: \vdots  &
-\vdots \\ 0 & \dots & 1\\
-\dfrac{\partial f_1}{\partial x_1}(\vec{x}) &  \dots  & \dfrac{\partial f_1}{\partial x_n}(\vec{x}) \\
-\vdots & \vdots \: \vdots \: \vdots  &
-\vdots \\
-\dfrac{\partial f_m}{\partial x_1}(\vec{x}) &  \dots  & \dfrac{\partial f_m}{\partial
-x_n}(\vec{x})
-\end{bmatrix}
-  \\
- & = \begin{bmatrix} F_{\vec{x}}(\vec{x}, f(\vec{x})) &
-F_{\vec{y}}(\vec{x}, f(\vec{x})) \end{bmatrix} \cdot  \begin{bmatrix}   I \\
-f'(\vec{x})
-\end{bmatrix} \\
- & = F_{\vec{x}}(\vec{x},f(\vec{x})) + F_{\vec{y}}(\vec{x},f(\vec{x})) \cdot f'(\vec{x}).
-\end{align*}
-
-
-
-
-
-\section{Citas}
-
-Para citar un libro o un art\'{\i}culo se hace as\'{\i} : \cite{ADRS} \cite{Ar}

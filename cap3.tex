@@ -1,130 +1,88 @@
-\chapter{Gr\'aficos.}
+\chapter{Metodolog\'ia.}
+
+\section{Elaboraci\'on de la base de datos.}
 
 
+\hspace{0.4cm} La fuente principal de informaci\'on para calcular la curva de rendimientos para los t\'itulos de la deuda p\'ublica nacional es el Banco Central de Venezuela (BCV), el cual diariamente publica las operaciones realizadas con dichos instrumentos y los muestra en el documento ``resumersec"\hspace{0.01cm} en la pesta\~na $``0-22"$ (Ver Figura 1), en el mismo se puede encontrar la informaci\'on sobre el c\'odigo del instrumento, su fecha de vencimiento, su plazo, la cantidad de operaciones, el monto en Bol\'ivares, el precio m\'inimo, m\'aximo y promedio, y el cup\'on asociado a cada instrumento.
 
+\vspace{0.5cm}
 
-\section{Las ecuaciones de Lotka y Volterra.}
-
-En esta secci\'on vamos a estudiar un modelo cl\'asico para una situaci\'on depredador presa.
-Este modelo  fue ideado alrededor del a\~no 1920 por el matem\'atico italiano Vito Volterra,
-(1860-1940) y, desarrollado independientemente en la misma \'epoca,  por el biof\'{\i}sico
-austr\'{\i}aco Alfred James Lotka, (1880-1940).
-
-Volterra estudiaba las variaciones peri\'odicas observadas en las poblaciones de tiburones y
-sus peces-alimento en el Mar Adri\'atico.
-
-Sea $x(t)$ el n\'umero de presas y sea  $y(t)$ el n\'umero de depredadores en el instante $t$.
-En este modelo se supone lo siguiente:
-
-
-\begin{equation}\label{especies3}
-\left\{ \begin{aligned}
-\dot{x} & = A \, x - B\, x \, y, \\
-\dot{y} & = - C\,  y  + D \, x \, y ,
-\end{aligned} \right.
-\end{equation}
-donde $A$, $B$, $C$ y $D$ son constantes positivas.
-
- Este sistema de ecuaciones, que a simple vista se parece a los que hemos estudiado, no
-es nada sencillo. No es posible hallar sus soluci\'on de manera expl\'{\i}cita, mediante
-m\'etodos num\'ericos es posible aproximar sus soluciones.
-
-Consideremos el siguiente caso particular
-
-\begin{equation}\label{especies4}
-\left\{ \begin{aligned}
-\dot{x} & =  x - x \, y, \\
-\dot{y} & = (0,3)\, x \, y  -  (0,3)  \, y ,
-\end{aligned} \right.
-\end{equation}
-con condici\'on inicial $$x(0) = 2 \qquad \qquad y(0) = 2.$$
-
-Suponemos que $x$ e $y$ representan al n\'umero de presas y depredadores, contadas en miles de
-individuos y $t$ es el tiempo medido en semanas.
-
-En la siguiente figura tenemos los gr\'aficos de las soluciones.
-
-
-
-\begin{figure}
-\scalebox{.80}{\includegraphics{especies4(LV).eps}}  \caption{Comportamiento del sistema para
-$0 \leq t \leq  50 $}\label{f1}
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/Imagen022.png}}
+%\includegraphics[width=0.7\textwidth]{Imagen022.png}
+\caption{Pesta\~na ``0-22".}
 \end{figure}
 
-Se observa que el n\'umero de presas y de depredadores comienza a disminuir muy r\'apidamente
-hasta casi extinguirse, con cierto desfase entre presas y depredadores. En el momento en que
-hay muy pocos depredadores comienza a aumentar el n\'umero de presas y despu\'es el n\'umero
-de depredadores alcanz\'andose valores m\'aximos con desfase y entrando en un ciclo que se
-repite.
+\vspace{0.5cm}
 
-La siguiente figura muestra la trayectoria correspondiente.
+\hspace{0.4cm} Es importante recordar que dentro de los t\'itulos de la Deuda P\'ublica Nacional se encuentran los t\'itulos de inter\'es fijo (TIF) y los t\'itulos de tasa variable (VEBONO), los primeros se caracterizan por poseer una tasa de cup\'on que no varia, por su parte los VEBONO poseen una tasa de inter\'es variable.
 
-\begin{figure}
-\scalebox{.90}{\includegraphics{especies5(LV).eps}}  \caption{Trayectoria del
-sistema}\label{f2}
+\vspace{0.5cm}
+
+\hspace{0.4cm}Esta informaci\'on tambi\'en es suministrada por el BCV, en su documento de las ``Caracter\'isticas de la Deuda P\'ublica Nacional" (Ver Figura 2), por lo cual el mismo se debe revisar con cierta frecuencia, con el fin de actualizar la tasa de cup\'on de los VEBONO.
+
+
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/Imagencarac.png}}
+\caption{Caracter\'isticas.}
 \end{figure}
 
-\pagebreak
 
-\section{Superficies.}
+\hspace{0.4cm} A partir de la pesta\~na ``0-22"\hspace{0.01cm} y del documento de las caracter\'isticas, se cre\'o la base de datos con la cual se va a trabajar, la misma contiene no s\'olo la informaci\'on suministrada por la pesta\~na ``0-22", sino alguna informaci\'on adicional tomada del documento de las caracter\'isticas. En dicha base de datos se contar\'a con la siguiente informaci\'on,
 
-Sea $f(x, y) = x^2 - y^2$ entonces las curvas de nivel de $f$ son los conjuntos en los que
-$x^2 - y^2 = c.$ Estos conjuntos nos dan una idea de como es el gr\'afico de $f$.
+\vspace{0.5cm}
 
+\begin{itemize}
+  \item Tipo Instrumento: Indica el tipo de instrumento.
+  \item Nombre: Proporciona el nombre corto del t\'itulo, usualmente este nombre se conforma por el tipo de t\'itulo m\'as su mes y a\~no de vencimiento, por ejemplo, el t\'itulo TIF032028, representa al t\'itulo TIF con vencimiento en marzo del 2028.
+  \item Fecha de operaci\'on: Indica la fecha en que se efectu\'o dicha operaci\'on.
+  \item Fuente: Indica la fuente de donde se tom\'o la informaci\'on, esta se puede tomar de dos fuentes, la primera mediante la pesta\~na 0-22 (mercado secundario) y  la otra mediante el documento de las subastas (mercado primario, informaci\'on suministrada por el BCV).
+  \item Sicet: Proporciona el c\'odigo asociado a cada t\'itulo.
+  \item Fecha de vencimiento: Indica la fecha de maduraci\'on (vencimiento) del instrumento.
+  \item Plazo: Indica la cantidad de d\'ias que falta para que el instrumento se venza.
+  \item Cantidad de operaciones: Proporciona la cantidad de operaciones efectuadas con un insrumento en espec\'ifico.
+  \item Monto: Indica el monto en Bol\'ivares, por el cual se efectu\'o la operaci\'on u operaciones.
+  \item Precio m\'inimo: Indica el precio m\'inimo, por el cual se trans\'o la operaci\'on.
+  \item Precio m\'aximo: Indica el precio m\'aximo, por el cual se trans\'o la operaci\'on.
+  \item Precio promedio: Indica el precio promedio, por el cual se trans\'o la operaci\'on, cabe destacar que en dado caso de existir una sola operaci\'on el valor del precio m\'inimo, m\'aximo y promedio van a coincidir.
+  \item Cup\'on: Proporciona la tasa de cup\'on asociado a cada instrumento.
+  \item Frecuencia: Indica con que frecuencia el instrumento paga cup\'on, para los TIF y VEBONO, esta es 4, pues los mismos pagan cu\'pon trimestralmente, as\'i se obtiene este valor pues existen 4 trimestres en el a\~no.
 
-\begin{figure}
-\begin{tabular}{c c}
-\scalebox{.80}{\includegraphics{nivelsilla1.eps}}  &
-\scalebox{.80}{\includegraphics{silla1.eps}}
-\end{tabular} \caption{curvas de nivel y gr\'afico de $f(x, y) = x^2 - y^2$}\label{f3}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\hspace{0.4cm} Una vez obtenida la base de datos esta seg\'un sea el caso puede ser depurada mediante ciertos criterios, el primero es que aquellas operaciones con un monto menor a los 10 milllones no se consideran. El segundo es el tipo de fuente, siempre prevalecer\'a la fuente subasta. El tercero es considerar la operaci\'on mas reciente, es decir, si en la base de datos se tiene que para un mismo instrumento existen diferentes operaciones en diferentes d\'ias, s\'olo se considerar\'a la operaci\'on m\'as reciente.
+
+\vspace{0.5cm}
+
+\hspace{0.4cm} Para efectuar la depuraci\'on, a la base de datos anterior se le a\~nadir\'an dos columnas nuevas una que indica el rendimiento al vencimiento de cada instrumento y la otra que indica la decisi\'on que se tom\'o en base a los criterios descritos anteriormente (Ver Figura 3). Esta \'ultima ser\'a una variable dicot\'omica, es decir solo con dos valores (0 \'o 1), en donde ``0" me indica que no selecciono el t\'itulo y ``1" me indica que si lo tomo en cuenta para el estudio a realizar.\\
+
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/Imagenbase.png}}
+\caption{Base de datos.}
 \end{figure}
-Esta superficie se conoce con el nombre de paraboloide hiperb\'olico  o ``silla de montar''.
-\index{paraboloide!hiperb\'olico}
-
-\section{Elaboraci\'on de los gr\'aficos.}
-
-En los ejemplos de este cap\'{\i}tulo hemos visto que para incorporar un gr\'afico al
-documento es conveniente tener un archivo del tipo ``eps'' (encapsulated postscript).
-
-Los archivos gr\'aficos que aparecen en este cap\'{\i}tulo fueron generados con Maple y
-despu\'es editados con Illustrator de Adobe.
-
-A continuación describimos los comandos usados en Maple para generar los gr\'aficos.
-
-\
-
-Para generar la Figura \ref{f1} usar el siguiente comando:
-
-\begin{verbatim}
->plotsetup(ps,plotoptions=`colour=cmyk,width=6in,height=3in`);
- fcns:={x(t),y(t)};
- odes:=diff(x(t),t)=x(t)*(1-y(t)),diff(y(t),t)=.3*y(t)*(x(t)-1);
- soln:=dsolve({odes[1],odes[2],x(0)=2,y(0)=2},{x(t),y(t)},type=numeric);
- with(plots):
- odeplot(soln,[[t,y(t)], [t,x(t)]],0..50, style=line, numpoints=1000);
-
-\end{verbatim}
-
-\
-
-Para generar la Figura \ref{f2} usar el siguiente comando:
-
-\begin{verbatim}
->with(plots):
-implicitplot((0.3)*ln(x) - (0.3)*x + ln(y) - y = - 1.7 , x=0.1..4,
-y=0.1..4,numpoints=5000);
-\end{verbatim}
-
-Para generar los dos elementos Figura \ref{f3} usar el siguiente comando:
-
-\begin{verbatim}
->plot3d( x^2-y^2, x=-3..3, y=-3..3, axes=normal, labels=[x,y,z],
-shading = ZGREYSCALE, style = PATCH, tickmarks=[0,0,0],
-view=-3..3,orientation=[60,45]  );
-
-with(plots):
-> implicitplot({x^2 - y^2 = 1,x^2 - y^2 = 3, x^2 - y^2 = -1,x^2 - y^2 = -3},
-x=-3..3,y=-3..3,scaling=constrained);
 
 
-\end{verbatim}
+\section{Estimaci\'on de par\'ametros y curva de rendimiento.}
+
+\hspace{0.4cm} Una vez construida la base de datos, se proceder\'a a utilizar los splines de suavizado para obtener los par\'ametros necesarios para la curva de rendimientos. Recordemos que esta curva relaciona el plazo del instrumento con su rendimiento.
+
+\vspace{0.5cm}
+
+\hspace{0.4cm} Es importante se\~nalar que se estimar\'a una curva por cada tipo de instrumento, as\'i se obtendr\'a un curva para los TIF y una curva para los VEBONO. Por tal raz\'on a partir de la base de datos, se separar\'a los TIF de los VEBONOS, y se considerar\'an s\'olo las columnas Plazo y Rendimiento para estimar dicha curva. Seg\'un sea el caso, s\'olo considerar\'an aquellas observaciones que tengan decisi\'on 1.
+
+
+\hspace{0.4cm} Aunado a cada tipo de instrumento (TIF \'o VEBONO), se considerar\'a un instrumento de otro tipo este es la letra del tesoro, este tipo de instrumento representar\'a el punto inicial la curva, cabe destacar que la letra a considerar debe ser aquella cuya fecha de operaci\'on sea la m\'as reciente con respecto a la fecha de valoraci\'on (d\'ia en que se quiere conocer los rendimientos estimados).
+
+\vspace{0.5cm}
+
+\hspace{0.4cm} A partir de la curva de rendimientos obtenida (Ver Figura 4) es posible calcular un rendimiento estimado para alg\'un tipo de instrumento a partir de su plazo, que no es m\'as que la cantidad de d\'ias que faltan por transcurrir hasta su vencimiento. Este valor es de suma importancia ya que a partir del mismo es posible calcular el precio estimado asociado a cada instrumento en un d\'ia espec\'ifico. Con lo cual es posible saber a partir de la historia (base de datos), el precio estimado de alg\'un instrumento que le interese a cierta instituci\'on y por ende saber si ese t\'itulo es rentable o no, es decir, si vale la pena invertir en el mismo o no.\\
+
+\begin{figure}[h]
+  \scalebox{0.40}{\includegraphics{images/curvarend.jpeg}}
+\caption{Curva de Rendimiento.}
+\end{figure}
+
+
+
