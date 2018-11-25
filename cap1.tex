@@ -1,6 +1,6 @@
-\chapter{Introducci\'on.}
+\chapter{Antecedentes y motivaci\'on.}
 
-\section{Antecedentes y motivaci\'on.}
+\section{Introducci\'on.}
 
 \hspace*{0.4 cm} La curva de redimientos es una herramienta ampliamente utilizada por las autoridades de los bancos centrales en sus decisiones de pol\'itica monetaria, as\'i como tambi\'en por los agentes privados en la planificaci\'on de sus inversiones en instrumentos financieros [1]. La misma tiene una importancia capital
 para el mundo acad\'emico y pr\'actico desde el punto de vista econ\'omico y financiero, al reflejar el precio intertemporal del dinero.
@@ -30,7 +30,7 @@ para el mundo acad\'emico y pr\'actico desde el punto de vista econ\'omico y fin
 \hspace*{0.4 cm} Uno de los principales objetivos que se persigue mediante el uso de esta herramienta, es el de estimar los precios de los t\'itulos de la deuda p\'ublica nacional que posee una instituci\'on financiera en su portafolio de inversiones en un per\'iodo determinado. 
 
 
-DPN
+\section{Deuda P\'ublica Nacional}
 
 \hspace*{0.4 cm} Deuda es la obligaci\'on que un sujeto tiene de reintegrar, satisfacer o pagar, especialmente dinero. P\'ublico, por otra parte, es un adjetivo que refiere a aquello perteneciente a toda la sociedad o que es com\'un del pueblo.
 
@@ -38,7 +38,7 @@ DPN
 
 \hspace*{0.4 cm} El Estado, por lo tanto, contrae deuda p\'ublica para solucionar problemas de liquidez (cuando el dinero en caja no resulta suficiente para afrontar los pagos inmediatos) o para financiar proyectos a medio o largo plazo.
 
-\hspace*{0.4 cm} La deuda p\'ublica puede ser contra\'ida por la administraci\'on municipal, provincial o nacional. Al emitir t√≠tulos de valores y colocarlos en los mercados nacionales o extranjeros, el Estado promete un futuro pago con intereses seg√∫n los plazos estipulados por el bono.
+\hspace*{0.4 cm} La deuda p\'ublica puede ser contra\'ida por la administraci\'on municipal, provincial o nacional. Al emitir t\'itulos de valores y colocarlos en los mercados nacionales o extranjeros, el Estado promete un futuro pago con intereses seg√∫n los plazos estipulados por el bono.
 
 \hspace*{0.4 cm} La emisi\'on de deuda p\'ublica, al igual que la creaci\'on de dinero y los impuestos, son medios que tiene el Estado para financiar sus actividades. La deuda p\'ublica, de todos modos, tambi\'en puede utilizarse como un instrumento de la pol\'itica econ\'omica, de acuerdo a la estrategia escogida por las autoridades.
 
@@ -46,7 +46,7 @@ DPN
 
 \begin{itemize}
   \item A corto plazo. Dentro de esta categor\'ia se encuentran las Letras del Tesoro y se identifica por el hecho de que tiene un plazo de vencimiento que no supera el a\~no.
-  \item A medio plazo. Los bonos del Estado son, por su parte, los m\'aximos exponentes de esta clase de deuda p\'ublica que se suele utilizar para hacer frente a lo que ser√≠an los gastos ordinarios que tiene aquel.
+  \item A medio plazo. Los bonos del Estado son, por su parte, los m\'aximos exponentes de esta clase de deuda p\'ublica que se suele utilizar para hacer frente a lo que ser\'an los gastos ordinarios que tiene aquel.
   \item A largo plazo. Como su propio nombre indica, este tipo de deuda tiene una duraci\'on muy larga, que se fijar\'a convenientemente, y que puede incluso llegar a ser perpetua. En su caso, se recurre a aquel para hacer frente a lo que ser\'ian gastos extraordinarios o para situaciones especiales.
 \end{itemize}
 
@@ -104,9 +104,261 @@ $\displaystyle{P_{t,m} = \sum_{i=1}^{m-1}{\frac{c}{(1+R_{t,i})^i} + \frac{1+c}{(
 
 \hspace*{0.4 cm} La curva de rendimientos presenta emp\'iricamente una serie de dificultades, debido a que se construye a trav\'es de una serie de precios (tasas) de instrumentos financieros discontinuos en el tiempo que, por lo general, est\'an lejos de ser una curva suave. Para su estimaci\'on existen diversas metodolog\'ias, las param\'etricas y las no param\'etricas. Las metodolog\'ias param\'etricas se basan en modelos asociados a una familia funcional que obedece al comportamiento de alguna distribuci\'on de probabilidad, sobre la cual suponemos que las caracter\'isticas de la poblaci\'on de inter\'es pueden ser descritas. Es as\'i como, los modelos dise\~nados en este contexto, basados en regresi\'on, buscan describir el comportamiento de una variable de inter\'es con otras llamadas ex\'ogenas, a trav\'es de funciones de v\'inculo lineales o no lineales.
 
-\vspace{0.5cm}
 
-\hspace*{0.4 cm}Entre estas metodolog\'ias destacan, la de Nelson y Siegel introducida en $1987$ [2], la de Svesson desarrollada en $1994$ [3], la metodolog\'ia de los polinomios por componentes principales propuesta por Hunt y Terry en $1998$ [4], as\'i como los polinomios trigonom\'etricos desarrollada por Nocedal y Wright en $1999$ [5].
+\section{Metodolog\'ias Param\'etricas}
+
+\hspace*{0.4 cm} Estad\'isticamente, un modelo param\'etrico es una familia funcional que
+obedece al comportamiento de alguna distribuci\'on de probabilidad,sobre la cual suponemos que las caracter\'isticas de la poblaci\'on de inter\'es
+pueden ser descritas. Es as\'i como, los modelos dise\~nados en este contexto,
+basados en regresi\'on, buscan describir el comportamiento de una
+variable de inter\'es con otras llamadas ex\'ogenas, a trav\'es de funciones de
+v\'inculo lineales o no lineales.
+
+La curva de Nelson-Siegel
+
+\hspace*{0.4 cm} Nelson y Siegel (1987) introducen un modelo param\'etrico para el ajuste
+de los rendimientos hasta la madurez de los bonos del tesoro de Estados
+Unidos que se caracteriza por ser parsimonioso y flexible en modelar
+cualquier forma t\'ipica asociada con las curvas de rendimientos. La estructura
+param\'etrica asociada a este modelo permite analizar el comportamiento
+a corto y a largo plazo de los rendimientos y ajustar -sin
+esfuerzos adicionales-, curvas mon\'otonas, unimodales o del tipo S.
+
+
+\hspace*{0.4 cm} Una clase de funciones que genera f\'acilmente las formas usuales de las
+curvas de rendimientos es la asociada con la soluci\'on de ecuaciones en
+diferencia. La teor\'ia de expectativas sobre la estructura de las tasas de
+inter\'es promueve la investigaci\'on en este sentido, dado que si las tasas
+spot son producidas por medio de una ecuaci\'on diferencial, entonces las
+tasas forward -siendo pron\'osticos-, ser\'an la soluci\'on de las ecuaciones
+diferenciales. La expresi\'on param\'etrica propuesta por Nelson y Siegel
+(1987) que describe las tasas forward es exhibida a continuaci\'on:
+
+
+\begin{center}
+$\displaystyle{f(m) = \beta_{0} + \beta_{1} e^{\frac{-m}{\tau}} +\beta_{2} \left(\frac{-m}{\tau}\right)e^{\frac{-m}{\tau}}}$
+\end{center}
+
+\noindent donde $m$ denota la madurez del activo y $\beta_{0}$, $\beta_{1}$, $\beta_{2}$ y $\tau$ los par\'ametros a ser
+estimados. Puesto que las tasas spot pueden ser obtenidas a travÈs de tasas
+forward por medio de la expresi\'on:
+
+\begin{center}
+$\displaystyle{s(m) = \int_{0}^{m}f(x)dx}$
+\end{center}
+
+\noindent la ecuaci\'on que determina las tasas spot $s(m)$ de activos con madurez m es dada por:
+
+\begin{center}
+$\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau}\right)}{m/\tau} + \beta_{2} \left(\frac{\left(1-e^\frac{-m}{\tau}\right)}{m/\tau} -  e^\frac{-m}{\tau}\right)}$
+\end{center}
+
+
+\noindent cuya ecuaci\'on es lineal si conocemos $\tau$ .
+
+\hspace*{0.4 cm} El valor l\'imite del rendimiento es $\beta_{0}$ cuando el plazo al vencimiento m es grande, mientras que, cuando el plazo al vencimiento m es peque\~no el
+rendimiento en el l\'imite es $\beta_{0}+\beta_{1}$. Igualmente, los coeficientes del
+modelo de tasas forward pueden ser interpretados como medidas de
+fortaleza al corto, mediano y largo plazo. La contribuci\'on al largo plazo
+es determinada por $\beta_{0}$, $\beta_{1}$ lo hace al corto plazo ponderado por la
+funci\'on mon\'otona creciente (decreciente) $e^{\frac{-m}{\tau}}$ cuando $\beta_{1}$ es negativo
+(positivo) y $\beta_{2}$ lo hace al mediano plazo ponderado por la funci\'on
+mon\'otona creciente (decreciente) $(\frac{-m}{\tau}) e^{\frac{-m}{\tau}}$ cuando $\beta_{2}$ es negativo
+(positivo). Una de las principales utilidades de la curva ha sido para
+prop\'ositos de control de la pol\'itica monetaria.
+
+\hspace*{0.4 cm} Consecuentemente, $s(m)$ ser\'a la ecuaci\'on utilizada para captar la relaci\'on
+subyacente entre los rendimientos y los plazos al vencimiento o madurez,
+sin recurrir a modelos m\'as complejos que involucren un mayor n\'umero
+de par\'ametros. Adicionalmente, dado que la curva de Nelson-Siegel
+proporciona tasas spot compuestas continuas, estas deben transformarse
+en cantidades discretas, a trav\'es de la funci\'on de descuento.
+
+
+\begin{center}
+$\displaystyle{s_{d}(m) = e^{\frac{s(m)}{100}} - 1}$
+\end{center}
+
+La curva de Svensson
+
+\hspace*{0.4 cm} En la curva de Nelson-Siegel se destaca que cada coeficiente del modelo
+contribuye en el comportamiento de las tasas forward en el corto,
+mediano y largo plazo; no obstante, Svensson (1994) propone una nueva
+versi\'on de la curva de Nelson-Siegel donde un cuarto t\'ermino es incluido
+para producir un efecto adicional y semejante al proporcionado por ??2:
+$\beta_{3}(\frac{m}{\tau_{2}})e^{\frac{-m}{\tau_{2}}}$.
+
+\hspace*{0.4 cm} En este caso, la funci\'on para describir la din\'amica de las tasas forward es,
+
+\begin{center}
+$\displaystyle{f(m) = \beta_{0} + \beta_{1} e^{\frac{-m}{\tau_{1}}} +\beta_{2} \left(\frac{-m}{\tau_{1}}\right)e^{\frac{-m}{\tau_{1}}} + \beta_{3}\left(\frac{-m}{\tau_{2}}\right)e^{\frac{-m}{\tau_{2}}} }$
+\end{center}
+
+\hspace*{0.4 cm} La curva spot de Svensson puede ser derivada a partir de la curva
+forward en forma semejante a la descrita para el modelo de Nelson-
+Siegel, obteniendo la siguiente expresi\'on:
+
+
+\begin{center}
+$\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau_{1}}\right)}{m/\tau_{1}} + \beta_{2} \left(\frac{\left(1-e^\frac{-m}{\tau_{1}}\right)}{m/\tau_{1}} -  e^\frac{-m}{\tau_{1}}\right) + \beta_{3} \left(\frac{\left(1-e^\frac{-m}{\tau_{2}}\right)}{m/\tau_{2}} -  e^\frac{-m}{\tau_{2}}\right)}$
+\end{center}
+
+\hspace*{0.4 cm} La funci\'on de descuento tiene que ser utilizada con el fin de obtener las
+tasas estimadas para cada d\'ia de negociaci\'on o trading. Svensson (1994)
+propone estimar los par\'ametros de la curva cero cup\'on (curva spot),
+minimizando una medida de ajuste tal como la suma de cuadrados del
+error sobre los precios spot; sin embargo, enfatiza en que los precios
+pueden llegar a ser mal ajustados para los activos de madurez corta. En
+lugar de llevar el an\'alisis por este camino, propone estimar los
+rendimientos fundamentado, principalmente, en que las decisiones de la
+polÌtica econ\'omica se basan en el comportamiento de las tasas y que
+obteniendo las tasas a trav\'es de la curva, los precios pueden ser
+calculados una vez la funci\'on de descuento es evaluada. De esta manera,
+los par\'ametros son escogidos minimizando la suma de cuadrados de la
+diferencia entre los rendimientos observados y estimados por la curva.
+
+\hspace*{0.4 cm} La estimaci\'on es realizada por medio de m\'axima verosimilitud, m\'inimos
+cuadrados no lineales o el m\'etodo de momentos generalizados. En
+muchos casos, como afirma Svensson (1994), el modelo de Nelson-
+Siegel proporciona ajustes satisfactorios, aunque en algunos casos
+cuando la estructura de las tasas de inter\'es es m·s compleja, el ajuste del
+modelo de Nelson-Siegel es poco satisfactorio y el modelo de Svensson
+logra desempe\~narse mejor.
+
+
+Polinomios de componentes principales
+
+\hspace*{0.4 cm} Hunt y Terry (1998) propone un ajuste de la curva de rendimientos
+utilizando polinomios. Si frecuentemente la curva es especificada como,
+
+\begin{center}
+$\displaystyle{y(\tau) = \beta_{0} + \beta_{1}\tau +\beta_{2}\tau^2 +\beta_{3}\tau^3}$
+\end{center}
+
+
+\hspace*{0.4 cm} La cual puede captar todas la formas que puede asumir la curva, su
+principal problema recae en el ajuste para aquellas tasas con per\'iodos de
+vencimiento bastante largos. Aunque los autores conocen sobre las
+propiedades de parsimonia y de ajuste asociados con la curva de Nelson-
+Siegel, critican los problemas que acarrea la estimaci\'on de sus
+par\'ametros, proponiendo el ajuste de la curva de polinomios, bajo
+algunas modificaciones.
+
+\hspace*{0.4 cm} Una transformaci\'on sobre el t\'ermino de plazos ($\tau$) que remueve la
+inestabilidad asociada con las tasas a largo plazo del polinomio (5) es
+sugerida. El modelo recomendado, siguiendo la notaci\'on de Hunt y
+Terry (1998) es:
+
+\begin{center}
+$\displaystyle{y(\tau) = \beta_{0} + \sum_{i=1}^{p} \beta_{i} \frac{1}{(1+\tau)^i}} $
+\end{center} 
+
+\noindent donde
+
+\begin{center}
+$\displaystyle{y(0) = \sum_{i=0}^{p}\beta_{i} \hspace*{0.2 cm} y \hspace*{0.2 cm} y(\infty) = \beta_{0}   }$
+\end{center} 
+
+
+\hspace*{0.4 cm}Investigaciones relacionadas con curvas de rendimientos, han llegado a
+la conclusi\'on que modelos con tres o cuatro par\'ametros son suficientes
+para obtener un buen ajuste de los datos (Hunt 1995). Por tal motivo,
+Hunt y Terry (1998) proponen restringir p a tres o cuatro. Aunque este
+n\'umero de par·metros no necesariamente determina si realmente la
+bondad de ajuste pueda llegar a ser satisfactoria, los autores proponen
+utilizar componentes principales sobre los primeros p t\'erminos
+polinomiales $1/(1 + \tau)$, con el fin de seleccionar $k<p$ variables, a ser
+incluidas en la ecuaci\'on (6). Utilizar las componentes principales
+proporcionar\'a un menor error de ajuste en comparaci\'on con (5),
+debido a su capacidad para captar variabilidad. Una descripci\'on
+detallada respecto al c\'alculo de las componentes principales en el
+esquema polinomial es dada por Hunt y Terry (1998).
+
+
+Polinomios trigonom\'etricos
+
+\hspace*{0.4 cm} Las funciones trigonom\'etricas pueden ser utilizadas para capturar de
+forma satisfactoria las distintas configuraciones que pueden asumir las
+curvas de rendimientos. En este caso, el modelo puede ser descrito como
+$y(\tau) = \beta_{0} + \beta_{1}cos(\gamma_{1}\tau) + \beta_{2}sen(\gamma_{2}\tau)$; donde ?? representa la duraci\'on o la
+madurez del papel, en tanto que $\beta_{0}$, $\beta_{1}$, $\beta_{2}$, $\gamma_{1}$ y $\gamma_{2}$ son los par\'ametros
+objeto de inter\'es. Cualquier metodolog\'ia de optimizaci\'on no lineal puede
+ser utilizada para estimar los par\'ametros del modelo (Nocedal y Wright
+1999). Aunque podr\'ia asumirse un par\'ametro de fase en el modelo, este
+no es considerado por motivos de parsimonia.
+
+\section{Metodolog\'ias no Param\'etricas}
+
+\hspace*{0.4 cm} La regresi\'on no param\'etrica se ha convertido en los \'ultimos a\~nos en un
+\'area de excesivo estudio, debido a sus ventajas relativas respecto a los
+modelos de regresi\'on basado en funciones. Entre las caracter\'isticas m\'as
+importantes de estos modelos tenemos, la flexibilidad en los supuestos y
+el ajuste dirigido espec\'ificamente a trav\'es de los datos.
+
+
+\hspace*{0.4 cm} Dentro de un marco estad\'istico supondremos que tenemos un conjunto
+de n observaciones $(x_{i}, y_{i})$, $i= 1, 2,., n$, independientes, donde se intenta
+establecer las relaciones existentes entre una respuesta y un conjunto de
+variables explicativas de forma semejante a los modelos de regresi\'on
+cl\'asica.
+
+
+\hspace*{0.4 cm} El modelo que relaciona este conjunto de variables es dado por:
+
+\begin{center}
+$\displaystyle{y_{i} = m(x_{i}) + \epsilon_{i}}$
+\end{center} 
+
+
+
+\noindent donde la funci\'on $m(.)$ no espec\'ifica una relaci\'on param\'etrica, sino
+permitir que los datos determinen la relaci\'on funcional apropiada. Bajo
+estas condiciones la idea es que la media m(.) sea suave, suavidad que
+puede controlarse acotando la segunda derivada, $|m''(x)|???M$, para todo
+x y M una constante.
+
+Regresi\'on Kernel
+
+\hspace*{0.4 cm} El m\'etodo m\'as simple de suavizamiento es el suavizador Kernel. Un
+punto x se fija en el soporte de la funci\'on $m(.)$ y una ventana de
+suavizamiento es definida alrededor de x. Frecuentemente, la ventana de
+suavizamiento es simplemente un intervalo de la forma $(x ??? h, x + h)$,
+donde h es un par\'ametro conocido como bandwidth.
+
+\hspace*{0.4 cm} La estimaci\'on Kernel es un promedio ponderado de las observaciones
+dentro de la ventana de suavizamiento,
+
+\begin{center}
+$\displaystyle{\hat{m}(x) = \frac{\sum_{i=1}^{n} K(\frac{x_{i}-x}{h}) y_{i}}{\sum_{i=1}^{n} K(\frac{x_{i}-x}{h})}}$
+\end{center}
+
+\noindent donde $K(.)$ es la funci\'on Kernel de ponderaci\'on. La funci\'on Kernel es escogida
+de tal forma que las observaciones m\'as pr\'oximas a x reciben mayor peso. Una
+funci\'on frecuentemente utilizada es la bicuadr\'atica:
+
+$$ K(x) = \left\{ % para la llave grandota
+        \begin{tabular}{cc}
+        	$(1-x^2)^2$ & si $-1 \leq x  \leq 1$ \\
+        	$0$ & si $x \ge 1, \hspace*{0.2 cm} x<-1$ \\
+        \end{tabular}
+\right. $$
+
+
+
+\hspace*{0.4 cm} Sin embargo, otro tipo de funciones de peso son utilizadas, tal como la
+gaussiana, $K(x) = (2 \sqrt{\pi})^{-1} e^{\frac{-x^2}{2}}$ y la familia beta simÈtrica $K(x) = \frac{(1-x^2)_{+}^{\gamma}}{Beta(0.5,\gamma+1)}, \hspace*{0.2 cm}\gamma = 0,1,...$
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
