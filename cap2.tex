@@ -2,6 +2,52 @@
 
 \section{Teor\'ia de interpolaci\'on.}
 
+\hspace{0.4cm} En el subcampo matem\'atico del an\'alisis num\'erico, se denomina interpolaci\'on a la obtenci\'on de nuevos puntos partiendo del conocimiento de un conjunto discreto de puntos.
+
+
+\hspace{0.4cm} En ciertos casos el usuario conoce el valor de una funci\'on $f(x)$ en una serie de puntos $x_{1}, x_{2},..., x_{N}$, pero no se conoce una 
+expresi\'on anal\'itica de $f(x)$ que permita calcular el valor de la funci\'on para un punto arbitrario. Un ejemplo claro son las mediciones de laboratorio, donde se mide cada minuto un valor, pero se requiere el valor en otro punto que no ha sido medido. Otro ejemplo son mediciones de temperatura en la superficie
+de la Tierra, que se realizan en equipos o estaciones meteorol\'ogicas y se necesita calcular la temperatura en un punto cercano, pero distinto al punto de medida.
+
+\hspace{0.4cm} La idea de la interpolaci\'on es poder estimar $f(x)$ para un valor de x arbitrario, a partir de la construcci\'on de una curva o superficie que une los puntos donde se han realizado las mediciones y cuyo valor si se conoce. Se asume que el punto arbitrario x se encuentra dentro de los l\'imites de los puntos de medici\'on, en caso contrario se llamar\'ia extrapolaci\'on. 
+
+\hspace{0.4cm} Un proceso de interpolaci\'on se realiza en dos etapas:
+
+\begin{itemize}
+  \item Hacer un ajuste de los datos disponibles con una funci\'on interpolante.
+  \item Evaluar la funci\'on interpolante en el punto de inter\'es x.
+\end{itemize}
+
+
+\hspace{0.4cm} Este proceso en dos etapas no es necesariamente el m\'as 
+eficiente. La mayor\'ia de algoritmos comienzan con un punto cercano $f(x_{i})$, y poco a poco van aplicando correcciones m\'as pequenas a medida que la 
+informaci\'on de valores $f(xi)$ m\'as distantes son incorporadas. El procedimiento toma aproximadamente $O(N^{2})$ operaciones. Si la funci\'on tiene un comportamiento suave, la \'ultima correci\'on ser\'a la m\'as pequena y puede ser utilizada para estimar un l\'imite a rango de error.
+
+
+\hspace{0.4cm} Dentro de las intepolaciones m\'as usadas podemos destacar,
+
+\begin{itemize}
+  \item Interpolci\'on lineal
+  \item Interpolci\'on polin\'omica
+  \item Interpolci\'on de Hermite
+  \item Interpolci\'on de Splines
+\end{itemize}
+
+Interpolaci\'on Polin\'omica
+
+Interpolaci\'on de Lagrange
+
+\hspace{0.4cm} Empezamos con un conjunto de $n+1$ puntos en el plano (que tengan diferentes coordenadas x), $(x_{0}, y_{0}), (x_{1}, y_{1}), (x_{2}, y_{2}),...,(x_{n}, y_{n})$. As\'i, queremos encontrar una funci\'on polin\'omica que pase por esos $n+1$ puntos y que tengan el menor grado posible. Un polinomio que pase por varios puntos determinados se llama un polinomio de interpolaci\'on.
+
+\hspace{0.4cm} Una posible soluci\'on viene dada por el  polinomio de interpolaci\'on de Lagrange. Lagrange public\'o su f\'ormula en 1795 pero ya hab\'ia sido publicada en 1779 por Waring y redescubierta por Euler en 1783.
+
+
+
+
+
+
+\newpage
+
 
 \hspace{0.4cm}Asumamos que se tiene una tabla con n puntos, $(x_{1},y_{1})...,(x_{n},y_{n})$, donde los valores $x_{i}$, para $i=1,...,n$ est\'an ordenados de forma creciente y todos ellos son distintos. Supongamos que dichos puntos se representan en un plano cartesiano y se quiere determinar una curva suave que interpole dichos valores. As\'i, se desea determinar una curva que est\'e definida para todos los $x$ y tome los valores correspondientes de $y$, esto es, que interpole todos los datos de la tabla. Cabe destacar que los puntos considerados se les conoce como nodos.
 
