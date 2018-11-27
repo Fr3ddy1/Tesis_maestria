@@ -443,6 +443,94 @@ $\displaystyle{ \sum_{i=1}^{n} (y_{i}-m(x_{i})^2 + \lambda \int m''(x)^2dx  }$
 
 Supersuavizador de Friedmann
 
+\hspace*{0.4 cm} Las metodolog\'ias usuales de suavizamiento asumen que el par\'ametro suavizador es constante, factor que sumado a la forma de la curva subyacente puede hacer que surjan problemas, tal como el aumento en la varianza de la componente del error y/o a variaciones incontrolables de la segunda derivada de la funci\'on subyacente sobre el conjunto predictor. El suavizador propuesto por Friedman (1984) intenta corregir estos problemas, asumiendo que el bandwidth es variable sobre el conjunto de predictores.
+
+
+\hspace*{0.4 cm} Formalmente, se puede estimar un bandwidth para cada $x$, al igual que el correspondiente valor \'optimo de suavizamiento, minimizando la expresi\'on $e^{2}(m,h) = E(Y - m(X|h(X)))^2$ con respecto a las funciones $m(x)$ y $h(x)$. La expresi\'on anterior puede reescribirse como,
+
+\begin{center}
+$\displaystyle{ e^{2}(m,h) = E(E(Y - m(X|h(X)))^2|X)  }$
+\end{center}
+
+\noindent de tal forma que podemos minimizar el error con respecto a $m$ y $h$ para cada valor de $x$.
+
+\hspace*{0.4 cm} Como en el caso del bandwidth constante, se comienza aplicando un suavizador lineal local muchas veces sobre diferentes valores discretos de $h$, $0 < h < n$. Friedman (1984) propone utilizar tres conjuntos de valores, $h=0,05n$, $h=0,2n$ y $h=0,5n$, los cuales llama suavizadores ``tweeter", ``midrange" y ``woofer", respectivamente.
+
+\hspace*{0.4 cm} Para estimar (11) se utiliza el residual de la validaci\'on cruzada (12) cuya descripci\'on completa puede encontrarse en Friedman (1984),
+
+\begin{center}
+$\displaystyle{ r_{i}(h)= \frac{|y_{i}-m(x_{i}|h)|}{\left(1-\frac{1}{h}-\frac{(x_{i}-\bar{x}_{h})^2}{V_{h}}\right)}  }$
+\end{center}
+
+\noindent siendo $\bar{x}_{h}$ y $V_{h}$, la media y varianza de los $x$, bajo un $h$ preeestablecido. Igualmente, Friedman (1984) aconseja suavizar $|r_{i}(h)|$ contra $x_{i}$, utilizando los $\hat{e}(m, h|x_{i})$, en procura de seleccionar la mejor amplitud de intervalo o bandwith, $\hat{e}(m, h_{vc}(x_{i})|x_{i})=min_{h} \hat{e}(m, h|x_{i})$, donde $h_{vc} (x_{i})$ es el mejor bandwidth bajo la validaci\'on cruzada respecto a cada $x_{i}$ , mientras que $h$ toma los valores de los suavizadores antes definidos.
+
+\hspace*{0.4 cm} De esta manera, el mejor valor suavizado dado $x_{i}$, siguiendo la notaci\'on de Friedman (1984), $s^{*}(x_{i})$, estar\'a asociado con el bandwidth: ``tweeter", ``midrange" o ``woofer" que minimice el error bajo la validaci\'on cruzada. Es posible a trav\'es de esta metodolog\'ia obtener para cada vecindad en torno a $x_{i}$ diferentes bandwith y suavizados que proporcionan resultados \'optimos, por tal raz\'on, Friedman (1984) propone seleccionar la mejor amplitud de intervalo, suavizando los $h_{vc} (x_{i})$ contra $x_{i}$ utilizando el suavizador ``midrange", mientras que la curva estimada es obtenida interpolando entre los dos suavizadores con los bandwith estimados m\'as parecidos.
+
+
+\hspace*{0.4 cm} Una suposici\'on general establece que la curva subyacente que describe el comportamiento de los datos es suave, as\'i que ser\'ia posible modificar el bandwidth en procura de un mayor suavizamiento, sacrificando exactitud num\'erica. Con este fin, Friedman (1984) propone un m\'etodo de c\'alculo del bandwidth,
+
+\begin{center}
+$\displaystyle{h(x_{i}) = h_{vc}(x_{i}) + (h_{w} - h_{vc}(x_{i}))R_{i}^{10-\alpha}}$
+\end{center}
+
+\noindent con, 
+
+\begin{center}
+$\displaystyle{R_{i} = \left[\frac{\hat{e}(h_{vc}(x_{i})|x_{i})}{\hat{e}(h_{w}(x_{i})|x_{i})} \right] }$
+\end{center}
+
+
+\noindent donde $0 < \alpha < 10$, $h_{w}$ es la amplitud calculada utilizando 
+el suavizador ``woofer"\hspace*{0.01 cm} y $h_{vc}(.)$ la amplitud obtenida bajo la validaci\'on cruzada para cada observaci\'on. Sin importar el $\alpha$, cuando la contribuci\'on relativa de cada una de estas amplitudes no difiere significativamente, la amplitud de intervalo o bandwidth seleccionada es la determinada por el suavizador ``woofer"\hspace*{0.01 cm}; no obstante, si la eficiencia relativa est\'a asociada con la amplitud bajo la validaci\'on cruzada, entonces, la ecuaci\'on en proporcionar\'a esta amplitud. En otros casos, dependiendo del desempe\~no relativo y el par\'ametro $\alpha$ definido por el usuario, la ecuaci\'on proporcionar\'a una amplitud, resultado de la combinaci\'on lineal entre el suavizador ``woofer" \hspace*{0.01 cm} y el obtenido bajo validaci\'on cruzada.
+
+\hspace*{0.4 cm} Una vez el bandwidth de suavizaci\'on variable ha sido obtenido, los siguientes pasos son realizados sobre el conjunto de observaciones,
+
+\begin{itemize}
+  \item[1)] Suavice los datos con los bandwidth ``tweeter"\hspace*{0.01 cm}, ``midrange"\hspace*{0.01 cm} y ``woofer"\hspace*{0.01 cm}.
+  \item[2)] Suavice los residuales absolutos (12) obtenidos bajo cada bandwidth en el paso anterior, utilizando una amplitud de intervalo ``midrange"\hspace*{0.01 cm}.
+  \item[3)] Seleccione el mejor bandwidth para cada observaci\'on, minimizando el error sobre la salida del paso (2).
+  \item[4)] Suavice los mejores bandwidth estimados en el paso (3) utilizando amplitud de intervalo ``midrange"\hspace*{0.01 cm}.
+  \item[5)] Utilice los bandwidth suavizados para interpolar entre los valores suavizados obtenidos en el paso 1.
+\end{itemize}
+
+
+\hspace*{0.4 cm} Las principales deficiencias atribuidas a esta t\'ecnica est\'an asociadas con la p\'erdida de independencia entre los residuales $\epsilon_{i}$ relativo al orden de los predictores $x_{i}$, subestimando (sobre- estimando) cuando la correlaci\'on es positiva-alta (negativa-alta).
+
+
+Redes neuronales artificiales
+
+\hspace*{0.4 cm} Los recientes desarrollos investigativos han mostrado la capacidad de las redes neuronales para la detecci\'on de patrones, clasificaci\'on y predicci\'on a trav\'es del aprendizaje por medio de la experiencia. Su importancia actual, sin lugar a dudas, es consecuencia del desarrollo computacional, punto de partida para su divulgaci\'on, desenvolvimiento te\'orico y pr\'actico en diversos campos del conocimiento.
+
+\hspace*{0.4 cm} Una de las mayores \'areas de aplicaci\'on de las redes neuronales es la predicci\'on (Sharda 1994). Dentro de este contexto, las redes resultan ser una herramienta atractiva para los investigadores, comparada con las metodolog\'ias tradicionales basada en modelos de funciones.
+
+\hspace*{0.4 cm} Las redes neuronales artificiales intentan emular el comportamiento biol\'ogico del cerebro humano. Como sabemos, el cerebro humano es un conjunto complejo de interconexiones de elementos simples llamados nodos o neuronas. Cada nodo recibe una se\~nal de entrada proveniente de otros nodos o a trav\'es de est\'imulos externos; localmente el nodo procesa la informaci\'on recibida por medio de una funci\'on de transferencia o activaci\'on y produce una se\~nal de salida transformada, que ir\'a hacia otros nodos o como una respuesta, consecuencia de un est\'imulo. Aunque cada nodo individualmente no proporciona informaci\'on realmente valiosa, en conjunto, pueden realizar un sorprendente n\'umero de tareas de forma eficiente. Esta caracter\'istica hace de las redes neuronales un mecanismo poderoso computacionalmente para aprender a partir de ejemplos y despu\'es generalizar para casos nunca antes considerados.
+
+
+\hspace*{0.4 cm} Aunque diferentes arquitecturas de redes neuronales han sido propuestas (Haykin 1994), la m\'as utilizada es la red multilayer Perceptron (MLP). Una red MLP est\'a compuesta de varias capas y nodos o neuronas. Los nodos de la primera capa son los encargados de recibir la informaci\'on del exterior, mientras que la \'ultima capa es encargada de proporcionar la respuesta asociada a esta informaci\'on. Entre estas dos capas puede haber innumerables capas y nodos. Adicionalmente, los nodos de capas adyacentes est\'an completamente conectados.
+
+\hspace*{0.4 cm} Para un problema de pron\'ostico con redes neuronales, las entradas a la red son asociadas con variables independientes o explicativas. En este caso la relaci\'on funcional estimada establecida por la red neuronal ser\'a de la forma $y_{t}=f(x_{1}, x_{2},..., x_{p})$; donde $x_{1}, x_{2},..., x_{p}$ son p variables ex\'ogenas y y una variable end\'ogena. En este sentido la red es equivalente a un modelo de regresi\'on no lineal. Igualmente, en el contexto del pron\'ostico de series temporales, las entradas de la red son series rezagadas de la original y la salida representa su valor futuro. En este caso la red har\'ia un mapeo de la siguiente forma $y_{t}= f (y{t-1}, y{t-2}, ..., y{t-p})$, donde $y_{t}$ es la observaci\'on en el tiempo t. Bajo estas caracter\'isticas la red asemeja un modelo autorregresivo en el pron\'ostico de series temporales. Una discusi\'on respecto a la relaci\'on existente entre las redes neuronales y la metodolog\'ia de Box-Jenkins es dada por Suykens, Vandewalle y Moor (1996).
+
+\hspace*{0.4 cm} Antes de que la red sea utilizada para realizar alguna tarea espec\'ifica, debe ser entrenada. B\'asicamente, entrenar es el proceso de determinar los pesos (eje central de la red neuronal). El conocimiento aprendido por la red es almacenado en cada una de los arcos que representan las conexiones entre los nodos. Es a trav\'es de estas conexiones que las redes pueden realizar complejos mapeos no lineales desde los nodos de entrada hasta los nodos de salida. El entrenamiento de la MLP es supervisado, caso en el cual la respuesta deseada o valor objetivo para cada patr\'on de entrada o ejemplo est\'a siempre disponible.
+
+\hspace*{0.4 cm} Los datos de entrenamiento son ingresados a la red en forma de vectores de variables o como patrones de entrada. Cada elemento en el vector de entrada es asociado con un nodo de la capa de entrada; de esta forma, el n\'umero de entradas a la red es igual a la dimensi\'on del vector de entrada. Para el pron\'ostico de series temporales el n\'umero de variables de entrada es dif\'icil de establecer, no obstante, una ventana de rezagos fija es constituida a lo largo de la serie. El total de datos disponible es usualmente dividido en un conjunto de entrenamiento y otro de prueba. El primero es utilizado para estimar los pesos de la red, mientras que el segundo es empleado para evaluar la capacidad de generalizaci\'on de la red.
+
+
+\hspace*{0.4 cm} Para el proceso de entrenamiento, patrones de entrada son ingresados a la red. Los valores de activaci\'on de los nodos de entrada son multiplicados por su peso respectivo y acumulados en cada nodo sobre la primera capa. El total es evaluado en una funci\'on de activaci\'on y asumido como la salida del respectivo nodo. A esta salida algunos investigadores la identifican como la activaci\'on del nodo y es la entrada de otros nodos en capas siguientes de la red hasta que los valores de activaci\'on de la salida sean encontrados. El algoritmo de entrenamiento es utilizado para encontrar los pesos que minimicen una medida global de error tal como la suma de cuadrados del error (SSE).
+
+
+\hspace*{0.4 cm} En el pron\'ostico con series temporales, un patr\'on de entrenamiento consiste de un conjunto de valores fijos de variables en rezago de la serie. Suponga que tenemos N observaciones $y_{1}, y_{2}, ..., y_{N}$ para el proceso de entrenamiento y se requiere pronosticar un paso al frente, entonces con una red neuronal de n nodos de entrada, tenemos N−n patrones de entrenamiento. El primer patr\'on de entrenamiento estar\'a conformado por $y_{1}, y_{2}, ..., y_{n}$ como las entradas y $y_{n+1}$ como el valor objetivo. El segundo patr\'on de entrenamiento ser\'a y2, y3, ..., yn+1 y el valor de salida deseado $y_{n+2}$. Finalmente, el \'ultimo patr\'on de entrada ser\'a $y_{N-n}, y_{N-n+1}, ..., y_{N-1}$ y $y_{N}$ el valor objetivo. Frecuentemente, una funci\'on objetivo basada en la SSE es minimizada durante el proceso de entrenamiento,
+
+
+\begin{center}
+$\displaystyle{E = \frac{1}{2} \sum_{i=n+1}^{N}(y{i}-a{i})^2 }$
+\end{center}
+
+\noindent  donde $a_{i}$ es la salida actual de la red.
+
+\hspace*{0.4 cm}Una descripci\'on m\'as detallada sobre las diferentes arquitecturas de red existentes, el n\'umero \'optimo de capas ocultas y neuronas, las funciones de activaci\'on m\'as utilizadas, los algoritmos de entrenamiento, la normalizaci\'on de los datos, como tambi\'en de otros temas relacionados con sus ventajas y deficiencias (Haykin 1994, Kaastra y Boyd 1996, Zhang, Patuwo y Hu 1998, Isasi y Galván 2004), entre otros.
+
+
+
 
 
 
