@@ -27,13 +27,57 @@ informaci\'on de valores $f(xi)$ m\'as distantes son incorporadas. El procedimie
 \hspace{0.4cm} Dentro de las intepolaciones m\'as usadas podemos destacar,
 
 \begin{itemize}
-  \item Interpolci\'on lineal
-  \item Interpolci\'on polin\'omica
-  \item Interpolci\'on de Hermite
-  \item Interpolci\'on de Splines
+  \item Interpolaci\'on lineal
+  \item Interpolaci\'on de Hermite
+  \item Interpolaci\'on polin\'omica 
+  \item Interpolaci\'on de Splines 
+
 \end{itemize}
 
-Interpolaci\'on Polin\'omica
+Interpolaci\'on lineal
+
+\hspace{0.4cm} La interpolaci\'on lineal es un procedimiento muy utilizado para estimar los valores que toma una funci\'on en un intervalo del cual conocemos sus valores en los extremos $(x_{1}, f(x_{1}))$ y $(x_{2},f(x_{2}))$. Para estimar este valor utilizamos la aproximaci\'on a la funci\'on f(x) por medio de una recta $r(x)$ (de ah\'i el nombre de interpolaci\'on lineal, ya que tambi\'en existe la interpolaci\'on cuadr\'atica). 
+
+
+\hspace{0.4cm} La expresi\'on de la interpolaci\'on lineal se obtiene del polinomio interpolador de Newton de grado uno. Aunque s\'olo existe un \'unico polinomio que interpola una serie de puntos, existen diferentes formas de calcularlo. Este m\'etodo es \'util para situaciones que requieran un n\'umero bajo de puntos para interpolar, ya que a medida que crece el n\'umero de puntos, tambi\'en lo hace el grado del polinomio.
+
+\hspace{0.4cm} Existen ciertas ventajas en el uso de este polinomio respecto al polinomio interpolador de Lagrange. Por ejemplo, si fuese necesario a\~nadir alg\'un nuevo punto o nodo a la funci\'on, tan s\'olo habr\'ia que calcular este \'ultimo punto, dada la relaci\'on de recurrencia existente y demostrada anteriormente.
+
+\hspace{0.4cm}El primer paso para hallar la f\'ormula de la interpolaci\'on es definir la pendiente de orden n de manera recursiva, as\'i,
+
+\begin{itemize}
+  \item $f_{0}(x_{i})$ es el t\'ermino i-\'esimo de la secuencia. 
+  \item $\displaystyle{f_{1}(x_{0},x_{1}) = \frac{f_{0}(x_{1})-f_{0}(x_{0})}{x_{1}-x_{0}}}$
+  \item $\displaystyle{f_{2}(x_{0},x_{1},x_{2}) = \frac{f_{1}(x_{1},x_{2})-f_{1}(x_{0},x_{1})}{x_{2}-x_{0}}}$
+\end{itemize}
+
+\hspace{0.4cm} En general,
+
+\begin{center}
+$\displaystyle{f_{i}(x_{0},x_{1},...,x_{i-1},x_{i}) = \frac{f_{i-1}(x_{1},...,x_{i-1},x_{i})-f_{i-1}(x_{0},x_{1},...,x_{i-1} )}{x_{i}-x_{0}}}$
+\end{center}
+
+
+\noindent donde  $\displaystyle{x_{i}-x_{j}}$ representa la distancia entre dos elementos.
+
+\hspace{0.4cm} Puede apreciarse c\'omo en la definici\'on general se usa la pendiente del paso anterior, $f_{i-1}(x_{1},...,x_{i-1},x_{i})$, a la cual se le resta la pendiente previa de mismo orden, es decir, el sub\'indice de los t\'erminos se decrementa en 1, como si se desplazara, para obtener $f_{i-1}(x_{0},x_{1},...,x_{i-1})$.
+
+\hspace{0.4cm} N\'otese tambi\'en que aunque el t\'ermino inicial siempre es $x_{0}$ este puede ser en realidad cualquier otro, por ejemplo, se puede definir $f_{1}(x_{i-1},x_{i})$ de manera an\'aloga al caso mostrado arriba.
+
+\hspace{0.4cm} Una vez conocemos la pendiente, ya es posible definir el polinomio de grado n de manera tambi\'en recursiva, as\'i,
+
+\begin{itemize}
+  \item $p_{0}(x) = f_{0} (x_{0}) =x_{0}$.  Se define as\'i ya que este valor es el \'unico que se ajusta a la secuencia original para el primer t\'ermino. 
+  \item $\displaystyle{p_{1}(x) = p_{0}(x) +  f_{1} (x_{0},x_{1}) (x-x_{0})}$.
+  \item $\displaystyle{p_{2}(x) = p_{1}(x) +  f_{2} (x_{0},x_{1},x_{2}) (x-x_{0})(x-x_{1})}$.
+\end{itemize}
+
+\hspace{0.4cm} En general,
+
+\begin{center}
+$\displaystyle{p_{i}(x) = p_{i-1}(x) +  f_{i} (x_{0},x_{1},...,x_{i-1},x_{i}) \prod_{j=0}^{i-1}(x-x_{j})}$
+\end{center}
+
 
 Interpolaci\'on de Lagrange
 
@@ -41,13 +85,59 @@ Interpolaci\'on de Lagrange
 
 \hspace{0.4cm} Una posible soluci\'on viene dada por el  polinomio de interpolaci\'on de Lagrange. Lagrange public\'o su f\'ormula en 1795 pero ya hab\'ia sido publicada en 1779 por Waring y redescubierta por Euler en 1783.
 
+\hspace{0.4cm} Dado un conjunto de $k + 1$ puntos $(x_{0}.x_{1}),...,(x_{k}.x_{k+1})$, donde todos los $x_{j}$ se asumen distintos, el polinomio interpolador en la forma de Lagrange es la combinaci\'on lineal,
+
+\begin{center}
+$\displaystyle{L(x) = \sum_{j=0}^{k} y_{j} l_{j}(x)}$
+\end{center}
 
 
+\noindent donde $ l_{j}(x)$ son las bases polin\'omicas de Lagrange ,
+
+\begin{center}
+$\displaystyle{l_{j}(x) = \prod_{i=0,i \neq j}^{k} \frac{x-x_{i}}{x_{j}-x_{i}}  }$
+\end{center}
+
+\hspace{0.4cm} La funci\'on que estamos buscando es una funci\'on polin\'omica $L(x)$ de grado $k$ con el problema de interpolaci\'on puede tener tan solo una soluci\'on, pues la diferencia entre dos tales soluciones, ser\'ia otro polinomio de grado $k$ a lo sumo, con $k+1$ ceros. Por lo tanto, $L(x)$ es el \'unico polinomio interpolador.
 
 
+\hspace{0.4cm} Si se aumenta el n\'umero de puntos a interpolar (o nodos) con la intenci\'on de mejorar la aproximaci\'on a una funci\'on, tambi\'en lo hace el grado del polinomio interpolador as\'i obtenido, por norma general. De este modo, aumenta la dificultad en el c\'alculo, haci\'endolo poco operativo manualmente a partir del grado 4, dado que no existen m\'etodos directos de resoluci\'on de ecuaciones de grado 4, salvo que se puedan tratar como ecuaciones bicuadradas, situaci\'on extremadamente rara.
 
-\newpage
+\hspace{0.4cm} La tecnolog\'ia actual permite manejar polinomios de grados superiores sin grandes problemas, a costa de un elevado consumo de tiempo de computaci\'on. Pero, a medida que crece el grado, mayores son las oscilaciones entre puntos consecutivos o nodos. Se podr\'ia decir que a partir del grado 6 las oscilaciones son tal que el m\'etodo deja de ser v\'alido, aunque no para todos los casos.
 
+\hspace{0.4cm} Sin embargo, pocos estudios requieren la interpolaci\'on de tan s\'olo 6 puntos. Se suelen contar por decenas e incluso centenas. En estos casos, el grado de este polimonio ser\'ia tan alto que resultar\'ia inoperable. Por lo tanto, en estos casos, se recurre a otra t\'ecnica de interpolaci\'on, como por ejemplo a la Interpolaci\'on polin\'omica de Hermite o a los splines c\'ubicos. Otra gran desventaja, respecto a otros m\'etodos de interpolaci\'on, es la necesidad de recalcular todo el polinomio si se var\'ia el n\'umero de nodos.
+
+\hspace{0.4cm} Aunque el polinomio interpolador de Lagrange se emplea mayormente para interpolar funciones e implementar esto f\'acilmente en una computadora, tambi\'en tiene otras aplicaciones en el campo del \'algebra exacta, lo que ha hecho m\'as c\'elebre a este polinomio, por ejemplo en el campo de los proyectores ortogonales.
+
+
+Interpolaci\'on de Hermite
+
+\hspace{0.4cm} El objetivo de esta interpolaci\'on Hermite es minimizar el error producido en la interpolaci\'on de Lagrange de la funci\'on $f(x)$ sobre el intervalo $[a, b]$ sin aumentar el grado del polinomio interpolador.
+
+
+\hspace{0.4cm} Dados un entero no negativo N y  N + 1 puntos $(x_{0},..., x_{N})$ de la recta distintos dos a dos y los valores $f^{(j)} (x_{i})$, donde $0<i<N$ y $0<j<k_{i-1}$ de una funci\'on f y de sus derivadas, encontrar un polinomio de grado $m = (k_{0} +k_{1} +...+k_{n-1},)$ tal que,
+
+\begin{center}
+$\displaystyle{P^{(j)} (x_{i}) = f^{(j)} (x_{i}), para \hspace{0.2cm} 0<i<N \hspace{0.2cm}y \hspace{0.2cm} 0<j<k_{i-1}}$
+\end{center}
+
+\hspace{0.4cm} El problema de interpolaci\'on de Hermite tiene soluci\'on \'unica, que se llama polinomio interpolador de Hermite. En lugar de interpolar sobre un soporte de puntos (de Tchebycheff) donde en general se desconoce el valor de la funci\'on, de hace de otra manera, imponiendo unas condiciones al polinomio,
+
+\begin{itemize}
+  \item  Igualar el valor de la funci\'on en en los puntos del soporte, $P (x_{i}) = f^{(j)}$
+  \item Igualar el valor de algunas derivadas de la funci\'on tambi\'en en los puntos del soporte, $P^{(j)} (x_{i}) = f^{(j)} (x_{i})$
+\end{itemize}
+
+\hspace{0.4cm} Por lo que podemos dejar el polinomio de Hermite de grado (n-1) expresado de la siguiente manera,
+
+\begin{center}
+$\displaystyle{L(x) = \sum_{j=0}^{k} y_{j} l_{j} (x) }$
+\end{center}
+
+\noindent donde $l_{j}(x)$ son los polinomios de la base de Lagrange.
+
+
+Interpolaci\'on Polin\'omica
 
 \hspace{0.4cm}Asumamos que se tiene una tabla con n puntos, $(x_{1},y_{1})...,(x_{n},y_{n})$, donde los valores $x_{i}$, para $i=1,...,n$ est\'an ordenados de forma creciente y todos ellos son distintos. Supongamos que dichos puntos se representan en un plano cartesiano y se quiere determinar una curva suave que interpole dichos valores. As\'i, se desea determinar una curva que est\'e definida para todos los $x$ y tome los valores correspondientes de $y$, esto es, que interpole todos los datos de la tabla. Cabe destacar que los puntos considerados se les conoce como nodos.
 
