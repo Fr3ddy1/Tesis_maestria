@@ -185,11 +185,26 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 
 \noindent este spline es lineal. Usualmente $S(x)$ se define como $S_{1}(x)$ para $x<x_{1}$ y como $S_{n-1}(x)$ para $x>x_{n}$, donde $x_{1}$ y $x_{n}$ son nodos frontera.
 
+
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/spline_lineal.png}}
+\caption{Spline Lineal.}
+\end{figure}
+
+
+
+
 \vspace{0.5cm}
 
 \hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas. Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas. Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
 
 \vspace{0.5cm}
+
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/spline_cuadratico.png}}
+\caption{Spline Cuadr\'atico.}
+\end{figure}
+
 
 \hspace{0.4cm}Formalmente un spline c\'ubico con nodos $x_{1},...x_{n}$ se define a partir de un conjunto de polinomios de la forma,\\
 
@@ -213,10 +228,20 @@ $\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
 
 \end{center}
 
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/spline_cubico.png}}
+\caption{Spline C\'ubico.}
+\end{figure}
+
 
 \hspace{0.4cm}As\'i para n nodos, existen $4(n-1)$ variables y $4(n-1)-2$ restricciones. Las mismas se deben a la necesidad de que el spline c\'ubico sea igual en los valores dados en cada nodo. Las primeras tres restricciones aseguran que la funci\'on resultante en su primera y segunda derivada sean continuas en los nodos. La restricci\'on final significa que el spline c\'ubico es lineal en el punto inicial y final de la muestra. Sin embargo, es importante resaltar que el spline c\'ubico tiene tercera derivada discontinua en los nodos.
 
 \hspace{0.4cm}Debido a que hacen falta dos restricciones de borde, estas se deben a\~nadir. As\'i  $S^{(2)}(x_{1}) = S^{(2)}(x_{n}) = 0$ son las restricciones faltantes, estan hacen referencia a que el spline sea un spline c\'ubico natural. Como se mencion\'o al inicio si se considera una interpolaci\'on polinomial global de un conjunto de datos con mucho ruido pueden surgir aproximaciones no deseables e inestables. En constrate, un spline c\'ubico de interpolaci\'on encaja perfectamente con la suavidad de la funci\'on subyacente.
+
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/Comparativo_splines.png}}
+\caption{Comparativo Splines.}
+\end{figure}
 
 \vspace{0.5cm}
 
