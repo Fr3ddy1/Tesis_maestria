@@ -183,12 +183,13 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 
 \vspace{0.5cm}
 
-\noindent este spline es lineal. Usualmente $S(x)$ se define como $S_{1}(x)$ para $x<x_{1}$ y como $S_{n-1}(x)$ para $x>x_{n}$, donde $x_{1}$ y $x_{n}$ son nodos frontera.
+\noindent este spline es lineal. Usualmente $S(x)$ se define como $S_{1}(x)$ para $x<x_{1}$ y como $S_{n-1}(x)$ para $x>x_{n}$, donde $x_{1}$ y $x_{n}$ son nodos frontera (ver figura \ref{spline_l}).
 
 
 \begin{figure}[h]
   \scalebox{0.50}{\includegraphics{images/spline_lineal.png}}
 \caption{Spline Lineal.}
+\label{spline_l}
 \end{figure}
 
 
@@ -196,13 +197,27 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas. Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas. Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
+\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas (ver figura \ref{spline_c}). Los polinomios $P(x)$ a trav\'es de los que construimos el Spline tienen grado 2. Esto quiere decir, que va a tener la forma $P(x) = ax^2 + bx + c$.
+
+\hspace{0.4cm} Como en la interpolaci\'on segmentaria lineal, vamos a tener $N-1$ ecuaciones (donde N son los puntos sobre los que se define la funci\'on). La interpolaci\'on cuadr\'atica nos va a asegurar que la funci\'on que nosotros generemos a trozos con los distintos $P(x)$ va a ser continua, ya que para sacar las condiciones que ajusten el polinomio, vamos a determinar como condiciones,
+
+\begin{itemize}
+  \item Que las partes de la funci\'on a trozos P(x) pasen por ese punto. Es decir, que las dos Pn(x) que rodean al f(x) que queremos aproximar, sean igual a f(x) en cada uno de estos puntos.
+  \item Que la derivada en un punto siempre coincida para ambos "lados" de la funci\'on definida a trozos que pasa por tal punto com\'un.
+  \item Esto sin embargo no es suficiente, y necesitamos una condici\'on m\'as, la cual se obtiene a partir de una condici\'on de borde.
+\end{itemize}
+
+
+
+
+\hspace{0.4cm} Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas (ver figura \ref{spline_3}). Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
 
 \vspace{0.5cm}
 
 \begin{figure}[h]
   \scalebox{0.50}{\includegraphics{images/spline_cuadratico.png}}
 \caption{Spline Cuadr\'atico.}
+\label{spline_c}
 \end{figure}
 
 
@@ -231,6 +246,7 @@ $\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
 \begin{figure}[h]
   \scalebox{0.50}{\includegraphics{images/spline_cubico.png}}
 \caption{Spline C\'ubico.}
+\label{spline_3}
 \end{figure}
 
 
@@ -252,6 +268,13 @@ $\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
 \hspace{0.4cm} Mientras que las funciones spline son una herramienta interesante para interpolar funciones suaves, encontrarlas num\'ericamente no es tarea f\'acil. Una manera eficiente y muy estable para generar los splines necesarios para aproximar la funci\'on subyacente $f(x)$, es usando las bases de los B-splines c\'ubicos.
 
 \vspace{0.5cm}
+
+Bases de splines
+
+\hspace{0.4cm} En el subcampo matem\'atico de an\'alisis num\'erico, una B-spline o Basis spline (o traducido una l\'inea polin\'omica suave b\'asica), es una funci\'on spline que tiene el m\'inimo soporte con respecto a un determinado grado, suavidad y partici\'on del dominio. Un teorema fundamental establece que cada funci\'on spline de un determinado grado, suavidad y partici\'on del dominio, se puede representar como una combinaci\'on lineal de B-splines del mismo grado y suavidad, y sobre la misma partici\'on. El t\'ermino B-spline fue propuesto por Isaac Jacob Schoenberg y es la abreviatura de spline b\'asica. Las B-splines pueden ser evaluadas de una manera num\'ericamente estable por el algoritmo de Boor. De un modo simplificado, se han creado variantes potencialmente m\'as r\'apidas que el algoritmo de Boor, pero adolecen comparativamente de una menor estabilidad.
+
+\hspace{0.4cm} En el subcampo de la inform\'atica de dise\~no asistido por computadora y de gr\'aficos por computadora, el t\'ermino B-spline se refiere con frecuencia a una curva parametrizada por otras funciones spline, que se expresan como combinaciones lineales de B-splines (en el sentido matem\'atico anterior). Una B-spline es simplemente una generalizaci\'on de una curva de B\'ezier, que puede evitar el fen\'omeno Runge sin necesidad de aumentar el grado de la B-spline.
+
 
 \hspace{0.4cm} Supongamos que tenemos un conjunto infinito de nodos $...<x_{-2}<x_{-1}<x_{0}<x_{1}<x_{2}<...$, entonces el j-\'esimo B-spline de grado cero es igual a $B^{0}_{j}(x)=1$, si $x_{j} \leq x \leq x_{j+1}$ y $B^{0}_{j}(x)=0$ en otro caso. Con la funci\'on $B^{0}_{j}(x)$ como punto de partida se puede generar B-splines de grados mayores mediante la siguiente f\'ormula recursiva,\\
 
@@ -282,6 +305,25 @@ $\displaystyle{S^{0}(x) = \sum_{j=-\infty}^{\infty} y_{j} B^{0}_{j}(x),\hspace{0
 \end{center}
 
 \vspace{0.5cm}
+
+
+\hspace{0.4cm} Cuando los nodos son equidistantes, la B-spline se dice que es uniforme, de otro modo ser\'a no uniforme. Si dos nodos tj son id\'nticos, cualquiera de las posibles formas indeterminadas 0/0 se consideran 0.
+
+
+B-spline uniforme
+
+B-spline cardinal
+
+B-spline constante
+
+B-spline lineal
+
+B-spline cuadr\'atica uniforme
+
+B-spline c\'ubica
+
+B-spline c\'ubica uniforme
+
 
 \hspace{0.4cm}Para splines de grados m\'as elevados, algunas arbitrariedades surgen al momento de calcular estos coeficientes. Por lo tanto, debido a que en las aplicaciones estadisticas existe un mayor inter\'es por encontrar una aproximaci\'on que una interpolaci\'on, la t\'ecnica de minimos cuadros puede ser empleada para calcular estos valores.
 
