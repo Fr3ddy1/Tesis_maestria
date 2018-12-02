@@ -273,7 +273,7 @@ Bases de splines
 
 \hspace{0.4cm} En el subcampo matem\'atico de an\'alisis num\'erico, una B-spline o Basis spline (o traducido una l\'inea polin\'omica suave b\'asica), es una funci\'on spline que tiene el m\'inimo soporte con respecto a un determinado grado, suavidad y partici\'on del dominio. Un teorema fundamental establece que cada funci\'on spline de un determinado grado, suavidad y partici\'on del dominio, se puede representar como una combinaci\'on lineal de B-splines del mismo grado y suavidad, y sobre la misma partici\'on. El t\'ermino B-spline fue propuesto por Isaac Jacob Schoenberg y es la abreviatura de spline b\'asica. Las B-splines pueden ser evaluadas de una manera num\'ericamente estable por el algoritmo de Boor. De un modo simplificado, se han creado variantes potencialmente m\'as r\'apidas que el algoritmo de Boor, pero adolecen comparativamente de una menor estabilidad.
 
-\hspace{0.4cm} En el subcampo de la inform\'atica de dise\~no asistido por computadora y de gr\'aficos por computadora, el t\'ermino B-spline se refiere con frecuencia a una curva parametrizada por otras funciones spline, que se expresan como combinaciones lineales de B-splines (en el sentido matem\'atico anterior). Una B-spline es simplemente una generalizaci\'on de una curva de B\'ezier, que puede evitar el fen\'omeno Runge sin necesidad de aumentar el grado de la B-spline.
+\hspace{0.4cm} En el subcampo de la inform\'atica de dise\~no asistido por computadora y de gr\'aficos por computadora, el t\'ermino B-spline se refiere con frecuencia a una curva parametrizada por otras funciones spline, que se expresan como combinaciones lineales de B-splines (en el sentido matem\'atico anterior). Una B-spline es simplemente una generalizaci\'on de una curva de B\'ezier, que puede evitar el fen\'omeno Runge sin necesidad de aumentar el grado de la B-spline. Este fen\'omeno, se presenta al realizar interpolaci\'on lineal usando nodos equidistantes, b\'asicamente es un problema que se presenta con el error de aproximaci\'n en los extremos del intervalo que se este considerando, as\'i a medida que crece el n\'umero de nodos el error de aproximaci\'on se incrementa. 
 
 
 \hspace{0.4cm} Supongamos que tenemos un conjunto infinito de nodos $...<x_{-2}<x_{-1}<x_{0}<x_{1}<x_{2}<...$, entonces el j-\'esimo B-spline de grado cero es igual a $B^{0}_{j}(x)=1$, si $x_{j} \leq x \leq x_{j+1}$ y $B^{0}_{j}(x)=0$ en otro caso. Con la funci\'on $B^{0}_{j}(x)$ como punto de partida se puede generar B-splines de grados mayores mediante la siguiente f\'ormula recursiva,\\
@@ -294,7 +294,7 @@ $\displaystyle{S^{k}(x) = \sum_{j=-\infty}^{\infty} \theta^{k}_{j} B^{k}_{j-k}(x
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} Una buena interrogante ser\'ia el como se determina los coeficientes $\theta^{k}_{j}$ en la expresi\'on anterior. Note que los B-splines de grado positivo no son ortogonales y por ende no poseen una expresi\'on simple para sus coeficientes.
+\hspace{0.4cm} Los coeficientes $\theta^{k}_{j}$ se llaman puntos de control o puntos de Boor. Hay $m-(n+1)$ puntos de control que forman una envoltura convexa.. Una buena interrogante ser\'ia el como se determina el valor de estos coeficientes en la expresi\'on anterior. Note que los B-splines de grado positivo no son ortogonales y por ende no poseen una expresi\'on simple para sus coeficientes.
 
 
 Sin embargo, los c\'alculos empleados para los B-splines interpoladores de grado cero y uno, son bastante sencillos,\\
@@ -307,25 +307,148 @@ $\displaystyle{S^{0}(x) = \sum_{j=-\infty}^{\infty} y_{j} B^{0}_{j}(x),\hspace{0
 \vspace{0.5cm}
 
 
-\hspace{0.4cm} Cuando los nodos son equidistantes, la B-spline se dice que es uniforme, de otro modo ser\'a no uniforme. Si dos nodos tj son id\'nticos, cualquiera de las posibles formas indeterminadas 0/0 se consideran 0.
+\hspace{0.4cm} Cuando los nodos son equidistantes, la B-spline se dice que es uniforme, de otro modo ser\'a no uniforme. Si dos nodos tj son id\'enticos, cualquiera de las posibles formas indeterminadas 0/0 se consideran 0.
 
 
 B-spline uniforme
 
+\hspace{0.4cm} Cuando la B-spline es uniforme, las B-splines b\'asicas para un determinado grado n son s\'olo copias cambiadas de una a otra. Una alternativa no recursiva de la definici\'on de la B-splines $m-n+1$ b\'asica es,
+
+
+\begin{center}
+$\displaystyle{B_{j}^{n}(t)= B_{n}(t-t_{j}), \hspace{0.2cm}para \hspace{0.2cm}j=0,...,m-n-1 }$
+\end{center}
+
+\noindent con,
+
+\begin{center}
+$\displaystyle{B_{n}(t):= \frac{n+1}{n} \sum_{i=0}^{n+1}w_{i}^{n}(t - t_{i})_{+}^{n}   }$
+\end{center}
+
+
+\noindent donde,
+
+\begin{center}
+$\displaystyle{w_{i}^{n} := \prod_{j=0, j\neq i}^{n+1} \frac{1}{t_{j}- t_{i}}}$
+\end{center}
+
+\noindent n\'otese que $(t - t_{i})_{+}^{n}$ es la funci\'on potencia truncada definida como,
+
+$$ (t - t_{i})_{+}^{n} := \left\{ % para la llave grandota
+        \begin{tabular}{cc}
+        	$0$ & si $t < t_{i}$ \\
+        	$(t - t_{i})^{n}$ & si $t \ge t_{i}$ \\
+        \end{tabular}
+\right. $$
+
+
 B-spline cardinal
+
+\hspace{0.4cm} Si se define $B_{0}$ como la funci\'on caracter\'istica de ${\displaystyle [-{\tfrac {1}{2}},{\tfrac {1}{2}}]}$, y $B_{k}$ recursivamente como el producto convoluci\'on,
+
+
+\begin{center}
+$\displaystyle{B_{k} := B_{k-1}*B_{0}, \hspace{0.2cm} k=1,2,... }$
+\end{center}
+
+\noindent entonces $B_{k}$ se llaman B-splines cardinales (centradas). Esta definici\'on se remonta a Schoenberg. $B_{k}$ tiene soporte compacto ${\displaystyle [-{\tfrac {k+1}{2}},{\tfrac {k+1}{2}}]}$ y es una funci\'on impar. Como ${\displaystyle k\rightarrow \infty }$ las B-splines cardinales normalizadas tienden a la funci\'on de Gauss.
+
+\hspace{0.4cm} Cuando el n\'umero de puntos de control de Boor es el mismo que el grado, la B-Spline degenera en una curva de B\'ezier. La forma de las funciones base es determinada por la posici\'on de los nodos. Escalar o trasladar el vector de nodo no altera las funciones de base.
+
+\hspace{0.4cm} El spline est\'a contenido en el casco convexo de sus puntos de control. Una B-spline b\'asica de grado n $B_{i}^{n}(t)$ es distinta de cero s\'olo en el intervalo $[t_{i}, t_{i+n+1}]$ esto es,
+
+$$ B_{i}^{n}(t) = \left\{ % para la llave grandota
+        \begin{tabular}{cc}
+        	$ > 0$ & si $t_{i}  \leq  t < t_{i+n+1}$ \\
+        	$0$ & si $resto$ \\
+        \end{tabular}
+\right. $$
+
+\hspace{0.4cm} En otras palabras si manipulamos un punto de control cambiamos s\'olo el comportamiento local de la curva y no el comportamiento global como con las curvas de B\'ezier. La funci\'on base se pueda obtener del polinomio de Bernstein. Algunos ejemplos de las bases B-splines se muestran acontinuaci\'on,
 
 B-spline constante
 
+\hspace{0.4cm} La B-spline constante es la spline m\'as simple. Se define en un solo tramo de nodo y ni siquiera es continua en los nodos. Es s\'olo la funci\'on indicador de los diferentes tramos de nodo.
+
+$$ B_{j}^{0}(t) = 1_{[t_{j},t_{j+1})} = \left\{ % para la llave grandota
+        \begin{tabular}{cc}
+        	$ 1$ & si $t_{j}  \leq  t < t_{j+1}$ \\
+        	$0$ & si $resto$ \\
+        \end{tabular}
+\right. $$
+
+
+
 B-spline lineal
+
+\hspace{0.4cm} La B-spline lineal se define en dos tramos de nodo consecutivos y es continua sobre los nodos, pero no diferenciable.
+
+$$ B_{j}^{1}(t) = \left\{ % para la llave grandota
+        \begin{tabular}{cc}
+        	$\frac{t-t_{j}}{t_{j+1}-t_{j}} $ & si $t_{j}  \leq  t < t_{j+1}$ \\
+        	$\frac{t_{j+2}-t}{t_{j+2}-t_{j+1}} $ & si $t_{j+1}  \leq  t < t_{j+2}$ \\
+        	$0$ & si $resto$ \\
+        \end{tabular}
+\right. $$
+
 
 B-spline cuadr\'atica uniforme
 
+\hspace{0.4cm} Las B-splines cuadr\'aticas con nodo-vector uniforme es una forma com\'un de B-spline. La funci\'on base puede ser calculada f\'acilmente , y es igual para cada segmento, en este caso.
+
+$$ B_{j}^{2}(t) = \left\{ % para la llave grandota
+        \begin{tabular}{cc}
+        	$\frac{1}{2} (1-t)^2$ \\
+        	$-t^2+t+\frac{1}{2}$ \\
+        	$\frac{1}{2} t^2$ \\
+        \end{tabular}
+\right. $$
+
+\hspace{0.4cm} Escrito en forma de matriz, esto es,
+
+
+\begin{center}
+$\displaystyle{S_{i}(t) = \begin{bmatrix} t^2 & t & 1  \end{bmatrix} \frac{1}{2} \begin{bmatrix} 1 & -2 & 1\\ -2 & 2 & 0  \\ 1 & 1 & 0 \end{bmatrix} \begin{bmatrix}  \theta_{i-1} \\ \theta_{i} \\ \theta_{i+1}  \end{bmatrix} , \hspace{0.2cm} para \hspace{0.2cm} t \in [0,1],\hspace{0.2cm}  i=1,2,...,m-1 }$
+\end{center}
+
+
 B-spline c\'ubica
+
+\hspace{0.4cm} Una formulaci\'on B-spline para un solo segmento puede ser escrita como,
+
+\begin{center}
+$\displaystyle{S_{i}(t) = \sum_{k=0}^{3} \theta_{i-3+k} B_{i-3+k}^{3}(t) \hspace{0.2cm} con \hspace{0.2cm} t \in [0,1]  }$
+\end{center}
+
+
+\noindent donde $S_{i}$ es el i-\'esimo segmento B-spline, $\theta$ es el conjunto de puntos de control, el segmento i y k es el \'indice del punto de control local y $ B_{i-3+k}^{3}(t)$ representa la base de B-spline de grado 3. Un conjunto de puntos de control $\theta$ ser\'ia  ${\displaystyle \theta_{i}^{w}=(w_{i}x_{i},w_{i}y_{i},w_{i}z_{i},w_{i})}$ donde el ${\displaystyle w_{i}}$ es el peso, tirando de la curva hacia el punto de control ${\displaystyle \theta_{i}}$ mientras que aumenta o se desplazan fuera de la curva, a la vez que disminuye.
+
+
+\hspace{0.4cm} Toda una serie de segmentos se definir\'ia como,
+
+\begin{center}
+$\displaystyle{S(t) = \sum_{i=0}^{m-1} \theta_{i} B_{i}^{3}(t)  }$
+\end{center}
+
+\noindent donde i es el n\'umero de puntos de control y t es un par\'ametro global dados los valores de los nodos. Esta formulaci\'on expresa una curva B-spline como una combinaci\'on lineal de funciones B-spline b\'asicas, de ah\'i el nombre.
+
+\hspace{0.4cm} Hay dos tipos de B-spline - uniforme y no uniforme. Una B-spline no uniforme es una curva donde los intervalos entre los puntos sucesivos de control no son, o no necesariamente son, iguales (el vector de nodos de espacios de nodo interiores no son iguales). Una forma com\'un es donde los intervalos se reducen sucesivamente a cero, interpolando los puntos de control.
+
 
 B-spline c\'ubica uniforme
 
+\hspace{0.4cm} La B-spline c\'ubica con vector-nodo uniforme es la forma m\'as usual de B-spline. La funci\'on base puede ser f\'acilmente calculada, y es igual para cada segmento, en este caso. Puesto en forma de matriz, esto es,
 
-\hspace{0.4cm}Para splines de grados m\'as elevados, algunas arbitrariedades surgen al momento de calcular estos coeficientes. Por lo tanto, debido a que en las aplicaciones estadisticas existe un mayor inter\'es por encontrar una aproximaci\'on que una interpolaci\'on, la t\'ecnica de minimos cuadros puede ser empleada para calcular estos valores.
+
+\begin{center}
+$\displaystyle{S_{i}(t) = \begin{bmatrix} t^3  & t^2 & t & 1  \end{bmatrix} \frac{1}{6} \begin{bmatrix} -1 & 3 & -3 & 1 \\ 3 & -6 & 3 & 0 \\ -3 & 0 & 3 & 0 \\ 1 & 4 & 1 & 0 \end{bmatrix} \begin{bmatrix}  \theta_{i-1} \\ \theta_{i} \\ \theta_{i+1} \\ \theta_{i+2}  \end{bmatrix} , \hspace{0.2cm} para \hspace{0.2cm} t \in [0,1] }$
+\end{center}
+
+
+
+
+
+\hspace{0.4cm}Para splines de grados m\'as elevados, algunas arbitrariedades surgen al momento de calcular los coeficientes $\theta_{i}^{k}$. Por lo tanto, debido a que en las aplicaciones estadisticas existe un mayor inter\'es por encontrar una aproximaci\'on que una interpolaci\'on, la t\'ecnica de minimos cuadros puede ser empleada para calcular estos valores.
 
 
 \vspace{0.5cm}
