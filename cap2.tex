@@ -479,6 +479,32 @@ $\displaystyle{S_{i}(t) = \begin{bmatrix} t^3  & t^2 & t & 1  \end{bmatrix} \fra
 
 \hspace{0.4cm} En resumen, la funci\'on $f$ m\'inima es un spline el cual est\'a conformado por trozos de polinomios unidos en los nodos $x_{i}$, donde dicha funci\'on tiene $2m-2$ derivadas continuas. N\'otese que en muchas aplicaciones $m=2$ es un valor muy utilizado y cuya soluci\'on viene dada mediante el spline c\'ubico natural.
 
+\section{Regresi\'on no param\'etrica}
+
+\hspace{0.4cm} La teor\'ia cl\'asica de la regresi\'on se basa, en gran parte, en el supuesto que las observaciones son independientes y se encuentran id\'entica y normalmente distribuidas. Si bien existen muchos fen\'omenos del mundo real que pueden modelarse de esta manera, para el tratamiento de ciertos problemas, la normalidad de los datos es insostenible. En el intento de eliminar esa restricci\'on se dise\~naron m\'etodos que hacen un n\'umero m\'inimo de supuestos sobre los modelos que describen las observaciones.
+
+\hspace{0.4cm} La teor\'ia de los m\'etodos no param\'etricos trata, esencialmente, el desarrollo de procedimientos de inferencia estad\'istica, que no realizan una suposici\'on expl\'icita con respecto a la forma funcional de la 
+distribuci\'on de probabilidad de las observaciones de la muestra. Si bien en la Estad\'istica no param\'etrica tambi\'en aparecen modelos y par\'ametros, ellos est\'an definidos de una manera m\'as general que en su contrapartida param\'etrica.
+
+\hspace{0.4cm}La regresi\'on no param\'etrica es una colecci\'on de t\'ecnicas para el ajuste de funciones de regresi\'on cuando existe poco conocimiento a priori acerca de su forma. Proporciona funciones suavizadas de la relaci\'on y el procedimiento se denomina suavizado.
+
+\hspace{0.4cm}Los fundamentos de los m\'etodos de suavizado son antiguos pero s\'olo lograron el estado actual de desarrollo gracias a los avances de la computaci\'on y los estudios por simulaci\'on han permitido evaluar sus comportamientos.
+
+\hspace{0.4cm} La t\'ecnica m\'as simple de suavizado, los promedios m\'oviles, fue la primera en usarse, sin embargo han surgido nuevas t\'ecnicas como la estimaci\'on mediante n\'ucleos (``kernel") o la regresi\'on local ponderada. Estos estimadores de regresi\'on no param\'etrica son herramientas poderosas para el an\'alisis de datos, tanto como una t\'ecnica de estimaci\'on para resumir una relaci\'on compleja que no puede ser aprendida por un modelo param\'etrico, como para suplementar (o complementar) un an\'alisis de regresi\'on param\'etrico.
+
+\hspace{0.4cm}En los an\'alisis param\'etricos se comienza haciendo supuestos r\'igidos sobre la estructura b\'asica de los datos, luego se estiman de la forma m\'as eficiente posible los par\'ametros que definen la estructura y por \'ultimo se comprueba si los supuestos iniciales se cumplen.
+
+\hspace{0.4cm}La regresi\'on no param\'etrica, en cambio, desarrolla un ``modelo libre" para predecir la respuesta sobre el rango de valores de los datos. B\'asicamente est\'a constituida por m\'etodos que proporcionan una estimaci\'on suavizada de la relaci\'on para un conjunto de valores (de- nominado ventana) de la variable explicativa. Estos valores son ponderados de modo que, por ejemplo, los vecinos m\'as cercanos tengan mayor peso que los m\'as alejados dentro de una ventana de datos. Se pueden utilizar diversas funciones de ponderaci\'on, que son los pesos en que se basan los estimadores. La combinaci\'on de la funci\'on de ponderaci\'on y el ancho de la ventana inciden sobre la bondad de la estimaci\'on resultante.
+
+
+\hspace{0.4cm} La mayor parte de las publicaciones sobre regresi\'on no param\'etrica consideran el caso de un solo regresor a pesar de que, a simple vista no pareciera de gran utilidad, ya que las aplicaciones m\'as interesantes involucran varias variables explicativas. Sin embargo, la regresi\'on no param\'etrica simple es importante por dos motivos:
+
+
+\begin{itemize}
+  \item En etapas preliminares del an\'alisis de datos o en pruebas de diagn\'ostico se utilizan gr\'aficos de dispersi\'on en los cuales puede ser muy \'util ajustar una ``curva suavizada". Por ejemplo, para explorar la forma de la funci\'on respuesta, para confirmar una funci\'on respuesta en particular que haya sido ajustada a los datos, para obtener estimaciones de la respuesta media sin especificar la forma de la funci\'on respuesta, para estudiar el cumplimientos de supuestos, etc.
+  \item Forma la base a partir de la cual se extienden los conceptos para regresi\'on no param\'etrica m\'ultiple.
+\end{itemize}
+
 
 \section{Regresi\'on no param\'etrica mediante splines de suavizado.}
 
@@ -547,7 +573,5 @@ $\displaystyle{ \hat{f}_{n}(x) = \sum_{j=1}^{J+4} \hat{\theta_{j}}B_{j}(x)}$
 
 \hspace{0.4cm} Por lo tanto $\mu$ es el par\'ametro de suavizado que controla la medida del estimador del spline polinomial, el cual puede variar desde el modelo m\'as complicado e inestable hasta el modelo m\'as simple. En otras palabras, la ecuaci\'on (\ref{min}) representa un balance entre la fidelidad o ajuste de los datos, representado mediante la suma de los residuos al cuadrado y la suavidad de la curva resultante, la cual se representa por la integral del cuadrado de la m-\'emisa derivada.
 
-
-\section{Citas}
 
 %Para citar un libro o un art\'{\i}culo se hace as\'{\i} : \cite{ADRS} \cite{Ar}
