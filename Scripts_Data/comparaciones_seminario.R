@@ -526,13 +526,13 @@ tit=c("TIF082018","TIF042019","TIF112019",
       "TIF022021","TIF032022","TIF042023","TIF012024","TIF032028","TIF052028",
       "TIF022029","TIF022030","TIF032031","TIF022032","TIF032032","TIF032033")
 
-#C=Carac("09-03-2018.xls")
+C=Carac("Scripts_Data/09-03-2018.xls")
 #mientras tanto trabajare con esta
 #C=Carac("Scripts_Data/27-02-2018.xls")
 #trabajar con este mientras tanto
 #para tif replique resultados
 #para veb hay pequeñas diferencias, supongo q se debe a cambio de cupon
-C=Carac("Scripts_Data/27-03-2018.xls")
+#C=Carac("Scripts_Data/27-03-2018.xls")
 
 #Svensson
 #source('C:/Users/Freddy Tapia/Desktop/Svensson/orden data frame.R')
@@ -1299,3 +1299,124 @@ v4[30,1] <- "SRC"
 
 #tabla comparativa para tif para la fecha 2018-03-08 para los titulos tit
 #write.table(v4,"Tabla_veb_comparacion.txt")
+
+#genero graficas a partir de la informacion anterior
+
+#SPLINES
+#TIF
+x_t <- seq(1,20*365,1)
+y_t <- predict(spline,seq(1,20*365,1))$y
+
+ggplot(data.frame(x=c(letra$Plazo,cand[,4]),y=c(letra$Rendimiento,cand[,7])), aes(x=x, y=y)) +
+  geom_point()+
+  geom_line(data =data.frame(x=x_t,y=y_t),col="blue")+
+  ylab("Rendimiento (%)")+
+  xlab("Maduración (días)")+
+  ggtitle("Curva de rendimiento Splines TIF")+
+  theme(
+    plot.title = element_text(color="black", size=14, face="bold.italic",hjust = 0.5)
+  )
+
+
+#VEBONO
+
+#COMPARATIVO
+#TIF
+library(plotly)
+
+x <- seq(1,20,0.1)
+y_sven <- sven(x,pa=pa_sven)*100
+y_sven_opt <- sven(x,pa=t1[[2]])*100
+y_sp <- predict(spline,x*365)$y
+
+#dataframe
+data <- data.frame(x,y_sven,y_sven_opt,y_sp)
+d_sven <- data.frame(x,y_sven)
+d_sven$met <- "Svensson"
+d_sven_opt <- data.frame(x,y_sven_opt)
+d_sven_opt$met <- "Svensson Optimizado"
+d_sp <-  data.frame(x,y_sp)
+d_sp$met <- "Splines"
+
+names(d_sven) <-  c("x","y","met")
+names(d_sven_opt) <-  c("x","y","met")
+names(d_sp) <- c("x","y","met")
+data1 <- rbind.data.frame(d_sven,d_sven_opt,d_sp)
+
+#curva 
+#defino nombres de ejes
+f <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "#7f7f7f"
+)
+x1 <- list(
+  title = "Maduración (días)",
+  titlefont = f
+)
+y1 <- list(
+  title = "Rendimientos (%)",
+  titlefont = f
+)
+
+#
+
+ggplot(data1,aes(x=x,y=y,colour=met,group=met))+
+  geom_line() +  xlab("Maduración (días)")+
+  ylab("Rendimiento (%)")+
+  ggtitle("Comparativo TIF Splines vs Svensson")+
+  theme(
+    plot.title = element_text(color="black", size=14, face="bold.italic",hjust = 0.5)
+  )
+
+
+
+
+#VEBONOS
+
+x <- seq(1,20,0.1)
+y_sven_v <- sven(x,pa=pa1_sven)*100
+y_sven_opt_v <- sven(x,pa=v1[[2]])*100
+y_sp_v <- predict(spline_v,x*365)$y
+
+#dataframe
+data_v <- data.frame(x,y_sven_v,y_sven_opt_v,y_sp_v)
+d_sven_v <- data.frame(x,y_sven_v)
+d_sven_v$met <- "Svensson"
+d_sven_opt_v <- data.frame(x,y_sven_opt_v)
+d_sven_opt_v$met <- "Svensson Optimizado"
+d_sp_v <-  data.frame(x,y_sp_v)
+d_sp_v$met <- "Splines"
+
+names(d_sven_v) <-  c("x","y","met")
+names(d_sven_opt_v) <-  c("x","y","met")
+names(d_sp_v) <- c("x","y","met")
+data1_v <- rbind.data.frame(d_sven_v,d_sven_opt_v,d_sp_v)
+
+#curva 
+#defino nombres de ejes
+f <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "#7f7f7f"
+)
+x1 <- list(
+  title = "Maduración (días)",
+  titlefont = f
+)
+y1 <- list(
+  title = "Rendimientos (%)",
+  titlefont = f
+)
+
+#
+
+ggplot(data1_v,aes(x=x,y=y,colour=met,group=met))+
+  geom_line() +  xlab("Maduración (días)")+
+  ylab("Rendimiento (%)")+
+  ggtitle("Comparativo VEBONO Splines vs Svensson")+
+  theme(
+    plot.title = element_text(color="black", size=14, face="bold.italic",hjust = 0.5)
+  )
+
+
