@@ -182,6 +182,111 @@ $\displaystyle{w_{i} = \frac{\frac{1}{D_{i}}}{\sum_{j=1}^{N}\frac{1}{D_{j}}}}$
 
 \noindent donde el primer argumento debe ser el valor inicial del par\'ametro a optimizar, el segundo argumento ``fn" se refiere a la funci\'on que se desea optimizar, finalmente en el tercer par\'ametro ``hin" se indican las restricciones sobre el par\'ametro a optimizar, en este caso la restricci\'on establecida es que el par\'ametro sea mayor a cero.
 
+\hspace{0.4cm} La comparaci\'on de los precios obtenidos con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on,
+
+\begin{center}
+\scalebox{0.90}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
+\hline
+T\'itulo & Precio Promedio & Precio Splines & Precio Svensson & Precio Svensson Optimizado  \\
+\hline
+TIF082018 & 101,00 & 107,27 & 107,35 & 100,92  \\
+\hline
+TIF042019 & 112,00 & 116,38 & 119,48 & 113,41  \\
+\hline
+TIF082019 &  110,00& 109,42 & 112,81 & 108,19 \\
+\hline
+TIF112020 & 130,02 & 127,62 & 130,15 & 127,28  \\
+\hline
+TIF022021 & 129,01 & 128,05 & 130,37 & 127,56  \\
+\hline
+TIF042023 & 128,10 & 132,21 & 134,03 & 130,27  \\
+\hline
+TIF012024 & 120,00 & 134,42 & 136,25 & 132,02 \\
+\hline
+TIF062025 & 124,00 & 130,44 & 131,61 & 126,85  \\
+\hline
+TIF012026 & 122,00 & 130,31 & 131,05 & 126,04  \\
+\hline
+TIF112027 & 126,52 & 132,04 & 130,75 & 125,08 \\
+\hline
+TIF032028 & 128,52 & 135,83 & 134,02 & 128,15  \\
+\hline
+TIF052028 & 128,19 & 137,56 & 131,76 & 125,88  \\
+\hline
+TIF032029 & 132,03 & 140,30 & 137,37 & 131,18  \\
+\hline
+TIF022030 & 128,52 & 142,86 & 138,91 & 132,42  \\
+\hline
+TIF022031 & 130,10 & 135,95 & 131,54 & 125,01  \\
+\hline
+TIF032031 & 128,53 & 138,30 & 133,87 & 127,30  \\
+\hline
+TIF022032 & 127,00 & 135,13 & 127,48 & 120,92\\
+\hline
+TIF032032 & 128,52 & 139,45 & 135,46 & 128,60  \\
+\hline
+TIF032033 & 127,01& 135,37 & 130,67 & 123,91\\
+\hline
+TIF052034 & 127,12 & 128,51 & 124,08 & 117,35\\
+\hline
+SRC & NA & 4,6224 & 5,2694 & 0,3610\\
+\hline
+\end{tabular}}
+\end{center}
+
+\hspace{0.4cm}La siguiente tabla muestra los resultados obtenidos para los Vebonos al d\'ia 01/03/2018,
+
+\begin{center}
+\scalebox{0.90}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
+\hline
+T\'itulo & Precio Promedio & Precio Splines & Precio Svensson & Precio Svensson Optimizado  \\
+\hline
+VEBONO072018 & 100,40 & 106,17 & 108,14 & 102,32  \\
+\hline
+VEBONO022019 & 106,00 & 107,75 & 111,18 & 102,75  \\
+\hline
+VEBONO032019 &  110,00& 113,55 & 117,10 & 108,68 \\
+\hline
+VEBONO012020 & 121,00 & 118,42 & 121,05 & 116,78  \\
+\hline
+VEBONO062020 & 127,83 & 120,97 & 122,60 & 121,85  \\
+\hline
+VEBONO012021 & 130,32 & 121,96 & 122,27 & 125,85  \\
+\hline
+VEBONO052021 & 127,00 & 122,01 & 121,72 & 127,10 \\
+\hline
+VEBONO122021 & 129,45 & 126,18 & 124,86 & 132,83  \\
+\hline
+VEBONO022022 & 129,00 & 123,15 & 121,55 & 130,09 \\
+\hline
+VEBONO012023 & 129,96 & 126,79 & 123,69 & 134,17 \\
+\hline
+VEBONO022024 & 128,00 & 128,27 & 123,88 & 134,55  \\
+\hline
+VEBONO022025 & 128,50 & 134,25 & 125,35 & 135,15  \\
+\hline
+VEBONO042028 & 129,68 & 132,08 & 127,80 & 133,37  \\
+\hline
+VEBONO102028 & 130,01 & 131,67 & 127,68 & 132,63  \\
+\hline
+VEBONO052029 & 125,03 & 131,16 & 127,26 & 131,61  \\
+\hline
+VEBONO102029 & 125,75 & 132,32 & 128,24 & 132,14 \\
+\hline
+VEBONO072030 & 130,50 & 132,44 & 127,72 & 130,89\\
+\hline
+VEBONO062032 & 128,53 & 128,07 & 121,73 & 123,20  \\
+\hline
+VEBONO072033 & 130,00& 127,31 & 120,40 & 121,26\\
+\hline
+VEBONO022034 & 128,02 & 126,53 & 119,49 & 120,01\\
+\hline
+SRC & NA & 3,5817 & 6,7379 & 0,8590\\
+\hline
+\end{tabular}}
+\end{center}
+
+
 \begin{figure}[h]
   \scalebox{0.80}{\includegraphics{images/c_tif.jpg}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
