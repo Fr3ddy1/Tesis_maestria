@@ -3,7 +3,20 @@
 \section{Elaboraci\'on de la base de datos.}
 
 
-\hspace{0.4cm} La fuente principal de informaci\'on para calcular la curva de rendimientos para los t\'itulos de la deuda p\'ublica nacional es el Banco Central de Venezuela (BCV), el cual diariamente publica las operaciones realizadas con dichos instrumentos y los muestra en el documento ``resumersec"\hspace{0.01cm} en la pesta\~na $``0-22"$ (Ver Figura 1), en el mismo se puede encontrar la informaci\'on sobre el c\'odigo del instrumento, su fecha de vencimiento, su plazo, la cantidad de operaciones, el monto en Bol\'ivares, el precio m\'inimo, m\'aximo y promedio, y el cup\'on asociado a cada instrumento.
+\hspace{0.4cm} La fuente principal de informaci\'on para calcular la curva de rendimientos para los t\'itulos de la deuda p\'ublica nacional es el Banco Central de Venezuela (BCV), el cual diariamente publica las operaciones realizadas con estos instrumentos y los publica en el documento ``resumersec"\hspace{0.01cm}  (Ver Figura \ref{doc_bcv}). Es importante destacar, que en este documento se encuentran por d\'ia dos pesta\~nas, la $``0-22"$ y la $``0-23"$, en la primera pesta\~na se encuentran las operaciones interbancarias, por su parte la segunda pesta\~na muestra informaci\'on sobre las operaciones realizadas por entes privados, en este caso el precio pautado en la operaci\'on no est\'a disponible, raz\'on por la cual esta pesta\~na no se toma en consideraci\'on. La informaci\'on disponible en la pesta\~na $``0-22"$ es la siguiente,
+
+\begin{itemize}
+  \item C\'odigo del instrumento: c\'odigo \'unico que se asocia a cada instrumento.
+  \item Fecha de vencimiento: fecha de maduraci\'on de cada instrumento.
+  \item Plazo: cantidad de d\'ias que faltan para que el instrumento venza.
+  \item Cantidad de Operaciones: n\'umero de operaciones realizadas con cada instrumento.
+  \item Monto en Bol\'ivares: monto total involucrado en la operaci\'on.
+  \item Precio m\'inimo: precio m\'as bajo pautado en la operaci\'on.
+  \item Precio m\'aximo: precio m\'as alto pautado en la operaci\'on.
+  \item Precio promedio: precio promedio pautado en la la operaci\'on. Cabe destacar que si existe una s\'ola operaci\'on, los precios m\'inimo, m\'aximo y promedio ser\'an iguales.
+  \item Cup\'on: tasa de inter\'es pagadera por cada instrumento.
+\end{itemize}
+
 
 \vspace{0.5cm}
 
@@ -11,6 +24,7 @@
   \scalebox{0.50}{\includegraphics{images/Imagen022.png}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Pesta\~na ``0-22".}
+\label{doc_bcv}
 \end{figure}
 
 \vspace{0.5cm}
@@ -19,12 +33,26 @@
 
 \vspace{0.5cm}
 
-\hspace{0.4cm}Esta informaci\'on tambi\'en es suministrada por el BCV, en su documento de las ``Caracter\'isticas de la Deuda P\'ublica Nacional" (Ver Figura 2), por lo cual el mismo se debe revisar con cierta frecuencia, con el fin de actualizar la tasa de cup\'on de los VEBONO.
+\hspace{0.4cm}Esta informaci\'on tambi\'en es suministrada por el BCV, en su documento de las ``Caracter\'isticas de la Deuda P\'ublica Nacional" (Ver Figura \ref{doc_carac}), por lo cual el mismo se debe revisar con cierta frecuencia, con el fin de actualizar la tasa de cup\'on de los VEBONO. En este documento se muestra informaci\'on que caracteriza a cada instrumento, el mismo posee varias pesta\~nas, en este trabajo s\'olo se considerar\'a la pesta\~na $``DPN"$ en donde se encuentra informaci\'on sobre los instrumentos emitidos en moneda nacional. La informaci\'on disponible en este documento se muestra a continuaci\'on,
+
+\begin{itemize}
+  \item N\'umero-Emisi\'on-Decreto: informaci\'on sobre emisi\'on de cada instrumento.
+  \item C\'odigo: c\'odigo \'unico que se asocia a cada instrumento.
+  \item Fecha de emisi\'on: fecha cuando se emiti\'o cada instrumento.
+  \item Fecha de vencimiento: fecha de maduraci\'on de cada instrumento.
+  \item Monto en Circulaci\'on: monto total de cada instrumento en circulaci\'on.
+  \item Porcentaje de referecia: indica si el instrumento es de tasa fija o tasa variable.
+  \item Fecha de inicio: indica cada cuanto tiempo el instrumento paga cup\'on.
+  \item Per\'iodo vigente: indica el per\'iodo (fecha inicio y fecha fin) cuando cada instrumento paga cup\'on.
+  \item Tasa: cup\'on asociado a cada instrumento.
+\end{itemize}
+
 
 
 \begin{figure}[h]
   \scalebox{0.50}{\includegraphics{images/Imagencarac.png}}
 \caption{Caracter\'isticas.}
+\label{doc_carac}
 \end{figure}
 
 
@@ -56,12 +84,97 @@
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} Para efectuar la depuraci\'on, a la base de datos anterior se le a\~nadir\'an dos columnas nuevas una que indica el rendimiento al vencimiento de cada instrumento y la otra que indica la decisi\'on que se tom\'o en base a los criterios descritos anteriormente (Ver Figura 3). Esta \'ultima ser\'a una variable dicot\'omica, es decir solo con dos valores (0 \'o 1), en donde ``0" me indica que no selecciono el t\'itulo y ``1" me indica que si lo tomo en cuenta para el estudio a realizar.\\
+\hspace{0.4cm} Para efectuar la depuraci\'on, a la base de datos anterior se le a\~nadir\'an dos columnas nuevas una que indica el rendimiento al vencimiento de cada instrumento y la otra que indica la decisi\'on que se tom\'o en base a los criterios descritos anteriormente (Ver Figura 3). Esta \'ultima ser\'a una variable dicot\'omica, es decir solo con dos valores (0 \'o 1), en donde ``0" me indica que no selecciono el t\'itulo y ``1" me indica que si lo tomo en cuenta para el estudio a realizar.
 
 \begin{figure}[h]
   \scalebox{0.50}{\includegraphics{images/Imagenbase.png}}
 \caption{Base de datos.}
+\label{base_datos}
 \end{figure}
+
+
+\hspace{0.4cm} Una vez calculados los precios estimados asociados a cada instrumento, se proceder\'a a comparar los mismo con aquellos obtenidos por una metodolog\'ia distinta. La metodolog\'ia con la cual se va a comparar es la de Svensson, la cual es una metodolog\'ia param\'etrica.
+
+
+
+\hspace{0.4cm} Los instrumentos a considerar ser\'an aquellos pertencientes al portafolio de inversiones de una instituci\'on financiera, de tal manera que para un d\'ia especifico sea posible conocer cuanta es la ganancia o p\'erdida que generan estos instrumentos. y por ende saber si es viable la venta o compra de determinado instrumento.
+
+
+\hspace{0.4cm} A partir de la data obtenida (ver figura \ref{base_datos}), se proceder\'a a a\~nadir unas columnas nuevas con el fin de clasificar las observaciones para los distintos instrumentos en diferentes per\'iodos de vencimiento.
+
+\noindent Los per\'iodos de vencimiento son,
+
+\begin{itemize}
+\item Corto plazo
+\item Mediano plazo
+\item Largo plazo
+\end{itemize}
+
+\hspace{0.4cm} Luego de separar la data por tipo de instrumento, la nueva data con la que se trabajar\'a es la siguiente,
+
+\begin{figure}[h]
+  \scalebox{0.50}{\includegraphics{images/data_nueva.png}}
+\caption{Base de datos TIF.}
+\label{base_datos_tif}
+\end{figure}
+
+\hspace{0.4cm} Con el fin de contar con la data m\'as reciente a partir de la fecha de valoraci\'on, se cre\'o la funci\'on ``extrae" la cual seleciona de la data de la figura (\ref{fig91}) una determinada cantidad de observaciones, la cual es especificada por el usuario, esta funci\'on cuenta con los siguientes argumentos,
+
+\begin{itemize}
+ \item fv
+ \item dias
+ \item data
+\end{itemize}
+
+\hspace{0.4cm} Luego de selecionar la data, la misma se procede a depurar, es decir, se van a eliminar las observaciones duplicadas considerando s\'olo aquellas que sean m\'as recientes. \\
+
+
+\hspace{0.4cm}As\'i a partir de esta data s\'olo se consideraran las columnas plazo y rendimiento con el fin de tener una nube de puntos a partir de la cual se haga el ajuste de la funci\'on spline, y as\'i obtener la curva de rendimientos.
+
+\newpage
+
+\hspace{0.4cm} La data obtenida a partir de la depuraci\'on anterior es,
+
+\begin{figure}[h]
+    {\includegraphics{images/cand.png}}
+\caption{Data depurada TIF.}
+\label{fig91}
+\end{figure}
+
+
+
+\hspace{0.4cm} Una vez obtenida la data para los Tif y Vebono se utiliz\'o la funci\'on ``smooth.spline" del programa estad\'istico R, para ajustar un spline c\'ubico a la data ingresada.
+
+
+\hspace{0.4cm}  Los argumentos requeridos por esta funci\'on son los siguientes,
+
+\begin{itemize}
+ \item X
+  \item Y
+ \item cv
+  \item Spar
+\end{itemize}
+
+\hspace{0.4cm} De esta manera el siguiente comando ajusta un spline cubico a la data ingresada,
+
+
+spline1=smooth.spline(X=datT1\$Plazo,Y=datT1\$Rendimiento,cv=TRUE, spar=1.35)\\
+
+
+\noindent y lo guarda en la variable ``spline1".
+
+\hspace{0.4cm} Usando el valor de $0.71$ se obtiene la curva roja la cual presenta una mayor suavidad. Mientras que usando el valor de $0.81$ se obtiene un mejor resultado aunque similar al anterior.
+
+\begin{figure}[h]
+    \scalebox{0.6}{\includegraphics{images/curvavbv2.jpg}}
+\caption{Curva de rendimiento Vebono para diferentes valores de suavizado.}
+\label{fig9}
+\end{figure}
+
+
+
+
+\newpage
 
 
 \section{Estimaci\'on de par\'ametros y curva de rendimiento.}
