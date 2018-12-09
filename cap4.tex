@@ -114,13 +114,11 @@ $\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau_{1}}\ri
 
 \newpage
 
-\subsection{Resultados.\\}
+\section{Resultados.}
 
+\subsection{Comparaci\'on TIF.\\}
 
-
-
-
-\hspace{0.4cm} La comparaci\'on de los precios obtenidos con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on,
+\hspace{0.4cm} La comparaci\'on de los precios te\'oricos obtenidos mediante el uso de la metodolog\'ia de los Splines c\'ubicos de suavizado con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on.
 
 \begin{center}
 \scalebox{0.90}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
@@ -167,10 +165,32 @@ TIF032033 & 127,01& 135,37 & 130,67 & 123,91\\
 \hline
 TIF052034 & 127,12 & 128,51 & 124,08 & 117,35\\
 \hline
-SRC & NA & 4,6224 & 5,2694 & 0,3610\\
+Error & NA & 4,6224 & 5,2694 & 0,3610\\
 \hline
 \end{tabular}}
 \end{center}
+
+\hspace{0.4cm} Para la creaci\'on de la tabla anterior, se consideraron los siguientes par\'ametros,
+
+\begin{itemize}
+  \item Fecha de valoraci\'on: $08/03/2018$.
+  \item D\'ias hacia atras: 40.
+  \item Par\'ametro de suavizamiento: 0.2
+\end{itemize}
+
+
+\hspace{0.4cm} En la tabla anterior se observan los precios promedios de cada instrumento para el a\~no en curso, los precios te\'oricos obtenidos mediante la metodolog\'ia de Splines y los precios te\'oricos obtenidos mediante la metodolog\'ia de Svensson, en este caso se tienen dos resultados uno es usando unos par\'ametros por defecto (Columna Precio Svensson) y el otro es usando el proceso de optimizaci\'on para esta metodolog\'ia. En la \'ultima fila se observa el valor de la suma del error cuadr\'atico (Error), el cual se obtiene luego de realizar la suma de los cuadrados de las diferencias que existen entre el precio te\'orico de cada instrumento y su precio promedio. Mientras mas peque\~no sea este valor m\'as se asemejar\'an los precios te\'oricos a los precio promedio.
+
+\hspace{0.4cm} Si se comparan los precios te\'oricos obtenidos mediante la metodolog\'ia de Splines y aquellos obtenidos mediante la metodolog\'ia de Svensson (sin optimizar), se puede afirmar que mediante la primera metodolog\'ia se obtiene una mejor aproximaci\'on de dichos precios con respecto a los precios promedio de cada instrumentos esto debido al Error que para el caso de los Splines es de $4.6224$, mientras que para el caso de Svensson es de $5.2694$.
+
+\hspace{0.4cm} Por su parte, si se observa el error obtenido para la metodolg\'ia de Svensson optimizada ($0.3610$), este valor es mucho m\'as peque\~no que las dos metodolog\'ias anteriores, esto se debe al proceso de optimizaci\'on ya que en el mismo se busca que esta diferencia sea m\'inima.
+
+\hspace{0.4cm} La figura \ref{curva_spline_tif}, muestra la curva de rendimiento para los TIF obtenida mediante el ajuste del Spline de suavizado, por su parte la nube de puntos fue obtenida a partir de la base de datos de estos instrumentos para la cantidad de d\'ias seleccionado, en este caso 40. Estos puntos representan los rendimientos obtenidos a partir de las operaciones realizadas con estos instrumentos en el horizonte temporal considerado.
+
+\newpage
+
+\subsection{Comparaci\'on VEBONO.\\}
+
 
 \hspace{0.4cm}La siguiente tabla muestra los resultados obtenidos para los Vebonos al d\'ia 01/03/2018,
 
@@ -224,18 +244,33 @@ SRC & NA & 3,5817 & 6,7379 & 0,8590\\
 \end{tabular}}
 \end{center}
 
+\newpage
+
+\subsection{Curvas de Rendimiento.\\}
+
+\hspace{0.4cm} Curvas
+
 
 \begin{figure}[h]
   \scalebox{0.80}{\includegraphics{images/c_tif.jpg}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Curva Spline TIF.}
+\label{curva_spline_tif}
 \end{figure}
+
 
 \begin{figure}[h]
   \scalebox{0.80}{\includegraphics{images/c_veb.jpg}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Curva Spline VEBONO.}
 \end{figure}
+
+\newpage
+
+\subsection{Comparativo curvas de Rendimiento.\\}
+
+\hspace{0.4cm} Curvas
+
 
 \begin{figure}[h]
   \scalebox{0.65}{\includegraphics{images/Comparativo_tif.png}}
@@ -248,6 +283,8 @@ SRC & NA & 3,5817 & 6,7379 & 0,8590\\
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Curva VEBONO Spline vs Svensson.}
 \end{figure}
+
+\newpage
 
 \section{Conclusiones y Recomendaciones.}
 
