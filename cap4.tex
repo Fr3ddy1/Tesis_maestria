@@ -74,29 +74,49 @@ $\displaystyle{w_{i} = \frac{\frac{1}{D_{i}}}{\sum_{j=1}^{N}\frac{1}{D_{j}}}}$
 
 \end{center}
 
-\vspace{0.5cm}
 
 \noindent por su parte, $\epsilon_{i}(x)= \hat{Pr}_{i}(x)-Pr_{i}$, donde $Pr_{i}$ representan los precios promedios de los t\'itulos a considerar, de entrada este es un par\'ametro \'o valor con el que se cuenta. Por otra parte $\hat{Pr}_{i}(x)$ representa los precios estimados donde $x$ es el par\'ametro que va a variar y es el valor que se quiere optimizar.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Mediante la funci\'on objetivo descrita anteriormente se busca minimizar la diferencia que existe entre los precios promedios y los precios estimados, calculando un valor \'optimo del par\'ametro $x$ mediante el proceso de optimizaci\'on no lineal.
 
-\vspace{0.5cm}
+
 
 \hspace{0.4cm}El proceso de optimizaci\'on se realiz\'o mediante el software estad\'istico R, mediante el paquete ``nloptr". En este paquete, se encuentra el comando ``aulag" el cual minimiza un funci\'on objetivo y devuelve entre otros valores el par\'ametro m\'as \'optimo, que hace que la funci\'on sea m\'inima. Un ejemplo del uso de este comando se presenta acontinuaci\'on,
 
-\vspace{0.5cm}
 \begin{center}
   $ala2=auglag(1.22, fn=mifuncion, hin=res)$
 \end{center}
 
-\vspace{0.5cm}
 
 \noindent donde el primer argumento debe ser el valor inicial del par\'ametro a optimizar, el segundo argumento ``fn" se refiere a la funci\'on que se desea optimizar, finalmente en el tercer par\'ametro ``hin" se indican las restricciones sobre el par\'ametro a optimizar, en este caso la restricci\'on establecida es que el par\'ametro sea mayor a cero.
 
 
-\hspace{0.4cm} Como se observ\'o en las secciones anteriores el par\'ametro de suavizamiento fu\'e elegido mediante el m\'etodo de ensayo y error el cual no es para nada \'optimo pues a priori este m\'etodo no nos garantiza que el valor seleccionado sea el mejor, ya que se contar\'ian con una gran cantidad de posibles valores a seleccionar, con el fin  de encontrar dicho par\'ametro el procedimiento anteriormente explicado puede ser implementado. Sin embargo, al realizar este proceso, se obtienen curvas que no son para nada suaves y en ocasiones no poseen ningunas de las formas usuales de la curva de rendimientos. Esto es debido a que en este caso este proceso, var\'ia el par\'ametro de suavizamiento de tal manera que la diferencia entre el precio promedio y el precio te\'orico sea lo mas peque\~na posible y en este proceso no existe un par\'ametro que controle la forma de la curva obtenida. Por lo tanto, su aplicaci\'on presenta algunos inconvenientes.  
+\hspace{0.4cm} Recordemos que la tasa cero cup\'on que se obtiene mediante la metodolog\'ia de Svensson est\'a dada por la siguiente expresi\'on,\\
+
+
+$\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau_{1}}\right)}{m/\tau_{1}} + \beta_{2} \left(\frac{\left(1-e^\frac{-m}{\tau_{1}}\right)}{m/\tau_{1}} -  e^\frac{-m}{\tau_{1}}\right) + \beta_{3} \left(\frac{\left(1-e^\frac{-m}{\tau_{2}}\right)}{m/\tau_{2}} -  e^\frac{-m}{\tau_{2}}\right)}$\\
+
+\noindent esta expresi\'on est\'a sujeta a las siguientes restricciones,
+
+\begin{itemize}
+  \item $\beta_{0} > 0$
+  \item $\beta_{0}+\beta_{1} > 0$
+  \item $\tau_{1} > 0$
+  \item $\tau_{2} > 0$
+\end{itemize}
+
+\noindent cada par\'ametro controla una secci\'on de la curva. La f\'ormula anterior es de suma importancia ya que ella interviene en el c\'alculo del precio te\'orico de cada instrumento. El proceso de optimizaci\'on act\'ua directamente sobre esta f\'ormula, ya que el mismo se centra en variar los par\'ametros de tal manera que la funci\'on objetivo sea minimizada.
+
+\hspace{0.4cm} Como se observ\'o en las secciones anteriores el par\'ametro de suavizamiento fu\'e elegido mediante el m\'etodo de ensayo y error el cual no es para nada \'optimo pues a priori este m\'etodo no nos garantiza que el valor seleccionado sea el mejor, ya que se contar\'ian con una gran cantidad de posibles valores a seleccionar, con el fin  de encontrar dicho par\'ametro el procedimiento anteriormente explicado puede ser implementado. 
+
+\hspace{0.4cm} Sin embargo, al realizar este proceso, se obtienen curvas que no son para nada suaves y en ocasiones no poseen ningunas de las formas usuales de la curva de rendimientos. Esto es debido a que en este caso este proceso, var\'ia el par\'ametro de suavizamiento de tal manera que la diferencia entre el precio promedio y el precio te\'orico sea lo mas peque\~na posible y en este proceso no existe un par\'ametro que controle la forma de la curva obtenida. Por lo tanto, su aplicaci\'on presenta algunos inconvenientes.  
+
+\newpage
+
+\subsection{Resultados.\\}
+
+
 
 
 
