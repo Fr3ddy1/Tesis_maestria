@@ -116,7 +116,7 @@ $\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau_{1}}\ri
 
 \section{Resultados.}
 
-\subsection{Comparaci\'on TIF.\\}
+\subsection{Comparaci\'on TIF}\hspace{5cm}
 
 \hspace{0.4cm} La comparaci\'on de los precios te\'oricos obtenidos mediante el uso de la metodolog\'ia de los Splines c\'ubicos de suavizado con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on.
 
@@ -185,70 +185,80 @@ Error & NA & 4,6224 & 5,2694 & 0,3610\\
 
 \hspace{0.4cm} Por su parte, si se observa el error obtenido para la metodolg\'ia de Svensson optimizada ($0.3610$), este valor es mucho m\'as peque\~no que las dos metodolog\'ias anteriores, esto se debe al proceso de optimizaci\'on ya que en el mismo se busca que esta diferencia sea m\'inima.
 
-\hspace{0.4cm} La figura \ref{curva_spline_tif}, muestra la curva de rendimiento para los TIF obtenida mediante el ajuste del Spline de suavizado, por su parte la nube de puntos fue obtenida a partir de la base de datos de estos instrumentos para la cantidad de d\'ias seleccionado, en este caso 40. Estos puntos representan los rendimientos obtenidos a partir de las operaciones realizadas con estos instrumentos en el horizonte temporal considerado.
+\hspace{0.4cm} La figura \ref{curva_spline_tif}, muestra la curva de rendimiento para los TIF obtenida mediante el ajuste del Spline de suavizado, por su parte la nube de puntos fue obtenida a partir de la base de datos de estos instrumentos para la cantidad de d\'ias seleccionado, en este caso 40. Estos puntos representan los rendimientos obtenidos a partir de las operaciones realizadas con estos instrumentos en el horizonte temporal considerado. El eje x de la gr\'afica muestra la maduraci\'on en d\'ias, por su parte el eje y muestra el rendimiento estimado.
 
 \newpage
 
-\subsection{Comparaci\'on VEBONO.\\}
+\subsection{Comparaci\'on VEBONO}\hspace{5cm}
 
 
-\hspace{0.4cm}La siguiente tabla muestra los resultados obtenidos para los Vebonos al d\'ia 01/03/2018,
+\hspace{0.4cm}La siguiente tabla muestra los resultados de los precios te\'oricos obtenidos para los Vebonos mediante las diferentes metodolog\'ias consideradas. Para la creaci\'on de la misma, se consideraron los siguientes par\'ametros,
+
+\begin{itemize}
+  \item Fecha de valoraci\'on: $08/03/2018$.
+  \item D\'ias hacia atras: 40.
+  \item Par\'ametro de suavizamiento: 0.4
+\end{itemize}
 
 \begin{center}
 \scalebox{0.90}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
 \hline
 T\'itulo & Precio Promedio & Precio Splines & Precio Svensson & Precio Svensson Optimizado  \\
 \hline
-VEBONO072018 & 100,40 & 106,17 & 108,14 & 102,32  \\
+VEBONO072018 & 100,40 & 106,17 & 108,14 & 100,41  \\
 \hline
-VEBONO022019 & 106,00 & 107,75 & 111,18 & 102,75  \\
+VEBONO022019 & 106,00 & 107,75 & 111,18 & 104,98  \\
 \hline
-VEBONO032019 &  110,00& 113,55 & 117,10 & 108,68 \\
+VEBONO032019 &  110,00& 113,55 & 117,10 & 111,38 \\
 \hline
-VEBONO012020 & 121,00 & 118,42 & 121,05 & 116,78  \\
+VEBONO012020 & 121,00 & 118,42 & 121,05 & 118,92  \\
 \hline
-VEBONO062020 & 127,83 & 120,97 & 122,60 & 121,85  \\
+VEBONO062020 & 127,83 & 120,97 & 122,60 & 122,23  \\
 \hline
-VEBONO012021 & 130,32 & 121,96 & 122,27 & 125,85  \\
+VEBONO012021 & 130,32 & 121,96 & 122,27 & 123,36  \\
 \hline
-VEBONO052021 & 127,00 & 122,01 & 121,72 & 127,10 \\
+VEBONO052021 & 127,00 & 122,01 & 121,72 & 123,28 \\
 \hline
-VEBONO122021 & 129,45 & 126,18 & 124,86 & 132,83  \\
+VEBONO122021 & 129,45 & 126,18 & 124,86 & 126,88  \\
 \hline
-VEBONO022022 & 129,00 & 123,15 & 121,55 & 130,09 \\
+VEBONO022022 & 129,00 & 123,15 & 121,55 & 123,62 \\
 \hline
-VEBONO012023 & 129,96 & 126,79 & 123,69 & 134,17 \\
+VEBONO012023 & 129,96 & 126,79 & 123,69 & 125,78 \\
 \hline
-VEBONO022024 & 128,00 & 128,27 & 123,88 & 134,55  \\
+VEBONO022024 & 128,00 & 128,27 & 123,88 & 125,77  \\
 \hline
-VEBONO022025 & 128,50 & 134,25 & 125,35 & 135,15  \\
+VEBONO022025 & 128,50 & 134,25 & 125,35 & 126,96  \\
 \hline
-VEBONO042028 & 129,68 & 132,08 & 127,80 & 133,37  \\
+VEBONO042028 & 129,68 & 132,08 & 127,80 & 128,62  \\
 \hline
-VEBONO102028 & 130,01 & 131,67 & 127,68 & 132,63  \\
+VEBONO102028 & 130,01 & 131,67 & 127,68 & 128,40  \\
 \hline
-VEBONO052029 & 125,03 & 131,16 & 127,26 & 131,61  \\
+VEBONO052029 & 125,03 & 131,16 & 127,26 & 127,91  \\
 \hline
-VEBONO102029 & 125,75 & 132,32 & 128,24 & 132,14 \\
+VEBONO102029 & 125,75 & 132,32 & 128,24 & 128,79 \\
 \hline
-VEBONO072030 & 130,50 & 132,44 & 127,72 & 130,89\\
+VEBONO072030 & 130,50 & 132,44 & 127,72 & 128,16\\
 \hline
-VEBONO062032 & 128,53 & 128,07 & 121,73 & 123,20  \\
+VEBONO062032 & 128,53 & 128,07 & 121,73 & 121,89  \\
 \hline
-VEBONO072033 & 130,00& 127,31 & 120,40 & 121,26\\
+VEBONO072033 & 130,00& 127,31 & 120,40 & 120,45\\
 \hline
-VEBONO022034 & 128,02 & 126,53 & 119,49 & 120,01\\
+VEBONO022034 & 128,02 & 126,53 & 119,49 & 119,51\\
 \hline
-SRC & NA & 3,5817 & 6,7379 & 0,8590\\
+Error & NA & 3,5817 & 6,7379 & 0,3608\\
 \hline
 \end{tabular}}
 \end{center}
 
 \newpage
 
-\subsection{Curvas de Rendimiento.\\}
+\hspace{0.4cm} Al igual que en la tabla comparativa para los TIF, la tabla anterior muestra los precios te\'oricos obtenidos por tres metodolog\'ias, la primera la de Splines de suavizaso, la segunda la de Svensson sin optimizar y finalmente la tercera, la de Svensson optimizado. Estas metodolog\'ias, son comparadas con los precios promedio para cada instrumento.
 
-\hspace{0.4cm} Curvas
+\hspace{0.4cm} Si se compara los precios te\'oricos obtenidos mediante la metodolog\'ia de Splines de suavizados con los precios obtenidos mediante la metodolog\'ia de Svensson sin optimizar, podemos decir que los primeros muestran un mejor comportamiento al ser comparados con los precios promedio de cada t\'itulo valor. Esto debido a que el error obtenido es menor.
+
+\hspace{0.4cm}Por otra parte, si estos precios son comparados con los obtenidos mediante la metodolog\'ia de Svensson optimizada, se observa que estos \'ultimos poseen un excelente comportamiento, ya que su error es bastante peque\~no. En la figura \ref{curva_spline_veb} se observa la curva de rendimientos obtenida para la fecha de valoraci\'on y cantidad de d\'ias seleccionado. En este caso la nube de puntos, al igual que para los TIF surgue de la base de datos de las operaciones m\'as recientes transadas con este tipo de instrumentos.
+
+\subsection{Curvas de Rendimiento.} \hspace{5cm}
 
 
 \begin{figure}[h]
@@ -263,26 +273,64 @@ SRC & NA & 3,5817 & 6,7379 & 0,8590\\
   \scalebox{0.80}{\includegraphics{images/c_veb.jpg}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Curva Spline VEBONO.}
+\label{curva_spline_veb}
 \end{figure}
 
 \newpage
 
-\subsection{Comparativo curvas de Rendimiento.\\}
+\subsection{Comparativo curvas de Rendimiento.}\hspace{5cm}
 
-\hspace{0.4cm} Curvas
+\hspace{0.4cm} En las figuras \ref{curva_spline_comp_tif} y \ref{curva_spline_comp_veb} , se muestra una comparaci\'on entre las curvas de rendimiento obtenidas mediante la metodolog\'ias de Splines de suavizado, Svensson sin opmitizar y Svensson Optimizado.
+Para el caso de la metodolog\'ia de los Splines se us\'o un par\'ametro de suavizamiento de 0.2, el mismo controla la suavidad de la curva obtenida. Por su parte las curvas obtenidas para las metodolog\'ias de Svensson optimizada y sin optimizar surgen de los par\'ametros considerados al momento de calcular los precios te\'oricos de los instrumentos.
 
+\hspace{0.4cm}Recordemos que para la metodolog\'ia Svensson sin optimizar se usaron unos par\'ametros por defecto, mientras que para la metodolog\'ia de Svensson optimizada se usaron aquellos par\'ametros de minimizaran la diferencia entre los precios te\'oricos y los precio promedio. 
+
+\newpage
 
 \begin{figure}[h]
   \scalebox{0.65}{\includegraphics{images/Comparativo_tif.png}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Curva TIF Spline vs Svensson.}
+\label{curva_spline_comp_tif}
 \end{figure}
+
+
+\begin{center}
+{\begin{tabular}[t]{|c |c |c |c |c |c |c |c |r|}
+\hline
+Metodolog\'ia / Par\'ametro / TIF & $\beta_{0}$ & $\beta_{1}$ & $\beta_{2}$ & $\beta_{3}$  &  $\tau_{1}$ & $\tau_{2}$ \\
+\hline
+Svensson sin optimizar & 0,1337 & -0,0100 & -0,3078 & -0,1340  & 0,5453 & 0,3506\\
+\hline
+Svensson Optimizado & 0,1430 & 0,2119 & -0,6438 & 0,3327 & 0,5744 & 0,0184 \\
+\hline
+\end{tabular}}
+\end{center}
+
+
+
+
+\newpage
 
 \begin{figure}[h]
   \scalebox{0.65}{\includegraphics{images/Comparativo_vebono.png}}
 %\includegraphics[width=0.7\textwidth]{Imagen022.png}
 \caption{Curva VEBONO Spline vs Svensson.}
+\label{curva_spline_comp_veb}
 \end{figure}
+
+\begin{center}
+{\begin{tabular}[t]{|c |c |c |c |c |c |c |c |r|}
+\hline
+Metodolog\'ia / Par\'ametro / VEBONO & $\beta_{0}$ & $\beta_{1}$ & $\beta_{2}$ & $\beta_{3}$  &  $\tau_{1}$ & $\tau_{2}$ \\
+\hline
+Svensson sin optimizar & 0,1358 & 0,1000 & -0,5037 & -0,2887 & 0,1195 & 0,5017\\
+\hline
+Svensson Optimizado & 0,1421 & 0,4845 & -0,4343 & -0,3514 & 0,1985 & 0,7851 \\
+\hline
+\end{tabular}}
+\end{center}
+
 
 \newpage
 
@@ -290,14 +338,12 @@ SRC & NA & 3,5817 & 6,7379 & 0,8590\\
 
 \hspace{0.4cm}La curva de rendimiento es una herramienta muy importante al momento de obtener informaci\'on acerca de la tasa de inter\'es o rendimiento a una fecha determinada ya que dicha curva relaciona la maduraci\'on o fecha de vencimiento con el rendimiento. Una de las aplicaciones de esta curva, es que a partir de ella es posible obtener con facilidad el precio de un determinado instrumento, bono o t\'itulo, lo cual es de suma utilidad al momento de querer realizar alguna operaci\'on con el mismo, ya sea compra o venta del instrumento, ya que se tendr\'ia de antemano un precio referencial a partir del cual se puede tomar una decisi\'on. En otras palabras, la curva de rendimiento es una herramienta muy \'util al momento de tomar decisiones al realizar alguna inversi\'on.
 
-\vspace{0.5cm}
+
 
 \hspace{0.4cm} Para determinar dicha curva, varias metodolog\'ias han sido desarrolladas. Existen dos grandes enfoques que permiten su c\'alculo, el primer enfoque se basa en el uso de las metodolog\'ias param\'etricas de estimaci\'on, las cuales se caracterizan por estar atadas a ciertos par\'ametros, su uso es muy frecuete. Entre ellas, principalmente destacan la metodolog\'ia de Nelson y Siegel introducida en 1987 $[2]$, la metodolog\'ia de Svensson desarrollada en 1994 $[3]$, entre otras.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm}Por otra parte, el segundo enfoque se centra en el uso de las metodolog\'ias no param\'etricas, las cuales se caracterizan por su flexibilidad ya que ellas no se encuentran atadas a ning\'un par\'ametro espec\'ifico sino que trabajan directamente con los datos suministrados. Entre ellas, destacan la metodolog\'ia de redes neuronales $[9]$, splines de polinomios $[6]$, splines c\'ubicos suavizados $[7]$, entre otras. En el presenta trabajo se aplica la \'ultima metodolog\'ia mencionada.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} La principal raz\'on de aplicar la metodolog\'ia de los splines c\'ubicos suavizados, fu\'e el balance que se obtiene como la misma, ya que ella presenta un equilibrio entre el ajuste a los datos y la suavidad de la curva resultante. Lo cual, es \'util cuando la data presenta mucho ruido ya que esta metodolog\'ia no interpola los valores ingresados sino que ajusta una curva suave que presenta el menor error de ajuste posible. En el presente trabajo se emple\'o la data de los Tif y Vebonos, instrumentos de la deuda p\'ublica nacional venezolana para el a\~no 2016 y 2017. Para ambos intrumentos se encontraron una cantidad aceptable de operaciones a partir de las cuales se calcu\'o el rendimiento y as\'i a partir de dichos valores calcular la curva de rendimientos. Una vez obtenida la curva, se procede a estimar los precios de los instrumentos involucrados.
