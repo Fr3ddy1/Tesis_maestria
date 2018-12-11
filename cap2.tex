@@ -34,7 +34,7 @@ informaci\'on de valores $f(xi)$ m\'as distantes son incorporadas. El procedimie
 
 \end{itemize}
 
-Interpolaci\'on lineal
+\subsection{Interpolaci\'on lineal.\\}
 
 \hspace{0.4cm} La interpolaci\'on lineal es un procedimiento muy utilizado para estimar los valores que toma una funci\'on en un intervalo del cual conocemos sus valores en los extremos $(x_{1}, f(x_{1}))$ y $(x_{2},f(x_{2}))$. Para estimar este valor utilizamos la aproximaci\'on a la funci\'on f(x) por medio de una recta $r(x)$ (de ah\'i el nombre de interpolaci\'on lineal, ya que tambi\'en existe la interpolaci\'on cuadr\'atica). 
 
@@ -79,7 +79,7 @@ $\displaystyle{p_{i}(x) = p_{i-1}(x) +  f_{i} (x_{0},x_{1},...,x_{i-1},x_{i}) \p
 \end{center}
 
 
-Interpolaci\'on de Lagrange
+\subsection{Interpolaci\'on de Lagrange.\\}
 
 \hspace{0.4cm} Empezamos con un conjunto de $n+1$ puntos en el plano (que tengan diferentes coordenadas x), $(x_{0}, y_{0}), (x_{1}, y_{1}), (x_{2}, y_{2}),...,(x_{n}, y_{n})$. As\'i, queremos encontrar una funci\'on polin\'omica que pase por esos $n+1$ puntos y que tengan el menor grado posible. Un polinomio que pase por varios puntos determinados se llama un polinomio de interpolaci\'on.
 
@@ -110,7 +110,7 @@ $\displaystyle{l_{j}(x) = \prod_{i=0,i \neq j}^{k} \frac{x-x_{i}}{x_{j}-x_{i}}  
 \hspace{0.4cm} Aunque el polinomio interpolador de Lagrange se emplea mayormente para interpolar funciones e implementar esto f\'acilmente en una computadora, tambi\'en tiene otras aplicaciones en el campo del \'algebra exacta, lo que ha hecho m\'as c\'elebre a este polinomio, por ejemplo en el campo de los proyectores ortogonales.
 
 
-Interpolaci\'on de Hermite
+\subsection{Interpolaci\'on de Hermite.\\}
 
 \hspace{0.4cm} El objetivo de esta interpolaci\'on Hermite es minimizar el error producido en la interpolaci\'on de Lagrange de la funci\'on $f(x)$ sobre el intervalo $[a, b]$ sin aumentar el grado del polinomio interpolador.
 
@@ -137,7 +137,7 @@ $\displaystyle{L(x) = \sum_{j=0}^{k} y_{j} l_{j} (x) }$
 \noindent donde $l_{j}(x)$ son los polinomios de la base de Lagrange.
 
 
-Interpolaci\'on Polin\'omica
+\subsection{Interpolaci\'on Polin\'omica.\\}
 
 \hspace{0.4cm}Asumamos que se tiene una tabla con n puntos, $(x_{1},y_{1})...,(x_{n},y_{n})$, donde los valores $x_{i}$, para $i=1,...,n$ est\'an ordenados de forma creciente y todos ellos son distintos. Supongamos que dichos puntos se representan en un plano cartesiano y se quiere determinar una curva suave que interpole dichos valores. As\'i, se desea determinar una curva que est\'e definida para todos los $x$ y tome los valores correspondientes de $y$, esto es, que interpole todos los datos de la tabla. Cabe destacar que los puntos considerados se les conoce como nodos.
 
@@ -269,7 +269,7 @@ $\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
 
 \vspace{0.5cm}
 
-Bases de splines
+\subsection{Bases de splines.\\}
 
 \hspace{0.4cm} En el subcampo matem\'atico de an\'alisis num\'erico, una B-spline o Basis spline (o traducido una l\'inea polin\'omica suave b\'asica), es una funci\'on spline que tiene el m\'inimo soporte con respecto a un determinado grado, suavidad y partici\'on del dominio. Un teorema fundamental establece que cada funci\'on spline de un determinado grado, suavidad y partici\'on del dominio, se puede representar como una combinaci\'on lineal de B-splines del mismo grado y suavidad, y sobre la misma partici\'on. El t\'ermino B-spline fue propuesto por Isaac Jacob Schoenberg y es la abreviatura de spline b\'asica. Las B-splines pueden ser evaluadas de una manera num\'ericamente estable por el algoritmo de Boor. De un modo simplificado, se han creado variantes potencialmente m\'as r\'apidas que el algoritmo de Boor, pero adolecen comparativamente de una menor estabilidad.
 
@@ -310,7 +310,7 @@ $\displaystyle{S^{0}(x) = \sum_{j=-\infty}^{\infty} y_{j} B^{0}_{j}(x),\hspace{0
 \hspace{0.4cm} Cuando los nodos son equidistantes, la B-spline se dice que es uniforme, de otro modo ser\'a no uniforme. Si dos nodos tj son id\'enticos, cualquiera de las posibles formas indeterminadas 0/0 se consideran 0.
 
 
-B-spline uniforme
+\subsection{B-spline uniforme.\\}
 
 \hspace{0.4cm} Cuando la B-spline es uniforme, las B-splines b\'asicas para un determinado grado n son s\'olo copias cambiadas de una a otra. Una alternativa no recursiva de la definici\'on de la B-splines $m-n+1$ b\'asica es,
 
@@ -342,7 +342,7 @@ $$ (t - t_{i})_{+}^{n} := \left\{ % para la llave grandota
 \right. $$
 
 
-B-spline cardinal
+\subsection{B-spline cardinal.\\}
 
 \hspace{0.4cm} Si se define $B_{0}$ como la funci\'on caracter\'istica de ${\displaystyle [-{\tfrac {1}{2}},{\tfrac {1}{2}}]}$, y $B_{k}$ recursivamente como el producto convoluci\'on,
 
@@ -366,7 +366,7 @@ $$ B_{i}^{n}(t) = \left\{ % para la llave grandota
 
 \hspace{0.4cm} En otras palabras si manipulamos un punto de control cambiamos s\'olo el comportamiento local de la curva y no el comportamiento global como con las curvas de B\'ezier. La funci\'on base se pueda obtener del polinomio de Bernstein. Algunos ejemplos de las bases B-splines se muestran acontinuaci\'on,
 
-B-spline constante
+\subsection{B-spline constante.\\}
 
 \hspace{0.4cm} La B-spline constante es la spline m\'as simple. Se define en un solo tramo de nodo y ni siquiera es continua en los nodos. Es s\'olo la funci\'on indicador de los diferentes tramos de nodo.
 
@@ -379,7 +379,7 @@ $$ B_{j}^{0}(t) = 1_{[t_{j},t_{j+1})} = \left\{ % para la llave grandota
 
 
 
-B-spline lineal
+\subsection{B-spline lineal.\\}
 
 \hspace{0.4cm} La B-spline lineal se define en dos tramos de nodo consecutivos y es continua sobre los nodos, pero no diferenciable.
 
@@ -392,7 +392,7 @@ $$ B_{j}^{1}(t) = \left\{ % para la llave grandota
 \right. $$
 
 
-B-spline cuadr\'atica uniforme
+\subsection{B-spline cuadr\'atica uniforme.\\}
 
 \hspace{0.4cm} Las B-splines cuadr\'aticas con nodo-vector uniforme es una forma com\'un de B-spline. La funci\'on base puede ser calculada f\'acilmente , y es igual para cada segmento, en este caso.
 
@@ -412,7 +412,7 @@ $\displaystyle{S_{i}(t) = \begin{bmatrix} t^2 & t & 1  \end{bmatrix} \frac{1}{2}
 \end{center}
 
 
-B-spline c\'ubica
+\subsection{B-spline c\'ubica.\\}
 
 \hspace{0.4cm} Una formulaci\'on B-spline para un solo segmento puede ser escrita como,
 
@@ -435,7 +435,7 @@ $\displaystyle{S(t) = \sum_{i=0}^{m-1} \theta_{i} B_{i}^{3}(t)  }$
 \hspace{0.4cm} Hay dos tipos de B-spline - uniforme y no uniforme. Una B-spline no uniforme es una curva donde los intervalos entre los puntos sucesivos de control no son, o no necesariamente son, iguales (el vector de nodos de espacios de nodo interiores no son iguales). Una forma com\'un es donde los intervalos se reducen sucesivamente a cero, interpolando los puntos de control.
 
 
-B-spline c\'ubica uniforme
+\subsection{B-spline c\'ubica uniforme.\\}
 
 \hspace{0.4cm} La B-spline c\'ubica con vector-nodo uniforme es la forma m\'as usual de B-spline. La funci\'on base puede ser f\'acilmente calculada, y es igual para cada segmento, en este caso. Puesto en forma de matriz, esto es,
 

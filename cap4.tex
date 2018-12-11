@@ -307,25 +307,20 @@ Svensson Optimizado & 0,1430 & 0,2119 & -0,6438 & 0,3327 & 0,5744 & 0,0184 \\
 \label{curva_spline_comp_tif}
 \end{figure}
 
-\hspace{0.4cm} En la figura \ref{curva_spline_comp_tif} se aprecia que la curva obtenida mediante la metodolog\'ia de los splines c\'ubicos de suavizado resulta ser la curva que menos altura alcanza en promedio siendo su valor m\'aximo $12 \%$, lo cual influye directamente en los precios obtenidos, esto debido a la relaci\'on inversa que existe entre el rendimiento y el precio de un instrumento. En este caso, al obtenerse rendimientos relativamente bajos se obtendr\'an precios relativamente elevados. 
+\hspace{0.4cm} En la figura \ref{curva_spline_comp_tif} se aprecia que la curva obtenida mediante la metodolog\'ia de los splines c\'ubicos de suavizado (curva roja) resulta ser la curva que menos altura alcanza en promedio siendo su valor m\'aximo $12 \%$, lo cual influye directamente en los precios obtenidos, esto debido a la relaci\'on inversa que existe entre el rendimiento y el precio de un instrumento. En este caso, al obtenerse rendimientos relativamente bajos se obtendr\'an precios relativamente elevados. 
 
-\hspace{0.4cm} Por su parte si se observa la curva de rendimientos obtenida mediante la metodolog\'ia de Svensson sin optimizar, la misma presenta alturas m\'as grandes que la curva anterior, alcanzando su m\'aximo en $12,5 \%$. Esto ocasiona, que para esta metodolog\'ia se obtengan precios un tanto m\'as bajos.
+\hspace{0.4cm} Por su parte si se observa la curva de rendimientos obtenida mediante la metodolog\'ia de Svensson sin optimizar (curva verde), la misma presenta alturas m\'as grandes que la curva anterior, alcanzando su m\'aximo en $12,5 \%$. Esto ocasiona, que para esta metodolog\'ia se obtengan precios un tanto m\'as bajos.
 
-\hspace{0.4cm} Finalmente si se observa la curva de rendimientos obtenida mediante la metodolog\'ia de Svensson optimizada, vemos que ella presenta las alturas m\'as elevadas, alcanzando su valor m\'aximo en $13 \%$ . De esta manera, los precios a obtener ser\'an m\'as bajos y en este caso los precios que m\'as se asemejan a los precios te\'oricos de los instrumentos TIF.
+\hspace{0.4cm} Finalmente si se observa la curva de rendimientos obtenida mediante la metodolog\'ia de Svensson optimizada (curva azul), vemos que ella presenta las alturas m\'as elevadas, alcanzando su valor m\'aximo en $13 \%$ . De esta manera, los precios a obtener ser\'an m\'as bajos y en este caso los precios que m\'as se asemejan a los precios te\'oricos de los instrumentos TIF.
 
 
 
 
 \newpage
 
-\begin{figure}[h]
-  \scalebox{0.65}{\includegraphics{images/Comparativo_vebono.png}}
-%\includegraphics[width=0.7\textwidth]{Imagen022.png}
-\caption{Curva VEBONO Spline vs Svensson.}
-\label{curva_spline_comp_veb}
-\end{figure}
+\hspace{0.4cm} La siguiente tabla muestra los par\'ametros utilizados para elaborar las curvas de rendimientos para el caso de la metodolog\'ia de Svensson sin optimizar y Svensson optimizado. Es importante destacar, que cada par\'ametro controla una secci\'on de la curva.
 
-\begin{center}
+
 {\begin{tabular}[t]{|c |c |c |c |c |c |c |c |r|}
 \hline
 Metodolog\'ia / Par\'ametro / VEBONO & $\beta_{0}$ & $\beta_{1}$ & $\beta_{2}$ & $\beta_{3}$  &  $\tau_{1}$ & $\tau_{2}$ \\
@@ -335,7 +330,20 @@ Svensson sin optimizar & 0,1358 & 0,1000 & -0,5037 & -0,2887 & 0,1195 & 0,5017\\
 Svensson Optimizado & 0,1421 & 0,4845 & -0,4343 & -0,3514 & 0,1985 & 0,7851 \\
 \hline
 \end{tabular}}
-\end{center}
+
+\vspace{0.5cm}
+
+\hspace{0.4cm} La figura \ref{curva_spline_comp_veb} muestra una comparaci\'on entre las curvas obtenidas por las tres metodolog\'ias consideradas. La curva roja muestra la curva de rendimientos obtenida mediante la metodolog\'ia de Splines c\'ubicos de suavizado, la misma presenta ciertas ``jorobas", las cuales son ocasionadas por las observaciones obtenidas para el per\'iodo de estudio considerado. Esta curva presenta en promedio alturas m\'as bajas que las curvas obtenidas por las otras metodolog\'ias, raz\'on por la cual sus precios tender\'an a ser m\'as elevados.
+
+\hspace{0.4cm} Por su parte las curvas obtenidas mediante las metodolog\'ias de Svensson sin optimizar y optmizada, son muy parecidas, s\'olo existe una peque\~na diferencia en el corto plazo. Sus alturas en comparaci\'on con la curva de los Splines son m\'as elevadas, lo cual ocasiona que sus precios sean relativamente m\'as bajos.
+
+\newpage
+
+\begin{figure}[h]
+  \scalebox{0.65}{\includegraphics{images/Comparativo_vebono.png}}
+\caption{Curva VEBONO Spline vs Svensson.}
+\label{curva_spline_comp_veb}
+\end{figure}
 
 
 \newpage
@@ -353,3 +361,15 @@ Svensson Optimizado & 0,1421 & 0,4845 & -0,4343 & -0,3514 & 0,1985 & 0,7851 \\
 
 
 \hspace{0.4cm} La principal raz\'on de aplicar la metodolog\'ia de los splines c\'ubicos suavizados, fu\'e el balance que se obtiene como la misma, ya que ella presenta un equilibrio entre el ajuste a los datos y la suavidad de la curva resultante. Lo cual, es \'util cuando la data presenta mucho ruido ya que esta metodolog\'ia no interpola los valores ingresados sino que ajusta una curva suave que presenta el menor error de ajuste posible. En el presente trabajo se emple\'o la data de los Tif y Vebonos, instrumentos de la deuda p\'ublica nacional venezolana para el a\~no 2016 y 2017. Para ambos intrumentos se encontraron una cantidad aceptable de operaciones a partir de las cuales se calcu\'o el rendimiento y as\'i a partir de dichos valores calcular la curva de rendimientos. Una vez obtenida la curva, se procede a estimar los precios de los instrumentos involucrados.
+
+\hspace{0.4cm} Al realizar la comparaciones de los precios te\'oricos obtenidos mediante las metodolog\'ias de Splines c\'ubicos de suavizado, Svensson no optimizado y Svensson optimizado, se puede afirmar que los precios te\'oricos que m\'as se asemejan a los precios promedio de cada tipo de instrumento, son aquellos obtenidos por la metodolog\'ia de Svensson optimizado. La raz\'on de esto se debe al proceso de optimizaci\'on que se lleva a cabo en dicha metodolog\'ia en donde se busca minimizar esta brecha. 
+
+
+\hspace{0.4cm}De entrada esta es la principal fortaleza de esta metodolog\'ia, pero esto ocasiona tambi\'en que la misma dependa en demas\'ia de los precios promedio, lo cual en ocasiones no es del todo recomendable, puesto que en caso de considerar un precio promedio at\'ipico para alg\'un instrumento, la metodolog\'ia buscar\'a que los precios te\'oricos se asemejen a dicho precio promedio. De esta manera, la principal fortaleza de esta metodolog\'ia se puede convertir en una de sus debilidades.
+
+\hspace{0.4cm} Teniendo en cuenta esto, la metodolog\'ia de los Splines c\'ubicos de suavizado tiene una ventaja ya que la misma no depende del comportamiento de los precios promedio, sino que la misma al ser una metodolog\'ia no param\'etrica se basa en trabajar directamente con los datos. Lo cual en este caso, es trabajar a partir del comportamiento de las operacione que se realicen con cada tipo de instrumento para un horizonte temporal dado.
+
+\hspace{0.4cm} De esta manera, la metodolog\'ia de los Splines c\'ubicos de suavizado se considera una alternativa viable al momento de calcular los precios te\'oricos de los instrumentos de la deuda p\'ublica nacional para un tiempo determinado, con el fin de realizar la valoraci\'on de alg\'un portafolio y de esta manera saber si existen ganancia o perdidas por la tenencia de alg\'un instrumento. Como problema a resolver en futuros trabajos, se propone el c\'alculo del par\'ametro de suavizamiento de manera autom\'atica. 
+
+
+
