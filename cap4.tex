@@ -1,122 +1,6 @@
 \chapter{Resultados y conclusiones.}
 
-
-
-
-\section{Estimaci\'on de par\'ametros y curva de rendimiento.}
-
-\hspace{0.4cm} Una vez construida la base de datos, se proceder\'a a utilizar los splines de suavizado para obtener los par\'ametros necesarios para la curva de rendimientos. Recordemos que esta curva relaciona el plazo del instrumento con su rendimiento.
-
-
-\hspace{0.4cm} Es importante se\~nalar que se estimar\'a una curva por cada tipo de instrumento, as\'i se obtendr\'a un curva para los TIF y una curva para los VEBONO. Por tal raz\'on a partir de la base de datos, se separar\'a los TIF de los VEBONOS, y se considerar\'an s\'olo las columnas Plazo y Rendimiento para estimar dicha curva. Seg\'un sea el caso, s\'olo considerar\'an aquellas observaciones que tengan decisi\'on 1.
-
-
-\hspace{0.4cm} Aunado a cada tipo de instrumento (TIF \'o VEBONO), se considerar\'a un instrumento de otro tipo este es la letra del tesoro, este tipo de instrumento representar\'a el punto inicial la curva, cabe destacar que la letra a considerar debe ser aquella cuya fecha de operaci\'on sea la m\'as reciente con respecto a la fecha de valoraci\'on (d\'ia en que se quiere conocer los rendimientos estimados).
-
-
-\hspace{0.4cm} A partir de la curva de rendimientos obtenida (Ver figura \ref{c_rend}) es posible calcular un rendimiento estimado para alg\'un tipo de instrumento a partir de su plazo, que no es m\'as que la cantidad de d\'ias que faltan por transcurrir hasta su vencimiento. Este valor es de suma importancia ya que a partir del mismo es posible calcular el precio estimado asociado a cada instrumento en un d\'ia espec\'ifico. Con lo cual es posible saber a partir de la historia (base de datos), el precio estimado de alg\'un instrumento que le interese a cierta instituci\'on y por ende saber si ese t\'itulo es rentable o no, es decir, si vale la pena invertir en el mismo o no.
-
-\begin{figure}[h]
-  \scalebox{0.40}{\includegraphics{images/curvarend.jpeg}}
-\caption{Curva de Rendimiento.}
-\label{c_rend}
-\end{figure}
-
-\hspace{0.4cm} Como se dijo anteriormente, los resultados de los precios obtenidos mediante el uso de la metodolog\'ia de splines de suavizado ser\'an comparados con los precios obtenidos a trav\'es de la metodolog\'ia de Svensson. En dicha metodolog\'ia existe un proceso de optimizaci\'on el cual permite encontrar los par\'ametros id\'oneos, de tal manera que la diferencia entre los precios promedio de cada instrumento y su precio te\'orico sea lo m\'as peque\~na posible. El proceso de esta optimizaci\'on se muestra a continuaci\'on.
-
-
-%\section{Elecci\'on \'optima del par\'ametro de suavizamiento.}
-
-\section{Proceso de Optimizaci\'on de Svensson.}
-
-
-\hspace{0.4cm} Para aplicar este proceso es necesario tener una funci\'on objetivo, sobre la cual se realizar\'a el proceso de optimizaci\'on, ya sea para maximizar \'o minimizar dicha funci\'on. Dependiendo de la forma de dicha funci\'on el proceso de optimizaci\'on ser\'a lineal o no lineal. En nuestro caso particular se llevar\'a a cabo un proceso de optimizaci\'on no lineal donde se buscar\'a minimizar la funci\'on objetivo.
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} En el c\'alculo de nuestra funci\'on objetivo inteviene el concepto de la duraci\'on de un bono \'o t\'itulo, la cu\'al es una medida del vencimiento medio ponderado de todos los flujos que paga un bono. La misma viene dada mediante la siguiente expresi\'on, \\
-
-\begin{center}
-
-$\displaystyle{Duracion = \frac{1+r}{r} - \frac{n(c-r)+(1+r)}{c(1+r)^{n}-(c-r)}}$
-
-\end{center}
-
-\vspace{0.5cm}
-
-\newpage
-
-\noindent donde
-
-\begin{itemize}
-  \item r es el rendimiento al vencimiento del bono durante el per\'iodo considerado.
-  \item n es el n\'umero de per\'iodos que restan hasta la fecha de vencimiento del bono.
-  \item c es el cup\'on del bono.
-\end{itemize}
-
-
-\vspace{0.5cm}
-
-\hspace{0.4cm} As\'i nuestra funci\'on objetivo viene dada mediante la siguiente expresi\'on,\\
-
-\begin{equation}\label{ecua2}
-  f(x) = \sum_{i=1}^{n} (w_{i}\epsilon(x)_{i} )^2
-\end{equation}
-
-
-
-\vspace{0.5cm}
-\noindent donde $w_{i}$ representan las ponderaciones, y se calculan mediante la siguiente expresi\'on,\\
-
-\begin{center}
-
-$\displaystyle{w_{i} = \frac{\frac{1}{D_{i}}}{\sum_{j=1}^{N}\frac{1}{D_{j}}}}$
-
-\end{center}
-
-
-\noindent por su parte, $\epsilon_{i}(x)= \hat{Pr}_{i}(x)-Pr_{i}$, donde $Pr_{i}$ representan los precios promedios de los t\'itulos a considerar, de entrada este es un par\'ametro \'o valor con el que se cuenta. Por otra parte $\hat{Pr}_{i}(x)$ representa los precios estimados donde $x$ es el par\'ametro que va a variar y es el valor que se quiere optimizar.
-
-
-\hspace{0.4cm} Mediante la funci\'on objetivo descrita anteriormente se busca minimizar la diferencia que existe entre los precios promedios y los precios estimados, calculando un valor \'optimo del par\'ametro $x$ mediante el proceso de optimizaci\'on no lineal.
-
-
-
-\hspace{0.4cm}El proceso de optimizaci\'on se realiz\'o mediante el software estad\'istico R, mediante el paquete ``nloptr". En este paquete, se encuentra el comando ``aulag" el cual minimiza un funci\'on objetivo y devuelve entre otros valores el par\'ametro m\'as \'optimo, que hace que la funci\'on sea m\'inima. Un ejemplo del uso de este comando se presenta acontinuaci\'on,
-
-\begin{center}
-  $ala2=auglag(1.22, fn=mifuncion, hin=res)$
-\end{center}
-
-
-\noindent donde el primer argumento debe ser el valor inicial del par\'ametro a optimizar, el segundo argumento ``fn" se refiere a la funci\'on que se desea optimizar, finalmente en el tercer par\'ametro ``hin" se indican las restricciones sobre el par\'ametro a optimizar, en este caso la restricci\'on establecida es que el par\'ametro sea mayor a cero.
-
-
-\hspace{0.4cm} Recordemos que la tasa cero cup\'on que se obtiene mediante la metodolog\'ia de Svensson est\'a dada por la siguiente expresi\'on,\\
-
-
-$\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau_{1}}\right)}{m/\tau_{1}} + \beta_{2} \left(\frac{\left(1-e^\frac{-m}{\tau_{1}}\right)}{m/\tau_{1}} -  e^\frac{-m}{\tau_{1}}\right) + \beta_{3} \left(\frac{\left(1-e^\frac{-m}{\tau_{2}}\right)}{m/\tau_{2}} -  e^\frac{-m}{\tau_{2}}\right)}$\\
-
-\noindent esta expresi\'on est\'a sujeta a las siguientes restricciones,
-
-\begin{itemize}
-  \item $\beta_{0} > 0$
-  \item $\beta_{0}+\beta_{1} > 0$
-  \item $\tau_{1} > 0$
-  \item $\tau_{2} > 0$
-\end{itemize}
-
-\noindent cada par\'ametro controla una secci\'on de la curva. La f\'ormula anterior es de suma importancia ya que ella interviene en el c\'alculo del precio te\'orico de cada instrumento. El proceso de optimizaci\'on act\'ua directamente sobre esta f\'ormula, ya que el mismo se centra en variar los par\'ametros de tal manera que la funci\'on objetivo sea minimizada.
-
-\hspace{0.4cm} Como se observ\'o en las secciones anteriores el par\'ametro de suavizamiento fu\'e elegido mediante el m\'etodo de ensayo y error el cual no es para nada \'optimo pues a priori este m\'etodo no nos garantiza que el valor seleccionado sea el mejor, ya que se contar\'ian con una gran cantidad de posibles valores a seleccionar, con el fin  de encontrar dicho par\'ametro el procedimiento anteriormente explicado puede ser implementado. 
-
-\hspace{0.4cm} Sin embargo, al realizar este proceso, se obtienen curvas que no son para nada suaves y en ocasiones no poseen ningunas de las formas usuales de la curva de rendimientos. Esto es debido a que en este caso este proceso, var\'ia el par\'ametro de suavizamiento de tal manera que la diferencia entre el precio promedio y el precio te\'orico sea lo mas peque\~na posible y en este proceso no existe un par\'ametro que controle la forma de la curva obtenida. Por lo tanto, su aplicaci\'on presenta algunos inconvenientes.  
-
-\newpage
-
-\section{Resultados.}
-
-\subsection{Comparaci\'on TIF}\hspace{5cm}
+\section{Comparaci\'on TIF.}
 
 \hspace{0.4cm} La comparaci\'on de los precios te\'oricos obtenidos mediante el uso de la metodolog\'ia de los Splines c\'ubicos de suavizado con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on.
 
@@ -189,7 +73,7 @@ Error & NA & 4,6224 & 5,2694 & 0,3610\\
 
 \newpage
 
-\subsection{Comparaci\'on VEBONO}\hspace{5cm}
+\section{Comparaci\'on VEBONO.}
 
 
 \hspace{0.4cm}La siguiente tabla muestra los resultados de los precios te\'oricos obtenidos para los Vebonos mediante las diferentes metodolog\'ias consideradas. Para la creaci\'on de la misma, se consideraron los siguientes par\'ametros,
@@ -278,7 +162,7 @@ Error & NA & 3,5817 & 6,7379 & 0,3608\\
 
 \newpage
 
-\subsection{Comparativo curvas de Rendimiento.}\hspace{5cm}
+\section{Comparativo curvas de Rendimiento.}
 
 \hspace{0.4cm} En las figuras \ref{curva_spline_comp_tif} y \ref{curva_spline_comp_veb} , se muestra una comparaci\'on entre las curvas de rendimiento obtenidas mediante la metodolog\'ias de Splines de suavizado, Svensson sin opmitizar y Svensson Optimizado.
 Para el caso de la metodolog\'ia de los Splines se us\'o un par\'ametro de suavizamiento de 0.2 para los TIF y 0.4 para los Vebono, recordemos que este factor controla la suavidad de la curva obtenida. Por su parte las curvas obtenidas para las metodolog\'ias de Svensson optimizada y sin optimizar surgen de los par\'ametros considerados al momento de calcular los precios te\'oricos de los instrumentos.

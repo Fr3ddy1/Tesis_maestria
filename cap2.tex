@@ -23,6 +23,7 @@ de la Tierra, que se realizan en equipos o estaciones meteorol\'ogicas y se nece
 eficiente. La mayor\'ia de algoritmos comienzan con un punto cercano $f(x_{i})$, y poco a poco van aplicando correcciones m\'as pequenas a medida que la 
 informaci\'on de valores $f(xi)$ m\'as distantes son incorporadas. El procedimiento toma aproximadamente $O(N^{2})$ operaciones. Si la funci\'on tiene un comportamiento suave, la \'ultima correci\'on ser\'a la m\'as pequena y puede ser utilizada para estimar un l\'imite a rango de error.
 
+\newpage
 
 \hspace{0.4cm} Dentro de las intepolaciones m\'as usadas podemos destacar,
 
@@ -91,12 +92,19 @@ $\displaystyle{p_{i}(x) = p_{i-1}(x) +  f_{i} (x_{0},x_{1},...,x_{i-1},x_{i}) \p
 $\displaystyle{L(x) = \sum_{j=0}^{k} y_{j} l_{j}(x)}$
 \end{center}
 
+\vspace{0.2cm}
 
 \noindent donde $ l_{j}(x)$ son las bases polin\'omicas de Lagrange ,
+
+
+\vspace{0.2cm}
 
 \begin{center}
 $\displaystyle{l_{j}(x) = \prod_{i=0,i \neq j}^{k} \frac{x-x_{i}}{x_{j}-x_{i}}  }$
 \end{center}
+
+\vspace{0.2cm}
+
 
 \hspace{0.4cm} La funci\'on que estamos buscando es una funci\'on polin\'omica $L(x)$ de grado $k$ con el problema de interpolaci\'on puede tener tan solo una soluci\'on, pues la diferencia entre dos tales soluciones, ser\'ia otro polinomio de grado $k$ a lo sumo, con $k+1$ ceros. Por lo tanto, $L(x)$ es el \'unico polinomio interpolador.
 
@@ -108,7 +116,6 @@ $\displaystyle{l_{j}(x) = \prod_{i=0,i \neq j}^{k} \frac{x-x_{i}}{x_{j}-x_{i}}  
 \hspace{0.4cm} Sin embargo, pocos estudios requieren la interpolaci\'on de tan s\'olo 6 puntos. Se suelen contar por decenas e incluso centenas. En estos casos, el grado de este polimonio ser\'ia tan alto que resultar\'ia inoperable. Por lo tanto, en estos casos, se recurre a otra t\'ecnica de interpolaci\'on, como por ejemplo a la Interpolaci\'on polin\'omica de Hermite o a los splines c\'ubicos. Otra gran desventaja, respecto a otros m\'etodos de interpolaci\'on, es la necesidad de recalcular todo el polinomio si se var\'ia el n\'umero de nodos.
 
 \hspace{0.4cm} Aunque el polinomio interpolador de Lagrange se emplea mayormente para interpolar funciones e implementar esto f\'acilmente en una computadora, tambi\'en tiene otras aplicaciones en el campo del \'algebra exacta, lo que ha hecho m\'as c\'elebre a este polinomio, por ejemplo en el campo de los proyectores ortogonales.
-
 
 \subsection{Interpolaci\'on de Hermite.\\}
 
@@ -142,8 +149,6 @@ $\displaystyle{L(x) = \sum_{j=0}^{k} y_{j} l_{j} (x) }$
 \hspace{0.4cm}Asumamos que se tiene una tabla con n puntos, $(x_{1},y_{1})...,(x_{n},y_{n})$, donde los valores $x_{i}$, para $i=1,...,n$ est\'an ordenados de forma creciente y todos ellos son distintos. Supongamos que dichos puntos se representan en un plano cartesiano y se quiere determinar una curva suave que interpole dichos valores. As\'i, se desea determinar una curva que est\'e definida para todos los $x$ y tome los valores correspondientes de $y$, esto es, que interpole todos los datos de la tabla. Cabe destacar que los puntos considerados se les conoce como nodos.
 
 
-\vspace{0.5cm}
-
 \hspace{0.4cm} La primera idea natural es usar una funci\'on polinomial que represente esta curva, la cual se puede representar como sigue,
 
 \vspace{0.5cm}
@@ -153,25 +158,23 @@ $\displaystyle{P_{n} = \sum_{i=0}^{n-1} a_{i}x^{i}}$
 
 \end{center}
 
+\vspace{0.2cm}
+
 \noindent tal curva se le conoce como funci\'on polinomial interpoladora de grado n. N\'otese que en cada nodo se satisface que $P_{n}(x_{k})=y_{k}$, donde $k=1,...,n$.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} As\'i, se tiene que si la tabla es representada mediante una funci\'on subyacente $f(x)$ tal que $f(x_{k})=y_{k}$, para todo k, entonces esta funci\'on puede ser aproximada mediante $P_{n}$, en los puntos intermedios.
 
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} No ser\'ia descabellado pensar que a medida que los nodos se incrementan, la aproximaci\'on ser\'ia cada vez mejor, lamentablemente esto no siempre es cierto, debido a que en el caso de tener una data con mucho ruido la interpolaci\'on no tendr\'ia mucho sentido ya que la varianza de los valores interpolados ser\'ia muy grande. En este caso, los polinomios interpoladores resultantes ser\'ian una mala representaci\'on de la funci\'on subyacente.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Para evitar este fen\'omeno, puede ser de utilidad relajar la condici\'on de que $f(x)$ deber\'ia ser una funci\'on que interpole todos los valores dados y en su lugar usar un trozo de un polinomio local de interpolaci\'on. La funci\'on mediante la cual se logra esta interpolaci\'on se le conoce como spline.
 
 
 \section{Splines.}
 
-\vspace{1 cm}
 
 \hspace{0.4cm} Una funci\'on spline $S(x)$ es una funci\'on que consta de trozos de polinomios unidos por ciertas condiciones de suavizado. Un ejemplo simple, es una funci\'on poligonal (spline de primer grado), la cual se forma por polinomios lineales unidos, los cuales se definen entre cada par de nodos. Entre los nodos $x_{j}$ y $x_{j+1}$ se define un spline de primer grado como sigue, \\
 
@@ -193,10 +196,6 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 \end{figure}
 
 
-
-
-\vspace{0.5cm}
-
 \hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas (ver figura \ref{spline_c}). Los polinomios $P(x)$ a trav\'es de los que construimos el Spline tienen grado 2. Esto quiere decir, que va a tener la forma $P(x) = ax^2 + bx + c$.
 
 \hspace{0.4cm} Como en la interpolaci\'on segmentaria lineal, vamos a tener $N-1$ ecuaciones (donde N son los puntos sobre los que se define la funci\'on). La interpolaci\'on cuadr\'atica nos va a asegurar que la funci\'on que nosotros generemos a trozos con los distintos $P(x)$ va a ser continua, ya que para sacar las condiciones que ajusten el polinomio, vamos a determinar como condiciones,
@@ -209,10 +208,8 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 
 
 
-
 \hspace{0.4cm} Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas (ver figura \ref{spline_3}). Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
 
-\vspace{0.5cm}
 
 \begin{figure}[h]
   \scalebox{0.50}{\includegraphics{images/spline_cuadratico.png}}
@@ -259,15 +256,12 @@ $\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
 \caption{Comparativo Splines.}
 \end{figure}
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Otra caracter\'istica de los splines es que con la adici\'on de un par\'ametro s\'olo se aumenta la dimensionalidad del espacio de par\'ametros en una unidad, ya que tres de los cuatro par\'ametros est\'an restringidos. De igual forma, al incrementar el n\'umero de nodos los splines toman formas funcionales m\'as flexibles, lo cual muestra la relaci\'on entre el grado aproximaci\'on que se logra con el spline y el n\'umero de nodos que lo definen.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Mientras que las funciones spline son una herramienta interesante para interpolar funciones suaves, encontrarlas num\'ericamente no es tarea f\'acil. Una manera eficiente y muy estable para generar los splines necesarios para aproximar la funci\'on subyacente $f(x)$, es usando las bases de los B-splines c\'ubicos.
 
-\vspace{0.5cm}
 
 \subsection{Bases de splines.\\}
 
@@ -332,6 +326,8 @@ $\displaystyle{B_{n}(t):= \frac{n+1}{n} \sum_{i=0}^{n+1}w_{i}^{n}(t - t_{i})_{+}
 $\displaystyle{w_{i}^{n} := \prod_{j=0, j\neq i}^{n+1} \frac{1}{t_{j}- t_{i}}}$
 \end{center}
 
+\vspace{0.2cm}
+
 \noindent n\'otese que $(t - t_{i})_{+}^{n}$ es la funci\'on potencia truncada definida como,
 
 $$ (t - t_{i})_{+}^{n} := \left\{ % para la llave grandota
@@ -341,6 +337,7 @@ $$ (t - t_{i})_{+}^{n} := \left\{ % para la llave grandota
         \end{tabular}
 \right. $$
 
+\newpage
 
 \subsection{B-spline cardinal.\\}
 
@@ -377,7 +374,7 @@ $$ B_{j}^{0}(t) = 1_{[t_{j},t_{j+1})} = \left\{ % para la llave grandota
         \end{tabular}
 \right. $$
 
-
+\newpage
 
 \subsection{B-spline lineal.\\}
 
@@ -391,6 +388,7 @@ $$ B_{j}^{1}(t) = \left\{ % para la llave grandota
         \end{tabular}
 \right. $$
 
+\vspace{0.2cm}
 
 \subsection{B-spline cuadr\'atica uniforme.\\}
 
@@ -420,9 +418,11 @@ $\displaystyle{S_{i}(t) = \begin{bmatrix} t^2 & t & 1  \end{bmatrix} \frac{1}{2}
 $\displaystyle{S_{i}(t) = \sum_{k=0}^{3} \theta_{i-3+k} B_{i-3+k}^{3}(t) \hspace{0.2cm} con \hspace{0.2cm} t \in [0,1]  }$
 \end{center}
 
+\vspace{0.2cm}
 
 \noindent donde $S_{i}$ es el i-\'esimo segmento B-spline, $\theta$ es el conjunto de puntos de control, el segmento i y k es el \'indice del punto de control local y $ B_{i-3+k}^{3}(t)$ representa la base de B-spline de grado 3. Un conjunto de puntos de control $\theta$ ser\'ia  ${\displaystyle \theta_{i}^{w}=(w_{i}x_{i},w_{i}y_{i},w_{i}z_{i},w_{i})}$ donde el ${\displaystyle w_{i}}$ es el peso, tirando de la curva hacia el punto de control ${\displaystyle \theta_{i}}$ mientras que aumenta o se desplazan fuera de la curva, a la vez que disminuye.
 
+\newpage
 
 \hspace{0.4cm} Toda una serie de segmentos se definir\'ia como,
 
@@ -446,12 +446,8 @@ $\displaystyle{S_{i}(t) = \begin{bmatrix} t^3  & t^2 & t & 1  \end{bmatrix} \fra
 
 
 
-
-
 \hspace{0.4cm}Para splines de grados m\'as elevados, algunas arbitrariedades surgen al momento de calcular los coeficientes $\theta_{i}^{k}$. Por lo tanto, debido a que en las aplicaciones estadisticas existe un mayor inter\'es por encontrar una aproximaci\'on que una interpolaci\'on, la t\'ecnica de minimos cuadros puede ser empleada para calcular estos valores.
 
-
-\vspace{0.5cm}
 
 \hspace{0.4cm} Ahora bien, supongamos que se tiene un conjunto de $m$ funciones diferenciables $f(x)$, con soporte en el intervalo $[a,b]$, las cuales satifacen las siguientes condiciones,
 
@@ -467,7 +463,6 @@ $\displaystyle{S_{i}(t) = \begin{bmatrix} t^3  & t^2 & t & 1  \end{bmatrix} \fra
 
 \hspace{0.4cm} El problema es encontrar entre todas esas funciones, una funci\'on tal que tenga la m\'inima integral del cuadro de su segunda derivada, esto es, una funci\'on que tenga el valor m\'as peque\~no de $\int_{a}^{b} (f^{(m)}(x))^2 dx$. Dicha funci\'on ser\'a la elecci\'on m\'as \'optima al momento de hallar un balance entre suavidad y ajuste de los datos.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Se puede desmostrar que la soluci\'on de este problema es \'unica y la funci\'on en cuesti\'on es un spline polinomial que cumple la condici\'on i), y adem\'as satisface que,
 
@@ -505,6 +500,7 @@ distribuci\'on de probabilidad de las observaciones de la muestra. Si bien en la
   \item Forma la base a partir de la cual se extienden los conceptos para regresi\'on no param\'etrica m\'ultiple.
 \end{itemize}
 
+\newpage
 
 \section{Regresi\'on no param\'etrica mediante splines de suavizado.}
 
@@ -515,61 +511,65 @@ distribuci\'on de probabilidad de las observaciones de la muestra. Si bien en la
 $\displaystyle{Y_{i}=f(X_{i})+\epsilon_{i}}, \hspace{0.3cm} para \hspace{0.2cm} i=1,...,n$
 \end{center}
 
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \noindent donde los $\epsilon_{i}$ son errores de media cero independientes e id\'enticamente distribuidos.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Uno de los posibles m\'etodos para emplear splines es aproximar la funci\'on de regresi\'on subyacente mediante las bases de splines, por ejemplo, la base de los B-splines c\'ubicos. As\'i, se escoge una secuencia fija de nodos $-\infty<t_{1}<t_{2}<...<t_{J}<\infty$, los cuales pueden diferir de los predictores. Luego, se calculan los elementos de la base c\'ubica de spline correspondiente.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm}Es posible mostrar que s\'olo son necesarios $J+4$ elementos de esta base. Denotemos a estos elementos por $B_{j}(x)$, as\'i el spline polinomial lo podemos expresar como sigue,
+
+\vspace{0.2cm}
+
 
 \begin{center}
 
 $\displaystyle{S(x)=\sum_{j=1}^{J+4} \theta_{j}B_{j}(x)}$
 \end{center}
 
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \hspace{0.4cm}Entonces los coeficientes $\theta_{j}$ pueden ser calculados al ser considerados como los par\'ametros que se obtienen al minimizar la suma de los errores al cuadrado,
 
- \begin{center}
+\vspace{0.2cm}
 
+
+\begin{center}
 $\displaystyle{\sum_{i=1}^{n} \left[ Y_{i} - \sum_{j=1}^{J+4} \theta_{j}B_{j}(X_{j})\right]^2}$
 \end{center}
 
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \hspace{0.4cm}Denotamos por $\hat{\theta_{j}}$ al estimador de m\'inimos cuadrados y definimos el estimador del spline polinomial como sigue,
 
- \begin{center}
+\vspace{0.2cm}
 
+
+\begin{center}
 $\displaystyle{ \hat{f}_{n}(x) = \sum_{j=1}^{J+4} \hat{\theta_{j}}B_{j}(x)}$
 \end{center}
 
-\vspace{0.5cm} Otro enfoque, se basa en la idea de encontrar un curva suave que minimize la suma penalizada de errores al cuadrado, es decir, que minimize la siguiente expresi\'on,
+\vspace{0.2cm}
+
+
+\hspace{0.5cm} Otro enfoque, se basa en la idea de encontrar un curva suave que minimize la suma penalizada de errores al cuadrado, es decir, que minimize la siguiente expresi\'on,
 
 \begin{equation}\label{min}
   n^{-1}\sum_{j=1}^{n}(Y_{j}-f(X_{j}))^2+\mu \int_{a}^{b} [f^{(m)} (x)]^2 dx
 \end{equation}
 
-\vspace{0.5cm}
-
+\vspace{0.2cm}
 
 \noindent para alg\'un $\mu > 0$. As\'i como el enfoque de interpolaci\'on anterior, la soluci\'on de este problema de minimizaci\'on es un spline, el cual recibe el nombre de estimador de spline de suavizado.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} En particular, para el caso $m=2$ el minimizador de (\ref{min}), es un spline c\'ubico natural. Note que $\mu$ juega el papel de par\'ametro de suavizado, este t\'ermino se puede interpretar como una penalizaci\'on por rugosidad de la funci\'on. Curvas que cambian lenta o suavemente presentan un valor peque\~no de la integral, por ejemplo, en una funci\'on lineal la integral toma el valor de cero.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} De hecho, la primera suma en (\ref{min}) penaliza la falta de fidelidad de la aproximaci\'on de la data mediante el spline. El segundo t\'ermino es el responsable de la suavidad de la aproximaci\'on obtenida mediante el spline. Para ver esto consid\'erese los casos extremos, es decir, cuando $\mu =0$ y $\mu=\infty$. El primer caso conduce a una interpolaci\'on, esto es $\hat{f}(X_{i})=Y_{i}$ para $i=1,...,n$. El otro caso, conduce a una regresi\'on lineal pues $f^{(2)}(x)\equiv 0$.
 
-\vspace{0.5cm}
 
 \hspace{0.4cm} Por lo tanto $\mu$ es el par\'ametro de suavizado que controla la medida del estimador del spline polinomial, el cual puede variar desde el modelo m\'as complicado e inestable hasta el modelo m\'as simple. En otras palabras, la ecuaci\'on (\ref{min}) representa un balance entre la fidelidad o ajuste de los datos, representado mediante la suma de los residuos al cuadrado y la suavidad de la curva resultante, la cual se representa por la integral del cuadrado de la m-\'emisa derivada.
 
