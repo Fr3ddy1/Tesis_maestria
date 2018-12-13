@@ -1,7 +1,71 @@
-\chapter*{Resumen}
+\chapter*{Introducci\'on.}
 
-\hspace{0.4cm} La curva de rendimientos es una herramienta muy utilizada por los inversionistas al momento de realizar alguna operaci\'on, ya que la misma refleja el precio intertemporal del dinero. Para su c\'alculo o estimaci\'on existen diversas metodolog\'ias, entre las que se destacan las metodolog\'ias param\'etricas y las no param\'etricas cada una con sus ventajas y desventajas.
+\hspace*{0.4 cm} La curva de redimientos es una herramienta ampliamente utilizada por las autoridades de los bancos centrales en sus decisiones de pol\'itica monetaria, as\'i como tambi\'en por los agentes privados en la planificaci\'on de sus inversiones en instrumentos financieros [1]. La misma tiene una importancia capital
+para el mundo acad\'emico y pr\'actico desde el punto de vista econ\'omico y financiero, al reflejar el precio intertemporal del dinero.
 
-\hspace{0.4cm} Uno de los principales usos de esta herramienta es el de estimar los precios te\'oricos de alg\'un instrumento financiero en un instante determinado, particularmente en este trabajo se consideraran los instrumentos de la Deuda P\'ublica Nacional (DPN). Esto con el fin de poder valorar un portafolio de inversiones en un momento dado y determinar as\'i si el mismo genera una ganacia \'o una perdida.
 
-\hspace{0.4cm} En el siguiente trabajo se propone el uso de la metodolog\'ia de los Splines c\'ubicos de suavizado para estimar la curva de rendimientos en un momento determinado y as\'i poder calcular los precios te\'oricos de los instrumentos que se deseen considerar. Esta metodolog\'ia presenta un enfoque no param\'etrico y la misma se caracteriza en trabajar directamente con los datos. 
+\hspace*{0.4 cm} Uno de los principales objetivos que se persigue mediante el uso de esta herramienta, es el de estimar los precios de los t\'itulos de la deuda p\'ublica nacional que posee una instituci\'on financiera en su portafolio de inversiones en un per\'iodo determinado. Para ello es importante conocer las caracter\'isticas de los t\'itulos \'o instrumentos que existen en el mercado venezolano, entre ellos tenemos los siguientes,
+
+
+\begin{itemize}
+  \item T\'itulos de inter\'es fijo (TIF): son instrumentos que se caracterizan por tener una renta fija, y se emiten en moneda nacional.
+  \item T\'itulos de inter\'es variable (VEBONO): se caracterizan por poseer una renta variable, e igual que los TIF se emiten en Bol\'ivares.
+  \item Bonos PDVSA : son instrumentos emitidos en d\'olares.
+\end{itemize}
+
+
+\hspace*{0.4 cm}Cabe destacar que en el presente trabajo s\'olo  se considerar\'an aquellos instrumentos emitidos en Bol\'ivares.
+
+
+\hspace*{0.4 cm}Asociado a cada t\'itulo hay un monto de dinero que se invierte, el cual es entregado al ente emisor por el t\'itulo en s\'i, existe tambi\'en una fecha de emisi\'on, y una fecha de vencimiento, d\'ia en el cual el ente emisor retorna el monto invertido inicialmente. Es importante destacar que estos t\'itulos pagan un inter\'es al portador cada tres meses, y esta representa la ganancia que tiene el inversionista.
+
+
+\hspace*{0.4 cm} Con el fin de determinar en que t\'itulo es mejor invertir, es necesario conocer el rendimiento al vencimiento que posee dicho t\'itulo, este valor nos da un idea de cu\'al ser\'a el retorno que recibir\'a el portador del t\'itulo por la tenencia o compra del mismo. Para calcular este valor es necesario conocer la fecha de vencimiento del t\'itulo as\'i como su valor nominal y su precio.
+
+
+ \hspace*{0.4 cm} A partir de la siguiente f\'ormula podemos hallar dicho valor,
+
+\vspace{0.5cm}
+
+\begin{center}
+
+$\displaystyle{P_{t,m} = \sum_{i=1}^{m-1}{\frac{c}{(1+R_{t,i})^i} + \frac{1+c}{(1+R_{t,m})^m}}, }$
+
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent donde $P_{t,m}$ representa el precio del t\'itulo al tiempo t, y que tiene un vencimiento de m a\~nos, c representa el cup\'on asociado al t\'itulo, el \'indice $i = 1,...,m$ representa cuantos cupones todav\'ia le quedan al t\'itulo por pagar antes de su vencimiento. Por su parte $R_{t,m}$ representa el rendimiento al vencimiento del t\'itulo en el tiempo t y que tiene un vencimiento de m a\~nos.
+
+
+\hspace*{0.4 cm}A partir de la f\'ormula anterior podemos afirmar que para calcular el rendimiento al vencimiento de un t\'itulo es necesario conocer su precio a una fecha espec\'ifica, pero esto no siempre es posible, esto se debe a las caracter\'isticas del mercado venezolano ya que son pocos los t\'itulos que cotizan y por ende no se conoce su precio.
+
+
+\hspace*{0.4 cm} Dicho precio puede conocerse a diario mediante la informaci\'on suministrada en la pesta\~na ``0-22" del documento ``resumersec" del Banco Central de Venezuela, este ente publica cada d\'ia las operaciones realizadas con estos instrumentos, en este documento se puede obtener el precio de aquellos t\'itulos que coticen ese d\'ia, el problema radica en conocer los precios de aquellos t\'itulos que no est\'en en dicho documento.
+
+
+
+\hspace*{0.4 cm} La curva de rendimientos presenta emp\'iricamente una serie de dificultades, debido a que se construye a trav\'es de una serie de precios (tasas) de instrumentos financieros discontinuos en el tiempo que, por lo general, est\'an lejos de ser una curva suave. Para su estimaci\'on existen diversas metodolog\'ias, las param\'etricas y las no param\'etricas.
+
+
+\hspace*{0.4 cm} Las metodolog\'ias param\'etricas se basan en modelos asociados a una familia funcional que
+obedece al comportamiento de alguna distribuci\'on de probabilidad, sobre la cual suponemos que las caracter\'isticas de la poblaci\'on de inter\'es pueden ser descritas. Es as\'i como, los modelos dise\~nados en este contexto, basados en regresi\'on, buscan describir el comportamiento de una variable de inter\'es con otras llamadas ex\'ogenas, a trav\'es de funciones de v\'inculo lineales o no lineales.
+
+
+\hspace*{0.4 cm}Entre estas metodolog\'ias destacan, la de Nelson y Siegel introducida en $1987$ [2], la de Svesson desarrollada en $1994$ [3], la metodolog\'ia de los polinomios por componentes principales propuesta por Hunt y Terry en $1998$ [4], as\'i como los polinomios trigonom\'etricos desarrollada por Nocedal y Wright en $1999$ [5].
+
+
+\hspace*{0.4 cm} Por su parte, las metodolog\'ias no param\'etricas se han convertido en los \'ultimos a\~nos en un
+\'area de gran estudio debido a sus ventajas relativas respecto a los modelos de regresi\'on basado en funciones. Entre las caracter\'isticas m\'as importantes de estos modelos tenemos, la flexibilidad en los supuestos y el ajuste dirigido espec\'ificamente a trav\'es de los datos. Entre estas metodolog\'ias se destacan la de regresi\'on Kernel, polinomios locales, splines de polinomios (Fan y Gibels, $1996$ [6]), splines c\'ubicos suavizados (B.W. Silverman, $1985$ [7]), super suavizador de Friedmann (Friedmann, $1984$ [8]) y redes neuronales artificiales (Sharda, $1994$ [9]).
+
+
+
+\hspace*{0.4 cm} En el siguiente trabajo se propone el uso de la metodolog\'ia de splines c\'ubicos suavizados, la cual posee la ventaja de contar con un factor de penalizaci\'on el cu\'al es muy \'util al momento de tener un balance entre la suavidad de la curva y su bondad de ajuste. A grandes rasgos estas metodolog\'ias se basan en estimar la curva de rendimientos de dichos t\'itulos, curva que relaciona el rendimiento al vencimiento con la maduraci\'on o fecha de vencimiento, con el fin de estimar los precios de los t\'itulos a un d\'ia en espec\'ifico. De esta manera a partir de una determinada fecha es posible mediante estas metodolog\'ias estimar el rendimiento al vencimiento de un t\'itulo y por ende saber su precio estimado.
+
+
+\hspace*{0.4 cm} La estructura del presente trabajo se presenta a continuaci\'on, en el cap\'itulo 1 se encuentran los antecendentes de trabajos anteriores y la motivaci\'on del mismo. En el cap\'itulo 2 se presenta toda la parte te\'orica que sustenta esta metodolog\'ia, as\'i como las herramientas necesarias para la implementaci\'on de la misma.
+
+\hspace*{0.4 cm} En el cap\'itulo 3, se expone el marco metodol\'ogico, en esta parte se explica el proceso de la elaboraci\'on de la base de datos, su depuraci\'on para luego poder aplicar la metodolog\'ia de los Splines c\'ubicos de suavizado. Finalmente, en el cap\'itulo 4 se presentan los resultados y conclusiones que se obtuvieron luego de realizar el c\'alculo de los precios te\'oricos mediante diferentes metodolog\'ias.
+
+
+
