@@ -1,10 +1,37 @@
 \chapter{Antecedentes y motivaci\'on.}
 
-\section{Curva de Rendimientos.}
-
 % \hspace*{0.4 cm} La curva de redimientos es una herramienta ampliamente utilizada por las autoridades de los bancos centrales en sus decisiones de pol\'itica monetaria, as\'i como tambi\'en por los agentes privados en la planificaci\'on de sus inversiones en instrumentos financieros [1]. La misma tiene una importancia capital
 % para el mundo acad\'emico y pr\'actico desde el punto de vista econ\'omico y financiero, al reflejar el precio intertemporal del dinero.
 
+\section{Rendimiento.}
+
+\hspace*{0.4 cm} El rendimiento es un t\'ermino utilizado en finanzas, bancos, t\'itulos y valores financieros, es el producto o utilidad que se obtiene de algo  de alguna inversi\'on. Es frecuente en \'epocas de inflaci\'on, que los intereses que otorguen otros instrumentos de inversi\'on, sean superiores a los que otorgan los bonos y obligaciones que llevan varios a\~nos de haberse emitido, lo cual resta inter\'es a la adquisici\'on de dichos bonos a menos que se les descuente en su precio la cantidad necesaria para hacerlos competitivos.
+
+\hspace*{0.4 cm}Es as\'i como empiezan a operar los bonos y las obligaciones, ``con descuento", o ``abajo de su valor nominal". Quien compra un bono u obligaci\'on ``abajo de su valor nominal", espera recibir un inter\'es atractivo y, adicionalmente, una ganancia de capital en el momento en que venda el bono.
+
+\hspace*{0.4 cm}El bono u obligaci\'on ir\'a subiendo de precio, hasta que llega a coincidir con el valor nominal, el d\'ia de su vencimiento. Es frecuente que los bonos y obligaciones no lleguen al vencimiento al $100\%$ el mismo d\'ia, sino que tengan amortizaciones previas (predefinidas) por sorteo o por serie. En estos casos, hay que emplear f\'ormulas especiales para llegar al rendimiento y vencimiento incluyendo las amortizaciones.
+
+\subsection{Tipos de rendimiento.\\}
+
+\hspace*{0.4 cm} En base al precio vigente, un bono muestra tres diferentes tipos de vencimiento,
+
+\begin{itemize}
+  \item El rendimiento del cup\'on es la tasa de inter\'es que paga el bono por su valor nominal. Un bono de $US\$10.000$ con un cup\'on del 6 por ciento de inter\'es paga $US\$300$ de inter\'es cada 6 meses.
+  \item El rendimiento actual es la tasa del cup\'on dividida por el precio del bono. Si el bono con un valor nominal de $US\$10.000$ y un 6 por ciento de tasa de cup\'on puede ser comprado por $US\$9.600$, su rendimiento actual es de 6,25 por ciento. 
+  \item El rendimiento al vencimiento es la tasa interna de retorno del bono en funci\'on del tiempo que falta para el vencimiento del bono.
+\end{itemize}
+
+
+\subsection{Bonos bajo y sobre la par.\\}
+
+\hspace*{0.4 cm} Los bonos suelen venderse bajo la par o sobre la par. Un bono con una alta tasa de cup\'on cuando las tasas de mercado son bajas se vender\'a sobre la par. Los bonos se vender\'an bajo la par si la tasa del cup\'on es m\'as baja que la de mercado para bonos similares. A los inversores novatos les gusta la idea de comprar bonos bajo la par, creyendo que est\'an comprando barato. En verdad, un bono cotizado sobre la par puede ser una mejor inversi\'on. El inversor recibir\'a pagos de inter\'es m\'as altos que podr\'a reinvertir.
+
+\hspace*{0.4 cm} El c\'alculo del rendimiento al vencimiento amortiza el valor de la prima o el descuento (bonos sobre y bajo la par) en el precio del bono a lo largo de la vida que le queda al bono. Por ejemplo, si el bono que paga 6 por ciento de tasa de cup\'on mencionado anteriormente vence en 10 a\~nos, y tiene un precio de $US\$9.600$, el rendimiento al vencimiento es 6,558 por ciento. Si dos bonos, uno sobre la par y otro bajo la par, tienen el mismo rendimiento al vencimiento, cualquiera de ellos representa el mismo nivel de retorno para el inversor. El rendimiento al vencimiento es lo que el inversor recibir\'a si el bono es comprado al precio vigente en el mercado y sostenido hasta su vencimiento.
+
+\hspace*{0.4 cm} Algunas reglas sencillas ayudan a los inversores a entender la relaci\'on de el rendimiento al vencimiento de un bono y otras medidas de rendimiento. Para un bono sobre la par, el rendimiento al vencimiento es m\'as bajo que el rendimiento actual, que a su vez es m\'as bajo que la tasa de cup\'on. Con un bono bajo la par, el rendimiento al vencimiento es la tasa m\'as alta, seguida por el rendimiento actual, siendo la tasa de cup\'on el indicador m\'as bajo.
+
+
+\section{Curva de Rendimientos.}
 
 \hspace*{0.4 cm} La curva de rendimientos es una representaci\'on grafica que muestra la relaci\'on que existe entre los rendimientos de una clase particular de t\'itulos valores y el tiempo que falta para su vencimiento, lo cual es conocido como la estructura temporal de la tasa de inter\'es (ETTI) para instrumentos con riesgo similar pero con diferentes plazos de maduraci\'on. La ETTI es un indicador de la evoluci\'on futura de los tipos de inter\'es y de inflaci\'on, adem\'as, la mayor\'ia de los activos financieros se valoran mediante este indicador, por lo cual tambi\'en se considera b\'asico en el dise\~no de estrategias de gesti\'on de riesgos y en la toma de decisiones de inversi\'on y financiaci\'on \cite{FR}. Existen cuatro formas que puede adoptar una curva de rendimientos:
 
@@ -18,7 +45,6 @@
    \item \textbf{Curva horizontal}: indica que independientemente del plazo de vencimiento, los rendimientos son los mismos; para per\'iodos muy largos, todas las      curvas de rendimientos tienden a aplanarse.
 \end{itemize}
 
-\newpage
 
 \begin{itemize}
   \item \textbf{Curva creciente y decreciente}: es el reflejo de una situaci\'on en la    que los rendimientos de corto y largo plazo son los mismos y los rendimientos  de mediano plazo son los que var\'ian.
@@ -130,7 +156,7 @@ v\'inculo lineales o no lineales.
 
 \subsection{La curva de Nelson-Siegel.\\} 
 
-\hspace*{0.4 cm} Nelson y Siegel (1987) introducen un modelo param\'etrico para el ajuste
+\hspace*{0.4 cm} Nelson y Siegel \cite{NS} introducen un modelo param\'etrico para el ajuste
 de los rendimientos hasta la madurez de los bonos del tesoro de Estados
 Unidos que se caracteriza por ser parsimonioso y flexible en modelar
 cualquier forma t\'ipica asociada con las curvas de rendimientos. La estructura
@@ -146,7 +172,7 @@ inter\'es promueve la investigaci\'on en este sentido, dado que si las tasas
 spot son producidas por medio de una ecuaci\'on diferencial, entonces las
 tasas forward -siendo pron\'osticos-, ser\'an la soluci\'on de las ecuaciones
 diferenciales. La expresi\'on param\'etrica propuesta por Nelson y Siegel
-(1987) que describe las tasas forward es exhibida a continuaci\'on:
+\cite{NS} que describe las tasas forward es exhibida a continuaci\'on:
 
 
 \begin{center}
@@ -208,7 +234,7 @@ $\displaystyle{s_{d}(m) = e^{\frac{s(m)}{100}} - 1}$
 
 \hspace*{0.4 cm} En la curva de Nelson-Siegel se destaca que cada coeficiente del modelo
 contribuye en el comportamiento de las tasas forward en el corto,
-mediano y largo plazo; no obstante, Svensson (1994) propone una nueva
+mediano y largo plazo; no obstante, Svensson \cite{Sv} propone una nueva
 versi\'on de la curva de Nelson-Siegel donde un cuarto t\'ermino es incluido
 para producir un efecto adicional y semejante al proporcionado por:
 $\beta_{3}(\frac{m}{\tau_{2}})e^{\frac{-m}{\tau_{2}}}$.
@@ -236,7 +262,7 @@ $\displaystyle{s(m) = \beta_{0}+ \beta_{1}\frac{\left(1-e^\frac{-m}{\tau_{1}}\ri
 \vspace*{0.2 cm}
 
 \hspace*{0.4 cm} La funci\'on de descuento tiene que ser utilizada con el fin de obtener las
-tasas estimadas para cada d\'ia de negociaci\'on o trading. Svensson (1994)
+tasas estimadas para cada d\'ia de negociaci\'on o trading. Svensson \cite{Sv}
 propone estimar los par\'ametros de la curva cero cup\'on (curva spot),
 minimizando una medida de ajuste tal como la suma de cuadrados del
 error sobre los precios spot; sin embargo, enfatiza en que los precios
@@ -251,7 +277,7 @@ diferencia entre los rendimientos observados y estimados por la curva.
 
 \hspace*{0.4 cm} La estimaci\'on es realizada por medio de m\'axima verosimilitud, m\'inimos
 cuadrados no lineales o el m\'etodo de momentos generalizados. En
-muchos casos, como afirma Svensson (1994), el modelo de Nelson-
+muchos casos, como afirma Svensson \cite{Sv}, el modelo de Nelson-
 Siegel proporciona ajustes satisfactorios, aunque en algunos casos
 cuando la estructura de las tasas de inter\'es es m\'as compleja, el ajuste del
 modelo de Nelson-Siegel es poco satisfactorio y el modelo de Svensson
@@ -261,7 +287,7 @@ logra desempe\~narse mejor.
 \subsection{Polinomios de componentes principales.\\}
 
 
-\hspace*{0.4 cm} Hunt y Terry (1998) propone un ajuste de la curva de rendimientos
+\hspace*{0.4 cm} Hunt y Terry \cite{HT} propone un ajuste de la curva de rendimientos
 utilizando polinomios. Si frecuentemente la curva es especificada como,
 
 \begin{equation}
@@ -298,8 +324,8 @@ $\displaystyle{y(0) = \sum_{i=0}^{p}\beta_{i} \hspace*{0.2 cm} y \hspace*{0.2 cm
 
 \hspace*{0.4 cm}Investigaciones relacionadas con curvas de rendimientos, han llegado a
 la conclusi\'on que modelos con tres o cuatro par\'ametros son suficientes
-para obtener un buen ajuste de los datos (Hunt 1995). Por tal motivo,
-Hunt y Terry (1998) proponen restringir $p$ a tres o cuatro. Aunque este
+para obtener un buen ajuste de los datos (Hunt \cite{H}). Por tal motivo,
+Hunt y Terry \cite{HT} proponen restringir $p$ a tres o cuatro. Aunque este
 n\'umero de par\'ametros no necesariamente determina si realmente la
 bondad de ajuste pueda llegar a ser satisfactoria, los autores proponen
 utilizar componentes principales sobre los primeros $p$ t\'erminos
@@ -308,7 +334,7 @@ incluidas en la ecuaci\'on (\ref{cp1}). Utilizar las componentes principales
 proporcionar\'a un menor error de ajuste en comparaci\'on con la ecuaci\'on (\ref{cp}),
 debido a su capacidad para captar variabilidad. Una descripci\'on
 detallada respecto al c\'alculo de las componentes principales en el
-esquema polinomial es dada por Hunt y Terry (1998).
+esquema polinomial es dada por Hunt y Terry \cite{HT}.
 
 \subsection{Polinomios trigonom\'etricos.\\}
 
@@ -321,7 +347,7 @@ $y(\tau) = \beta_{0} + \beta_{1}cos(\gamma_{1}\tau) + \beta_{2}sen(\gamma_{2}\ta
 madurez del papel, en tanto que $\beta_{0}$, $\beta_{1}$, $\beta_{2}$, $\gamma_{1}$ y $\gamma_{2}$ son los par\'ametros
 objeto de inter\'es. Cualquier metodolog\'ia de optimizaci\'on no lineal puede
 ser utilizada para estimar los par\'ametros del modelo (Nocedal y Wright
-1999). Aunque podr\'ia asumirse un par\'ametro de fase en el modelo, este
+\cite{NW}). Aunque podr\'ia asumirse un par\'ametro de fase en el modelo, este
 no es considerado por motivos de parsimonia.
 
 \section{Metodolog\'ias no Param\'etricas}
@@ -504,7 +530,7 @@ $\displaystyle{ \sum_{i=1}^{n} (y_{i}-m(x_{i})^2 + \lambda \int m''(x)^2dx  }$
 
 \vspace*{0.2 cm}
 
-\noindent donde $\lambda$ es una constante especificada de suavizamiento. El mecanismo de optimizaci\'on intenta crear un balance entre el sesgo de estimaci\'on y la suavidad de la curva ajustada. El par\'ametro $\lambda$ puede asumirse variable (Abramovich y Steinberg 1996) y estimado a trav\'es de validaci\'on cruzada generalizada.
+\noindent donde $\lambda$ es una constante especificada de suavizamiento. El mecanismo de optimizaci\'on intenta crear un balance entre el sesgo de estimaci\'on y la suavidad de la curva ajustada. El par\'ametro $\lambda$ puede asumirse variable (Abramovich y Steinberg \cite{AS}) y estimado a trav\'es de validaci\'on cruzada generalizada.
 
 \subsection{Supersuavizador de Friedmann.\\}
 
@@ -584,14 +610,14 @@ el suavizador ``woofer"\hspace*{0.01 cm} y $h_{vc}(.)$ la amplitud obtenida bajo
 
 \hspace*{0.4 cm} Los recientes desarrollos investigativos han mostrado la capacidad de las redes neuronales para la detecci\'on de patrones, clasificaci\'on y predicci\'on a trav\'es del aprendizaje por medio de la experiencia. Su importancia actual, sin lugar a dudas, es consecuencia del desarrollo computacional, punto de partida para su divulgaci\'on, desenvolvimiento te\'orico y pr\'actico en diversos campos del conocimiento.
 
-\hspace*{0.4 cm} Una de las mayores \'areas de aplicaci\'on de las redes neuronales es la predicci\'on \cite{SH}. Dentro de este contexto, las redes resultan ser una herramienta atractiva para los investigadores, comparada con las metodolog\'ias tradicionales basada en modelos de funciones.
+\hspace*{0.4 cm} Una de las mayores \'areas de aplicaci\'on de las redes neuronales es la predicci\'on (Sharda \cite{SH}). Dentro de este contexto, las redes resultan ser una herramienta atractiva para los investigadores, comparada con las metodolog\'ias tradicionales basada en modelos de funciones.
 
 \hspace*{0.4 cm} Las redes neuronales artificiales intentan emular el comportamiento biol\'ogico del cerebro humano. Como sabemos, el cerebro humano es un conjunto complejo de interconexiones de elementos simples llamados nodos o neuronas. Cada nodo recibe una se\~nal de entrada proveniente de otros nodos o a trav\'es de est\'imulos externos; localmente el nodo procesa la informaci\'on recibida por medio de una funci\'on de transferencia o activaci\'on y produce una se\~nal de salida transformada, que ir\'a hacia otros nodos o como una respuesta, consecuencia de un est\'imulo. Aunque cada nodo individualmente no proporciona informaci\'on realmente valiosa, en conjunto, pueden realizar un sorprendente n\'umero de tareas de forma eficiente. Esta caracter\'istica hace de las redes neuronales un mecanismo poderoso computacionalmente para aprender a partir de ejemplos y despu\'es generalizar para casos nunca antes considerados.
 
 
-\hspace*{0.4 cm} Aunque diferentes arquitecturas de redes neuronales han sido propuestas (Haykin 1994), la m\'as utilizada es la red multilayer Perceptron (MLP). Una red MLP est\'a compuesta de varias capas y nodos o neuronas. Los nodos de la primera capa son los encargados de recibir la informaci\'on del exterior, mientras que la \'ultima capa es encargada de proporcionar la respuesta asociada a esta informaci\'on. Entre estas dos capas puede haber innumerables capas y nodos. Adicionalmente, los nodos de capas adyacentes est\'an completamente conectados.
+\hspace*{0.4 cm} Aunque diferentes arquitecturas de redes neuronales han sido propuestas (Haykin \cite{Ha}), la m\'as utilizada es la red multilayer Perceptron (MLP). Una red MLP est\'a compuesta de varias capas y nodos o neuronas. Los nodos de la primera capa son los encargados de recibir la informaci\'on del exterior, mientras que la \'ultima capa es encargada de proporcionar la respuesta asociada a esta informaci\'on. Entre estas dos capas puede haber innumerables capas y nodos. Adicionalmente, los nodos de capas adyacentes est\'an completamente conectados.
 
-\hspace*{0.4 cm} Para un problema de pron\'ostico con redes neuronales, las entradas a la red son asociadas con variables independientes o explicativas. En este caso la relaci\'on funcional estimada establecida por la red neuronal ser\'a de la forma $y_{t}=f(x_{1}, x_{2},..., x_{p})$; donde $x_{1}, x_{2},..., x_{p}$ son p variables ex\'ogenas y y una variable end\'ogena. En este sentido la red es equivalente a un modelo de regresi\'on no lineal. Igualmente, en el contexto del pron\'ostico de series temporales, las entradas de la red son series rezagadas de la original y la salida representa su valor futuro. En este caso la red har\'ia un mapeo de la siguiente forma $y_{t}= f (y{t-1}, y{t-2}, ..., y{t-p})$, donde $y_{t}$ es la observaci\'on en el tiempo t. Bajo estas caracter\'isticas la red asemeja un modelo autorregresivo en el pron\'ostico de series temporales. Una discusi\'on respecto a la relaci\'on existente entre las redes neuronales y la metodolog\'ia de Box-Jenkins es dada por Suykens, Vandewalle y Moor (1996).
+\hspace*{0.4 cm} Para un problema de pron\'ostico con redes neuronales, las entradas a la red son asociadas con variables independientes o explicativas. En este caso la relaci\'on funcional estimada establecida por la red neuronal ser\'a de la forma $y_{t}=f(x_{1}, x_{2},..., x_{p})$; donde $x_{1}, x_{2},..., x_{p}$ son p variables ex\'ogenas y y una variable end\'ogena. En este sentido la red es equivalente a un modelo de regresi\'on no lineal. Igualmente, en el contexto del pron\'ostico de series temporales, las entradas de la red son series rezagadas de la original y la salida representa su valor futuro. En este caso la red har\'ia un mapeo de la siguiente forma $y_{t}= f (y{t-1}, y{t-2}, ..., y{t-p})$, donde $y_{t}$ es la observaci\'on en el tiempo t. Bajo estas caracter\'isticas la red asemeja un modelo autorregresivo en el pron\'ostico de series temporales. Una discusi\'on respecto a la relaci\'on existente entre las redes neuronales y la metodolog\'ia de Box-Jenkins es dada por Suykens, Vandewalle y Moor \cite{SVM}.
 
 \hspace*{0.4 cm} Antes de que la red sea utilizada para realizar alguna tarea espec\'ifica, debe ser entrenada. B\'asicamente, entrenar es el proceso de determinar los pesos (eje central de la red neuronal). El conocimiento aprendido por la red es almacenado en cada una de los arcos que representan las conexiones entre los nodos. Es a trav\'es de estas conexiones que las redes pueden realizar complejos mapeos no lineales desde los nodos de entrada hasta los nodos de salida. El entrenamiento de la MLP es supervisado, caso en el cual la respuesta deseada o valor objetivo para cada patr\'on de entrada o ejemplo est\'a siempre disponible.
 
@@ -614,7 +640,7 @@ $\displaystyle{E = \frac{1}{2} \sum_{i=n+1}^{N}(y{i}-a{i})^2 }$
 
 \noindent  donde $a_{i}$ es la salida actual de la red.
 
-\hspace*{0.4 cm}Una descripci\'on m\'as detallada sobre las diferentes arquitecturas de red existentes, el n\'umero \'optimo de capas ocultas y neuronas, las funciones de activaci\'on m\'as utilizadas, los algoritmos de entrenamiento, la normalizaci\'on de los datos, como tambi\'en de otros temas relacionados con sus ventajas y deficiencias (Haykin 1994, Kaastra y Boyd 1996, Zhang, Patuwo y Hu 1998, Isasi y Galv\'an 2004), entre otros.
+\hspace*{0.4 cm}Una descripci\'on m\'as detallada sobre las diferentes arquitecturas de red existentes, el n\'umero \'optimo de capas ocultas y neuronas, las funciones de activaci\'on m\'as utilizadas, los algoritmos de entrenamiento, la normalizaci\'on de los datos, como tambi\'en de otros temas relacionados con sus ventajas y deficiencias (Haykin \cite{Ha}, Kaastra y Boyd \cite{KB}, Zhang, Patuwo y Hu \cite{ZPH}, Isasi y Galv\'an \cite{IG}), entre otros.
 
 
 
@@ -625,6 +651,7 @@ $\displaystyle{E = \frac{1}{2} \sum_{i=n+1}^{N}(y{i}-a{i})^2 }$
 % 
 % \hspace*{0.4 cm} En el siguiente trabajo se propone el uso de la metodolog\'ia de splines c\'ubicos suavizados, la cual posee la ventaja de contar un factor de penalizaci\'on el cu\'al es muy \'util al momento de tener un balance entre la suavidad de la curva y su bondad de ajuste. A grandes rasgos estas metodolog\'ias se basan en estimar la curva de rendimientos de dichos t\'itulos, curva que relaciona el rendimiento al vencimiento con la maduraci\'on o fecha de vencimiento, con el fin de estimar los precios de los t\'itulos a un d\'ia en espec\'ifico. De esta manera a partir de una determinada fecha es posible mediante estas metodolog\'ias estimar el rendimiento al vencimiento de un t\'itulo y por ende saber su precio estimado.
 
+\newpage
 
 \section{Objetivos.}
 
