@@ -2,10 +2,13 @@
 
 \section{Comparaci\'on TIF.}
 
-\hspace{0.4cm} La comparaci\'on de los precios te\'oricos obtenidos mediante el uso de la metodolog\'ia de los Splines c\'ubicos de suavizado con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on.
+\hspace{0.4cm} La comparaci\'on de los precios te\'oricos obtenidos mediante el uso de la metodolog\'ia de los Splines c\'ubicos de suavizado con la metodolog\'ia Svensson para los Tif, se presenta a continuaci\'on en la Tabla \ref{tabla2}.
 
-\begin{center}
-\scalebox{0.90}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
+\renewcommand{\tablename}{Tabla}
+\begin{table}[H]
+\centering
+%\begin{center}
+\scalebox{0.85}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
 \hline
 T\'itulo & Precio Promedio & Precio Splines & Precio Svensson & Precio Svensson Optimizado  \\
 \hline
@@ -52,7 +55,11 @@ TIF052034 & 127,12 & 128,51 & 124,08 & 117,35\\
 Error & NA & 4,6224 & 5,2694 & 0,3610\\
 \hline
 \end{tabular}}
-\end{center}
+%\end{center}
+\caption{Comparaci\'on precios TIF.}
+\label{tabla2}
+\end{table}
+
 
 \hspace{0.4cm} Para la creaci\'on de la tabla anterior, se consideraron los siguientes par\'ametros,
 
@@ -84,7 +91,9 @@ Error & NA & 4,6224 & 5,2694 & 0,3610\\
   \item Par\'ametro de suavizamiento: 0.4
 \end{itemize}
 
-\begin{center}
+%\begin{center}
+\begin{table}[H]
+\centering
 \scalebox{0.90}{\begin{tabular}[t]{|c |c |c |c |c |c |r|}
 \hline
 T\'itulo & Precio Promedio & Precio Splines & Precio Svensson & Precio Svensson Optimizado  \\
@@ -132,11 +141,14 @@ VEBONO022034 & 128,02 & 126,53 & 119,49 & 119,51\\
 Error & NA & 3,5817 & 6,7379 & 0,3608\\
 \hline
 \end{tabular}}
-\end{center}
+%\end{center}
+\caption{Comparaci\'on precios VEBONO.}
+\label{tabla3}
+\end{table}
 
 \newpage
 
-\hspace{0.4cm} Al igual que en la tabla comparativa para los TIF, la tabla anterior muestra los precios te\'oricos obtenidos por tres metodolog\'ias, la primera la de Splines de suavizaso, la segunda la de Svensson sin optimizar y finalmente la tercera, la de Svensson optimizado. Estas metodolog\'ias, son comparadas con los precios promedio para cada instrumento.
+\hspace{0.4cm} Al igual que en la tabla comparativa para los TIF, la Tabla \ref{tabla3} muestra los precios te\'oricos obtenidos por tres metodolog\'ias, la primera la de Splines de suavizaso, la segunda la de Svensson sin optimizar y finalmente la tercera, la de Svensson optimizado. Estas metodolog\'ias, son comparadas con los precios promedio para cada instrumento.
 
 \hspace{0.4cm} Si se compara los precios te\'oricos obtenidos mediante la metodolog\'ia de Splines de suavizados con los precios obtenidos mediante la metodolog\'ia de Svensson sin optimizar, podemos decir que los primeros muestran un mejor comportamiento al ser comparados con los precios promedio de cada t\'itulo valor. Esto debido a que el error obtenido es menor.
 
@@ -167,9 +179,10 @@ Error & NA & 3,5817 & 6,7379 & 0,3608\\
 \hspace{0.4cm} En las figuras \ref{curva_spline_comp_tif} y \ref{curva_spline_comp_veb} , se muestra una comparaci\'on entre las curvas de rendimiento obtenidas mediante la metodolog\'ias de Splines de suavizado, Svensson sin opmitizar y Svensson Optimizado.
 Para el caso de la metodolog\'ia de los Splines se us\'o un par\'ametro de suavizamiento de 0.2 para los TIF y 0.4 para los Vebono, recordemos que este factor controla la suavidad de la curva obtenida. Por su parte las curvas obtenidas para las metodolog\'ias de Svensson optimizada y sin optimizar surgen de los par\'ametros considerados al momento de calcular los precios te\'oricos de los instrumentos.
 
-\hspace{0.4cm}Recordemos que para la metodolog\'ia Svensson sin optimizar se usaron unos par\'ametros por defecto, mientras que para la metodolog\'ia de Svensson optimizada se usaron aquellos par\'ametros de minimizaran la diferencia entre los precios te\'oricos y los precio promedio. Una tabla comparativa  con estos valores para el caso de los TIF se presenta acontinuaci\'on.
+\hspace{0.4cm}Recordemos que para la metodolog\'ia Svensson sin optimizar se usaron unos par\'ametros por defecto, mientras que para la metodolog\'ia de Svensson optimizada se usaron aquellos par\'ametros de minimizaran la diferencia entre los precios te\'oricos y los precio promedio. La Tabla \ref{tabla4} muestra una comparaci\'on con estos valores para el caso de los TIF .
 
-\begin{center}
+\begin{table}[H]
+\centering
 {\begin{tabular}[t]{|c |c |c |c |c |c |c |c |r|}
 \hline
 Metodolog\'ia / Par\'ametro / TIF & $\beta_{0}$ & $\beta_{1}$ & $\beta_{2}$ & $\beta_{3}$  &  $\tau_{1}$ & $\tau_{2}$ \\
@@ -179,7 +192,9 @@ Svensson sin optimizar & 0,1337 & -0,0100 & -0,3078 & -0,1340  & 0,5453 & 0,3506
 Svensson Optimizado & 0,1430 & 0,2119 & -0,6438 & 0,3327 & 0,5744 & 0,0184 \\
 \hline
 \end{tabular}}
-\end{center}
+\caption{Par\'ametros Svensson TIF.}
+\label{tabla4}
+\end{table}
 
 
 \newpage
@@ -202,9 +217,10 @@ Svensson Optimizado & 0,1430 & 0,2119 & -0,6438 & 0,3327 & 0,5744 & 0,0184 \\
 
 \newpage
 
-\hspace{0.4cm} La siguiente tabla muestra los par\'ametros utilizados para elaborar las curvas de rendimientos para el caso de la metodolog\'ia de Svensson sin optimizar y Svensson optimizado. Es importante destacar, que cada par\'ametro controla una secci\'on de la curva.
+\hspace{0.4cm} La tabla \ref{tabla5} muestra los par\'ametros utilizados para elaborar las curvas de rendimientos para el caso de la metodolog\'ia de Svensson sin optimizar y Svensson optimizado. Es importante destacar, que cada par\'ametro controla una secci\'on de la curva.
 
-
+\begin{table}[H]
+\centering
 {\begin{tabular}[t]{|c |c |c |c |c |c |c |c |r|}
 \hline
 Metodolog\'ia / Par\'ametro / VEBONO & $\beta_{0}$ & $\beta_{1}$ & $\beta_{2}$ & $\beta_{3}$  &  $\tau_{1}$ & $\tau_{2}$ \\
@@ -214,6 +230,9 @@ Svensson sin optimizar & 0,1358 & 0,1000 & -0,5037 & -0,2887 & 0,1195 & 0,5017\\
 Svensson Optimizado & 0,1421 & 0,4845 & -0,4343 & -0,3514 & 0,1985 & 0,7851 \\
 \hline
 \end{tabular}}
+\caption{Par\'ametros Svensson VEBONO.}
+\label{tabla5}
+\end{table}
 
 \vspace{0.5cm}
 

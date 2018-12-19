@@ -80,8 +80,9 @@
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} Una vez obtenida la base de datos esta seg\'un sea el caso puede ser depurada mediante ciertos criterios, el primero es que aquellas operaciones con un monto menor a los 10 milllones no se consideran. El segundo es el tipo de fuente, siempre prevalecer\'a la fuente subasta. El tercero es considerar la operaci\'on mas reciente, es decir, si en la base de datos se tiene que para un mismo instrumento existen diferentes operaciones en diferentes d\'ias, s\'olo se considerar\'a la operaci\'on m\'as reciente.
+\hspace{0.4cm} Una vez obtenida la base de datos esta seg\'un sea el caso puede ser depurada mediante ciertos criterios, el primero es que aquellas operaciones con un monto menor a los 10 milllones no se consideran. El segundo es considerar la operaci\'on mas reciente, es decir, si en la base de datos se tiene que para un mismo instrumento existen diferentes operaciones en diferentes d\'ias, s\'olo se considerar\'a la operaci\'on m\'as reciente.
 
+%El segundo es el tipo de fuente, siempre prevalecer\'a la fuente subasta.
 
 \hspace{0.4cm} Para efectuar la depuraci\'on, a la base de datos anterior se le a\~nadir\'an dos columnas nuevas una que indica el rendimiento al vencimiento de cada instrumento y la otra que indica la decisi\'on que se tom\'o en base a los criterios descritos anteriormente (Ver Figura 3). Esta \'ultima ser\'a una variable dicot\'omica, es decir solo con dos valores (0 \'o 1), en donde ``0" me indica que no selecciono el t\'itulo y ``1" me indica que si lo tomo en cuenta para el estudio a realizar.
 
@@ -115,7 +116,7 @@
 \label{base_datos_tif}
 \end{figure}
 
-\hspace{0.4cm} Con el fin de contar con la data m\'as reciente a partir de la fecha de valoraci\'on, se cre\'o la funci\'on ``extrae" la cual selecciona de la data de la figura (\ref{base_datos_tif}) una determinada cantidad de observaciones, la cual es especificada por el usuario, esta funci\'on cuenta con los siguientes argumentos,
+\hspace{0.4cm} Con el fin de contar con la data m\'as reciente a partir de la fecha de valoraci\'on, se cre\'o la funci\'on ``extrae" \hspace{0.01cm} la cual selecciona de la data de la figura (\ref{base_datos_tif}) una determinada cantidad de observaciones, la cual es especificada por el usuario, esta funci\'on cuenta con los siguientes argumentos,
 
 \begin{itemize}
  \item fv: indica la fecha de valoraci\'on para la cual se est\'a realizando el estudio.
@@ -123,11 +124,12 @@
  \item data: hace referencia a la data completa para cada tipo de instrumento, a partir de la misma se procedera a extraer parte de ella a partir del n\'umero de dias seleccionado.
 \end{itemize}
 
-\hspace{0.4cm} Luego de selecionar la data, la misma se procede a depurar, es decir, se van a eliminar las observaciones duplicadas considerando s\'olo aquellas que sean m\'as recientes. \\
+\hspace{0.4cm} Luego de selecionar la data, la misma se procede a depurar, es decir, se van a eliminar las observaciones duplicadas considerando s\'olo aquellas que sean m\'as recientes. 
 
 
 \hspace{0.4cm}As\'i a partir de esta data s\'olo se consideraran las columnas plazo y rendimiento con el fin de tener una nube de puntos a partir de la cual se haga el ajuste de la funci\'on spline, y as\'i obtener la curva de rendimientos.
 
+\newpage
 
 \hspace{0.4cm} La data obtenida a partir de la depuraci\'on anterior es,
 
@@ -139,7 +141,7 @@
 
 
 
-\hspace{0.4cm} Una vez obtenida la data para los Tif y Vebono se utiliz\'o la funci\'on ``smooth.spline" del programa estad\'istico R, para ajustar un spline c\'ubico a la data ingresada. Los argumentos requeridos por esta funci\'on son los siguientes,
+\hspace{0.4cm} Una vez obtenida la data para los Tif y Vebono se utiliz\'o la funci\'on ``smooth.spline" \hspace{0.01cm} del programa estad\'istico R, para ajustar un spline c\'ubico a la data ingresada. Los argumentos requeridos por esta funci\'on son los siguientes,
 
 \begin{itemize}
   \item X: representa el vector de la variable predictiva.
@@ -156,9 +158,11 @@ spline1=smooth.spline(X=datT1\$Plazo,Y=datT1\$Rendimiento,cv=TRUE, spar=1.35)
 
 \noindent y lo guarda en la variable ``spline1".
 
-\hspace{0.4cm} Es importante se\~nalar lo crucial de la escogencia del par\'ametro ``spar", pues de \'el depende que tan suave sea la curva, la Figura \ref{comp_spar} muestra como var\'ia la curva cuando se cambia  el valor del ``spar", para esta comparaci\'on se us\'o tres valores, el primero fue 0.51 con el cual se obtiene una curva con ciertos picos la cual no es suave en lo absoluto. Usando el valor de 0.71 se obtiene la curva roja la cual presenta una mayor suavidad. Mientras que usando el valor de 0.81 se obtiene un mejor resultado aunque similar al anterior.
+\hspace{0.4cm} Es importante se\~nalar lo crucial de la escogencia del par\'ametro ``spar", pues de \'el depende que tan suave sea la curva, la Figura \ref{comp_spar} muestra como var\'ia la curva cuando se cambia  el valor del ``spar", para esta comparaci\'on se us\'o tres valores, el primero fue 0.51 con el cual se obtiene una curva con ciertos picos la cual no es suave en lo absoluto. 
 
-\hspace{0.4cm} De esta manera, se puede observar la importancia de la elecci\'on correcta de este par\'ametro, mientras este valor se aproxime a 1 se obtendr\'a una curva con mayor suvidad.
+\newpage
+
+\hspace{0.4cm} Usando el valor de 0.71 se obtiene la curva roja la cual presenta una mayor suavidad. Mientras que usando el valor de 0.81 se obtiene un mejor resultado aunque similar al anterior. De esta manera, se puede observar la importancia de la elecci\'on correcta de este par\'ametro, mientras este valor se aproxime a 1 se obtendr\'a una curva con mayor suvidad.
 
 \begin{figure}[h]
   {\includegraphics{images/curvavbv2.jpg}}
@@ -170,7 +174,7 @@ spline1=smooth.spline(X=datT1\$Plazo,Y=datT1\$Rendimiento,cv=TRUE, spar=1.35)
 
 \hspace{0.4cm} Una vez que se obtiene la curva estimada y es guardada en una variable (en este caso, la variable es spline1), se procede a aplicar el comando ``predict", para estimar el rendimiento de alg\'un plazo que se ingrese.
 
-\hspace{0.4cm} As\'i con el fin de calcular el precio estimado de cada t\'itulo, se cre\'o la funci\'on ``precio" mediante R, para determinar de forma autom\'atica dichos valores. Los imputs de dicha funci\'on son los siguientes,
+\hspace{0.4cm} As\'i con el fin de calcular el precio estimado de cada t\'itulo, se cre\'o la funci\'on ``precio"\hspace{0.01cm} mediante R, para determinar de forma autom\'atica dichos valores. Los imputs de dicha funci\'on son los siguientes,
 
 
 \begin{itemize}
@@ -183,9 +187,12 @@ spline1=smooth.spline(X=datT1\$Plazo,Y=datT1\$Rendimiento,cv=TRUE, spar=1.35)
 \hspace{0.4cm} Una vez ingresado los imputs, la funci\'on internamente busca el nombre del t\'itulo en el documento de las caracter\'isticas m\'as reciente, y extrae del mismo la fecha de pago del pr\'oximo cup\'on y su fecha de vencimiento, con el fin de crear un vector de flujos.
 
 
-\hspace{0.4cm} Por ejemplo, si se quiere conocer el precio estimado del t\'itulo ``TIF032022" \hspace{0.2cm} al ``01/03/2018", la funci\'on busca su fecha de vencimiento $(03/03/2022)$ y la fecha de pago del pr\'oximo cup\'on la cual es en este caso $08/03/2018$. Luego con dichos valores calcula la siguiente tabla, que representa los cupones que le quedan por pagar al t\'itulo,
+\hspace{0.4cm} Por ejemplo, si se quiere conocer el precio estimado del t\'itulo ``TIF032022" \hspace{0.01cm} al ``01/03/2018", la funci\'on busca su fecha de vencimiento $(03/03/2022)$ y la fecha de pago del pr\'oximo cup\'on la cual es en este caso $08/03/2018$. Luego con dichos valores calcula la Tabla \ref{tabla1}, que representa los cupones que le quedan por pagar al t\'itulo,
 
-\begin{center}
+\renewcommand{\tablename}{Tabla}
+\begin{table}[H]
+\centering
+%\begin{center}
 {\begin{tabular}[t]{|l |c |c |c |c |c |r|}
 \hline
 Fecha & Plazo t\'itulo & Plazo a\~nos & Rend estimado & Exp & Cup\'on & Producto \\
@@ -229,7 +236,11 @@ Fecha & Plazo t\'itulo & Plazo a\~nos & Rend estimado & Exp & Cup\'on & Producto
 \hline
 \end{tabular}
 }
-\end{center}
+%\caption{Tabla}
+%\end{center}
+\caption{C\'alculos funci\'on precio.}
+\label{tabla1}
+\end{table}
 
 \hspace{0.4cm}As\'i la primera columna (Fecha) se obtiene de sumarle a la fecha de pago del pr\'oximo cup\'on ($08/03/2018$) 91 d\'ias, que representa el tiempo cada cuando el t\'itulo paga cup\'on, esto se realiza  hasta llegar a la fecha de vencimiento.
 

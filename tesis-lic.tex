@@ -3,7 +3,8 @@
 %a continuaci?n el paquete que permite incluir gr?ficos
 \usepackage{graphics}
 \usepackage{amsmath}
-
+\usepackage{chngcntr}
+\counterwithout{table}{chapter}
 
 %el siguiente paquete permite acentuar de la manera usual
 %se recomienda usarlo porque facilita la correcci?n de la tesis
@@ -65,6 +66,7 @@
 \renewcommand{\bibname}{Bibliograf\'{\i}a}
 \renewcommand{\indexname}{\'Indice}
 \renewcommand{\figurename}{Figura}
+%\renewcommand{\tablename}{Tabla}
 
 %el siguiente comando define "seno" como funci?n (esta funci?n
 %no la trae LaTeX porque es ingl?s es "sine")
@@ -117,6 +119,10 @@
 
 \tableofcontents
 
+\listoffigures 
+
+\renewcommand{\listtablename}{\'{I}ndice de tablas} 
+\listoftables 
 
 \mainmatter
 
