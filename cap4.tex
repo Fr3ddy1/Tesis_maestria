@@ -76,7 +76,7 @@ Error & NA & 4,6224 & 5,2694 & 0,3610\\
 
 \hspace{0.4cm} Por su parte, si se observa el error obtenido para la metodolg\'ia de Svensson optimizada ($0.3610$), este valor es mucho m\'as peque\~no que las dos metodolog\'ias anteriores, esto se debe al proceso de optimizaci\'on ya que en el mismo se busca que esta diferencia sea m\'inima.
 
-\hspace{0.4cm} La figura \ref{curva_spline_tif}, muestra la curva de rendimiento para los TIF obtenida mediante el ajuste del Spline de suavizado, por su parte la nube de puntos fue obtenida a partir de la base de datos de estos instrumentos para la cantidad de d\'ias seleccionado, en este caso 40. Estos puntos representan los rendimientos obtenidos a partir de las operaciones realizadas con estos instrumentos en el horizonte temporal considerado. El eje x de la gr\'afica muestra la maduraci\'on en d\'ias, por su parte el eje y muestra el rendimiento estimado.
+\hspace{0.4cm} La Figura \ref{curva_spline_tif}, muestra la curva de rendimiento para los TIF obtenida mediante el ajuste del Spline de suavizado, por su parte la nube de puntos fue obtenida a partir de la base de datos de estos instrumentos para la cantidad de d\'ias seleccionado, en este caso 40. Estos puntos representan los rendimientos obtenidos a partir de las operaciones realizadas con estos instrumentos en el horizonte temporal considerado. El eje x de la gr\'afica muestra la maduraci\'on en d\'ias, por su parte el eje y muestra el rendimiento estimado.
 
 \newpage
 
@@ -152,7 +152,7 @@ Error & NA & 3,5817 & 6,7379 & 0,3608\\
 
 \hspace{0.4cm} Si se compara los precios te\'oricos obtenidos mediante la metodolog\'ia de Splines de suavizados con los precios obtenidos mediante la metodolog\'ia de Svensson sin optimizar, podemos decir que los primeros muestran un mejor comportamiento al ser comparados con los precios promedio de cada t\'itulo valor. Esto debido a que el error obtenido es menor.
 
-\hspace{0.4cm}Por otra parte, si estos precios son comparados con los obtenidos mediante la metodolog\'ia de Svensson optimizada, se observa que estos \'ultimos poseen un excelente comportamiento, ya que su error es bastante peque\~no. En la figura \ref{curva_spline_veb} se observa la curva de rendimientos obtenida para la fecha de valoraci\'on y cantidad de d\'ias seleccionado. En este caso la nube de puntos, al igual que para los TIF surgue de la base de datos de las operaciones m\'as recientes transadas con este tipo de instrumentos.
+\hspace{0.4cm}Por otra parte, si estos precios son comparados con los obtenidos mediante la metodolog\'ia de Svensson optimizada, se observa que estos \'ultimos poseen un excelente comportamiento, ya que su error es bastante peque\~no. En la Figura \ref{curva_spline_veb} se observa la curva de rendimientos obtenida para la fecha de valoraci\'on y cantidad de d\'ias seleccionado. En este caso la nube de puntos, al igual que para los TIF surgue de la base de datos de las operaciones m\'as recientes transadas con este tipo de instrumentos.
 
 \subsection{Curvas de Rendimiento.} \hspace{5cm}
 
@@ -176,7 +176,7 @@ Error & NA & 3,5817 & 6,7379 & 0,3608\\
 
 \section{Comparativo curvas de Rendimiento.}
 
-\hspace{0.4cm} En las figuras \ref{curva_spline_comp_tif} y \ref{curva_spline_comp_veb} , se muestra una comparaci\'on entre las curvas de rendimiento obtenidas mediante la metodolog\'ias de Splines de suavizado, Svensson sin opmitizar y Svensson Optimizado.
+\hspace{0.4cm} En las Figuras \ref{curva_spline_comp_tif} y \ref{curva_spline_comp_veb} , se muestra una comparaci\'on entre las curvas de rendimiento obtenidas mediante la metodolog\'ias de Splines de suavizado, Svensson sin opmitizar y Svensson Optimizado.
 Para el caso de la metodolog\'ia de los Splines se us\'o un par\'ametro de suavizamiento de 0.2 para los TIF y 0.4 para los Vebono, recordemos que este factor controla la suavidad de la curva obtenida. Por su parte las curvas obtenidas para las metodolog\'ias de Svensson optimizada y sin optimizar surgen de los par\'ametros considerados al momento de calcular los precios te\'oricos de los instrumentos.
 
 \hspace{0.4cm}Recordemos que para la metodolog\'ia Svensson sin optimizar se usaron unos par\'ametros por defecto, mientras que para la metodolog\'ia de Svensson optimizada se usaron aquellos par\'ametros de minimizaran la diferencia entre los precios te\'oricos y los precio promedio. La Tabla \ref{tabla4} muestra una comparaci\'on con estos valores para el caso de los TIF .
@@ -206,7 +206,7 @@ Svensson Optimizado & 0,1430 & 0,2119 & -0,6438 & 0,3327 & 0,5744 & 0,0184 \\
 \label{curva_spline_comp_tif}
 \end{figure}
 
-\hspace{0.4cm} En la figura \ref{curva_spline_comp_tif} se aprecia que la curva obtenida mediante la metodolog\'ia de los splines c\'ubicos de suavizado (curva roja) resulta ser la curva que menos altura alcanza en promedio siendo su valor m\'aximo $12 \%$, lo cual influye directamente en los precios obtenidos, esto debido a la relaci\'on inversa que existe entre el rendimiento y el precio de un instrumento. En este caso, al obtenerse rendimientos relativamente bajos se obtendr\'an precios relativamente elevados. 
+\hspace{0.4cm} En la Figura \ref{curva_spline_comp_tif} se aprecia que la curva obtenida mediante la metodolog\'ia de los splines c\'ubicos de suavizado (curva roja) resulta ser la curva que menos altura alcanza en promedio siendo su valor m\'aximo $12 \%$, lo cual influye directamente en los precios obtenidos, esto debido a la relaci\'on inversa que existe entre el rendimiento y el precio de un instrumento. En este caso, al obtenerse rendimientos relativamente bajos se obtendr\'an precios relativamente elevados. 
 
 \hspace{0.4cm} Por su parte si se observa la curva de rendimientos obtenida mediante la metodolog\'ia de Svensson sin optimizar (curva verde), la misma presenta alturas m\'as grandes que la curva anterior, alcanzando su m\'aximo en $12,5 \%$. Esto ocasiona, que para esta metodolog\'ia se obtengan precios un tanto m\'as bajos.
 
@@ -236,7 +236,7 @@ Svensson Optimizado & 0,1421 & 0,4845 & -0,4343 & -0,3514 & 0,1985 & 0,7851 \\
 
 \vspace{0.5cm}
 
-\hspace{0.4cm} La figura \ref{curva_spline_comp_veb} muestra una comparaci\'on entre las curvas obtenidas por las tres metodolog\'ias consideradas. La curva roja muestra la curva de rendimientos obtenida mediante la metodolog\'ia de Splines c\'ubicos de suavizado, la misma presenta ciertas ``jorobas", las cuales son ocasionadas por las observaciones obtenidas para el per\'iodo de estudio considerado. Esta curva presenta en promedio alturas m\'as bajas que las curvas obtenidas por las otras metodolog\'ias, raz\'on por la cual sus precios tender\'an a ser m\'as elevados.
+\hspace{0.4cm} La Figura \ref{curva_spline_comp_veb} muestra una comparaci\'on entre las curvas obtenidas por las tres metodolog\'ias consideradas. La curva roja muestra la curva de rendimientos obtenida mediante la metodolog\'ia de Splines c\'ubicos de suavizado, la misma presenta ciertas ``jorobas", las cuales son ocasionadas por las observaciones obtenidas para el per\'iodo de estudio considerado. Esta curva presenta en promedio alturas m\'as bajas que las curvas obtenidas por las otras metodolog\'ias, raz\'on por la cual sus precios tender\'an a ser m\'as elevados.
 
 \hspace{0.4cm} Por su parte las curvas obtenidas mediante las metodolog\'ias de Svensson sin optimizar y optmizada, son muy parecidas, s\'olo existe una peque\~na diferencia en el corto plazo. Sus alturas en comparaci\'on con la curva de los Splines son m\'as elevadas, lo cual ocasiona que sus precios sean relativamente m\'as bajos.
 

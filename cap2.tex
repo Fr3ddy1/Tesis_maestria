@@ -179,7 +179,7 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 
 \vspace{0.5cm}
 
-\noindent este spline es lineal. Usualmente $S(x)$ se define como $S_{1}(x)$ para $x<x_{1}$ y como $S_{n-1}(x)$ para $x>x_{n}$, donde $x_{1}$ y $x_{n}$ son nodos frontera (ver figura \ref{spline_l}).
+\noindent este spline es lineal. Usualmente $S(x)$ se define como $S_{1}(x)$ para $x<x_{1}$ y como $S_{n-1}(x)$ para $x>x_{n}$, donde $x_{1}$ y $x_{n}$ son nodos frontera (Ver Figura \ref{spline_l}).
 
 
 \begin{figure}[h]
@@ -189,7 +189,7 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 \end{figure}
 
 
-\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas (ver figura \ref{spline_c}). Los polinomios $P(x)$ a trav\'es de los que construimos el Spline tienen grado 2. Esto quiere decir, que va a tener la forma $P(x) = ax^2 + bx + c$.
+\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas (Ver Figura \ref{spline_c}). Los polinomios $P(x)$ a trav\'es de los que construimos el Spline tienen grado 2. Esto quiere decir, que va a tener la forma $P(x) = ax^2 + bx + c$.
 
 \hspace{0.4cm} Como en la interpolaci\'on segmentaria lineal, vamos a tener $N-1$ ecuaciones (donde N son los puntos sobre los que se define la funci\'on). La interpolaci\'on cuadr\'atica nos va a asegurar que la funci\'on que nosotros generemos a trozos con los distintos $P(x)$ va a ser continua, ya que para sacar las condiciones que ajusten el polinomio, vamos a determinar como condiciones,
 
@@ -201,7 +201,7 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 
 
 
-\hspace{0.4cm} Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas (ver figura \ref{spline_3}). Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
+\hspace{0.4cm} Por su parte un spline c\'ubico, se representa mediante la uni\'on de polinomios c\'ubicos con primera y segunda derivada continuas (Ver Figura \ref{spline_3}). Este spline debido a su flexibilidad es el m\'as usado en las aplicaciones.
 
 
 \hspace{0.4cm}Formalmente un spline c\'ubico con nodos $x_{1},...x_{n}$ se define a partir de un conjunto de polinomios de la forma,\\
@@ -252,7 +252,7 @@ $\displaystyle{ c_{0} = d_{0} = c_{n} =d_{n}}$
 \end{figure}
 
 
-\hspace{0.4cm} Otra caracter\'istica de los splines es que con la adici\'on de un par\'ametro s\'olo se aumenta la dimensionalidad del espacio de par\'ametros en una unidad, ya que tres de los cuatro par\'ametros est\'an restringidos. De igual forma, al incrementar el n\'umero de nodos los splines toman formas funcionales m\'as flexibles, lo cual muestra la relaci\'on entre el grado aproximaci\'on que se logra con el spline y el n\'umero de nodos que lo definen. Un comparativo para la interpolaci\'on lineal usando splines de primer, segundo y tercer grado, se muestra en la figura \ref{spline_4}
+\hspace{0.4cm} Otra caracter\'istica de los splines es que con la adici\'on de un par\'ametro s\'olo se aumenta la dimensionalidad del espacio de par\'ametros en una unidad, ya que tres de los cuatro par\'ametros est\'an restringidos. De igual forma, al incrementar el n\'umero de nodos los splines toman formas funcionales m\'as flexibles, lo cual muestra la relaci\'on entre el grado aproximaci\'on que se logra con el spline y el n\'umero de nodos que lo definen. Un comparativo para la interpolaci\'on lineal usando splines de primer, segundo y tercer grado, se muestra en la Figura \ref{spline_4}
 
 
 \hspace{0.4cm} Mientras que las funciones spline son una herramienta interesante para interpolar funciones suaves, encontrarlas num\'ericamente no es tarea f\'acil. Una manera eficiente y muy estable para generar los splines necesarios para aproximar la funci\'on subyacente $f(x)$, es usando las bases de los B-splines c\'ubicos.
