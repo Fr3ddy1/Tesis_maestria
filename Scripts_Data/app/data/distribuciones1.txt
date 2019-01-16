@@ -1,0 +1,2 @@
+"TIF082018" "TIF042019" "TIF082019" "TIF112019" "TIF102020" "TIF112020" "TIF022021" "TIF032022" "TIF042023" "TIF012024" "TIF062025" "TIF012026" "TIF112027" "TIF032028" "TIF052028" "TIF022029" "TIF032029" "TIF022030" "TIF102030" "TIF022031" "TIF032031" "TIF022032" "TIF032032" "TIF032033" "TIF052034"
+"Normal" "Logistic" "Uniform" "Normal" "Logistic" "Uniform" "Normal" "Student" "Normal" "Logistic" "Uniform" "Normal" "Logistic" "Uniform" "Normal" "Logistic" "Uniform" "Normal" "Logistic" "Uniform" "Normal" "Logistic" "Student" "Student" "Normal"
