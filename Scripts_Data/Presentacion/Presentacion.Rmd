@@ -7,9 +7,11 @@ output:
   ioslides_presentation:
     css: shiny-slides.css
     #logo: images/shiny-logo.png
-    incremental: true
+    incremental: false
     widescreen: true
     runtime: shiny
+    #smaller: true
+    transition: slower
 ---
 
 ## Contenido 
