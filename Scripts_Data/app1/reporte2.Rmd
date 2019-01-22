@@ -1,0 +1,125 @@
+---
+#title: "reporte2"
+output: 
+  pdf_document:
+    includes:
+      in_header: /Users/freddytapia/Documents/preambulo.tex 
+      #C:/Users/Freddy Tapia/Documents/preambulo.tex
+      #/Users/dmorales/Documents/Vision/Riesgo-de-Mercado/app/preambulo.tex
+      #paste(getwd(),"preambulo.tex",sep="/") 
+      #~/Documents/Vision/liquidez/preambulo.tex
+params:
+  titulos: NA
+  pre_prom: NA
+  par_ns_v: NA
+  par_sven_v: NA
+  par_dl_v: NA
+  par_sp_v: NA
+  comp_pre_v: NA
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Precios teóricos obtenidos mediante las diferentes metodologías
+
+Los títulos seleccionados fueron
+
+```{r,echo = FALSE}
+library(knitr)
+kable(params$titulos,col.names=c("Instrumentos"),align="c")
+```
+
+Su precio promedio es el siguiente,
+
+
+```{r,echo = FALSE}
+library(knitr)
+kable(params$pre_prom,col.names=c("Precios Promedio"),align="c")
+```
+
+## Parámetros obtenidos
+
+Los parámetros optimizados obtenidos para la metodología de Nelson y Siegel son,
+
+```{r,echo = FALSE}
+kable(cbind.data.frame(c("B0","B1","B2","T1"),params$par_ns_v),col.names=c("Parámetros","Valores"),align="c")
+```
+
+Los parámetros optimizados obtenidos para la metodología de Svensson son,
+
+```{r,echo = FALSE}
+kable(cbind.data.frame(c("B0","B1","B2","B3","T1","T2"),params$par_sven_v),col.names=c("Parámetros","Valores"),align="c")
+```
+
+##Precios teóricos
+
+Los precios teóricos obtenidos mediante las diferentes metodologías se presentan a continuación,
+
+```{r warning=FALSE, echo=FALSE}
+library(knitr)
+kable(params$comp_pre_v,align="c")
+```
+
+##Curva de rendimientos
+
+Las diferentes curvas obtenidas se presentan a continuación,
+
+```{r,echo = FALSE}
+library(plotly)
+
+    x <- seq(1,20,0.1)
+    y_ns <- nelson_siegel(x,pa=params$par_ns_v)*100
+    y_sven <- sven(x,pa=params$par_sven_v)*100
+    y_dl <- diebold_li(pa=as.numeric(params$par_dl_v),x)*100
+    y_sp <- predict(params$par_sp_v,x*365)$y
+  
+    #dataframe
+    data <- data.frame(x,y_ns,y_sven,y_dl,y_sp)
+    d_ns <- data.frame(x,y_ns)
+    d_ns$met <- "Nelson y Siegel"
+    d_sven <- data.frame(x,y_sven)
+    d_sven$met <- "Svensson"
+    d_dl <-  data.frame(x,y_dl)
+    d_dl$met <- "Diebold-Li"
+    d_sp <-  data.frame(x,y_sp)
+    d_sp$met <- "Splines"
+    
+    names(d_ns) <- c("x","y","met")
+    names(d_sven) <-  c("x","y","met")
+    names(d_dl) <-  c("x","y","met")
+    names(d_sp) <- c("x","y","met")
+    data1 <- rbind.data.frame(d_ns,d_sven,d_dl,d_sp)
+    
+    #curva 
+    #defino nombres de ejes
+    f <- list(
+      family = "Courier New, monospace",
+      size = 18,
+      color = "#7f7f7f"
+    )
+    x1 <- list(
+      title = "Maduración (días)",
+      titlefont = f
+    )
+    y1 <- list(
+      title = "Rendimientos (%)",
+      titlefont = f
+    )
+    
+    #
+
+    ggplot(data1,aes(x=x,y=y,colour=met,group=met))+
+      geom_line() +  xlab("Maduración (días)")+
+       ylab("Rendimiento (%)")
+    
+    # ggplot(data, x = ~x, y = ~y_ns, name = 'Nelson y Siegel', type = 'scatter',          mode = 'lines') 
+    # %>%
+    #   add_trace(y = ~y_sven, name = 'Svensson', mode = 'lines') %>% 
+    #   add_trace(y = ~y_dl, name = 'Diebold-Li', mode = 'lines') %>% 
+    #   add_trace(y = ~y_sp, name = 'Splines', mode = 'lines') %>%
+    # layout(title = "Curvas de Rendimientos TIF",xaxis = x1, yaxis = y1)
+```
+
