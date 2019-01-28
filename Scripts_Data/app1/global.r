@@ -23,8 +23,8 @@ library(webshot)
 library(readxl)
 library(xml2)
 library(rvest)
-library(VaRES)
-library(lmomco)
+#library(VaRES)
+#library(lmomco)
 
 
 options(OutDec = ",")
@@ -92,13 +92,13 @@ pos1 <- function(t,ind){
   #caso tif
   if(ind==0){
     tif <- read.csv(paste(getwd(),"data","Precio_prom_tif.txt",sep = "/"),sep="")
-    tif$Títulos <- as.character(tif$Títulos)
+    tif$'Títulos' <- as.character(tif$'Títulos')
     p <- c()
     
     #condicional de existencia
     for(i in 1:length(t)){
-      if(length(which(t[i]==tif$Títulos))!=0){
-           p[i] <- tif$Precio.Promedio[which(t[i]==tif$Títulos)]
+      if(length(which(t[i]==tif$'Títulos'))!=0){
+           p[i] <- tif$Precio.Promedio[which(t[i]==tif$'Títulos')]
       }else{
         #print("Titulo no encontrado")
         p[i] <- 0
@@ -115,13 +115,13 @@ pos1 <- function(t,ind){
   #caso veb
   if(ind==1){
     veb <- read.csv(paste(getwd(),"data","Precio_prom_veb.txt",sep = "/"),sep="")
-    veb$Títulos <- as.character(veb$Títulos)
+    veb$'Títulos' <- as.character(veb$'Títulos')
     
     p <- c()
     #condicional de existencia
     for(i in 1:length(t)){
-      if(length(which(t[i]==veb$Títulos))!=0){
-        p[i] <- veb$Precio.Promedio[which(t[i]==veb$Títulos)]
+      if(length(which(t[i]==veb$'Títulos'))!=0){
+        p[i] <- veb$Precio.Promedio[which(t[i]==veb$'Títulos')]
       }else{
         #print("Titulo no encontrado")
         p[i] <- 0
