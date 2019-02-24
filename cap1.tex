@@ -31,7 +31,7 @@
 \hspace*{0.4 cm} Algunas reglas sencillas ayudan a los inversores a entender la relaci\'on de el rendimiento al vencimiento de un bono y otras medidas de rendimiento. Para un bono sobre la par, el rendimiento al vencimiento es m\'as bajo que el rendimiento actual, que a su vez es m\'as bajo que la tasa de cup\'on. Con un bono bajo la par, el rendimiento al vencimiento es la tasa m\'as alta, seguida por el rendimiento actual, siendo la tasa de cup\'on el indicador m\'as bajo.
 
 
-\section{Curva de Rendimientos.}
+\section{Curva de rendimientos.}
 
 \hspace*{0.4 cm} La curva de rendimientos es una representaci\'on grafica que muestra la relaci\'on que existe entre los rendimientos de una clase particular de t\'itulos valores y el tiempo que falta para su vencimiento, lo cual es conocido como la estructura temporal de la tasa de inter\'es (ETTI) para instrumentos con riesgo similar pero con diferentes plazos de maduraci\'on. La ETTI es un indicador de la evoluci\'on futura de los tipos de inter\'es y de inflaci\'on, adem\'as, la mayor\'ia de los activos financieros se valoran mediante este indicador, por lo cual tambi\'en se considera b\'asico en el dise\~no de estrategias de gesti\'on de riesgos y en la toma de decisiones de inversi\'on y financiaci\'on \cite{FR}. Existen cuatro formas que puede adoptar una curva de rendimientos:
 
@@ -140,12 +140,12 @@
 % 
 % \vspace{0.5cm}
 
-\section{Metodolog\'ias de estimaci\'on de la Curva de Rendimientos.}
+\section{Metodolog\'ias de estimaci\'on de la curva de rendimientos.}
 
 \hspace*{0.4 cm} La curva de rendimientos presenta emp\'iricamente una serie de dificultades, debido a que se construye a trav\'es de una serie de precios (tasas) de instrumentos financieros discontinuos en el tiempo que, por lo general, est\'an lejos de ser una curva suave. Para su estimaci\'on existen diversas metodolog\'ias, las param\'etricas y las no param\'etricas. Las metodolog\'ias param\'etricas se basan en modelos asociados a una familia funcional que obedece al comportamiento de alguna distribuci\'on de probabilidad, sobre la cual suponemos que las caracter\'isticas de la poblaci\'on de inter\'es pueden ser descritas. Es as\'i como, los modelos dise\~nados en este contexto, basados en regresi\'on, buscan describir el comportamiento de una variable de inter\'es con otras llamadas ex\'ogenas, a trav\'es de funciones de v\'inculo lineales o no lineales.
 
 
-\section{Metodolog\'ias Param\'etricas.}
+\section{Metodolog\'ias param\'etricas.}
 
 \hspace*{0.4 cm} Estad\'isticamente, un modelo param\'etrico es una familia funcional que
 obedece al comportamiento de alguna distribuci\'on de probabilidad, sobre la cual suponemos que las caracter\'isticas de la poblaci\'on de inter\'es
@@ -350,7 +350,7 @@ ser utilizada para estimar los par\'ametros del modelo (Nocedal y Wright
 \cite{NW}). Aunque podr\'ia asumirse un par\'ametro de fase en el modelo, este
 no es considerado por motivos de parsimonia.
 
-\section{Metodolog\'ias no Param\'etricas}
+\section{Metodolog\'ias no param\'etricas}
 
 \hspace*{0.4 cm} La regresi\'on no param\'etrica se ha convertido en los \'ultimos a\~nos en un
 \'area de excesivo estudio, debido a sus ventajas relativas respecto a los
@@ -380,16 +380,16 @@ estas condiciones la idea es que la media m(.) sea suave, suavidad que
 puede controlarse acotando la segunda derivada, $|m''(x)| \leq M$, para todo
 $x$ y $M$ una constante.
 
-\subsection{Regresi\'on Kernel.\\}
+\subsection{Regresi\'on de n\'ucleo.\\}
 
 
-\hspace*{0.4 cm} El m\'etodo m\'as simple de suavizamiento es el suavizador Kernel. Un
+\hspace*{0.4 cm} El m\'etodo m\'as simple de suavizamiento es el suavizador de n\'ucleo. Un
 punto x se fija en el soporte de la funci\'on $m(.)$ y una ventana de
 suavizamiento es definida alrededor de x. Frecuentemente, la ventana de
 suavizamiento es simplemente un intervalo de la forma $(x - h, x + h)$,
 donde h es un par\'ametro conocido como bandwidth.
 
-\hspace*{0.4 cm} La estimaci\'on Kernel es un promedio ponderado de las observaciones
+\hspace*{0.4 cm} La estimaci\'on de n\'ucleo es un promedio ponderado de las observaciones
 dentro de la ventana de suavizamiento,
 
 \begin{equation}
@@ -399,7 +399,7 @@ dentro de la ventana de suavizamiento,
 
 \vspace*{0.2 cm}
 
-\noindent donde $K(.)$ es la funci\'on Kernel de ponderaci\'on. La funci\'on Kernel es escogida
+\noindent donde $K(.)$ es la funci\'on de n\'ucleo de ponderaci\'on. La funci\'on de n\'ucleo es escogida
 de tal forma que las observaciones m\'as pr\'oximas a x reciben mayor peso. Una
 funci\'on frecuentemente utilizada es la bicuadr\'atica:
 
@@ -415,9 +415,9 @@ $$ K(x) = \left\{ % para la llave grandota
 \hspace*{0.4 cm} Sin embargo, otro tipo de funciones de peso son utilizadas, tal como la
 gaussiana, $K(x) = (2 \sqrt{\pi})^{-1} e^{\frac{-x^2}{2}}$ y la familia beta sim\'etrica $K(x) = \frac{(1-x^2)_{+}^{\gamma}}{Beta(0.5,\gamma+1)}, \hspace*{0.2 cm}\gamma = 0,1,...$
 
-\hspace*{0.4 cm} Note que cuando escogemos $\gamma = 0, 1, 2$ y $3$ obtenemos las funciones Kernel uniforme (Box), de Epanechnikov, la bipeso y la tripeso, respectivamente.
+\hspace*{0.4 cm} Note que cuando escogemos $\gamma = 0, 1, 2$ y $3$ obtenemos las funciones de n\'ucleo uniforme (Box), de Epanechnikov, la bipeso y la tripeso, respectivamente.
 
-\hspace*{0.4 cm} El suavizador Kernel puede ser representado como,
+\hspace*{0.4 cm} El suavizador de n\'ucleo puede ser representado como,
 
 \vspace*{0.2 cm}
 
@@ -440,7 +440,7 @@ $\displaystyle{l_{i} = \frac{K(\frac{x_{i}-x}{h})}{\sum_{j=1}^{n} K(\frac{x_{j}-
 \vspace*{0.2 cm}
 
 
-\hspace*{0.4 cm} La estimaci\'on Kernel en la ecuaci\'on (\ref{kernel}) es llamada la estimaci\'on de Nadaray- Watson, en honor a sus creadores. Su simplicidad lo hace de f\'acil comprensi\'on e implementaci\'on; no obstante, se sabe que los ajustes en los extremos son sesgados. Una referencia ideal para un desarrollo m\'as completo sobre este tema puede encontrarse en Fan y Gijbels \cite{FG}.
+\hspace*{0.4 cm} La estimaci\'on de n\'ucleo en la ecuaci\'on (\ref{kernel}) es llamada la estimaci\'on de Nadaray- Watson, en honor a sus creadores. Su simplicidad lo hace de f\'acil comprensi\'on e implementaci\'on; no obstante, se sabe que los ajustes en los extremos son sesgados. Una referencia ideal para un desarrollo m\'as completo sobre este tema puede encontrarse en Fan y Gijbels \cite{FG}.
 
 \subsection{Polinomios locales.\\}
 
@@ -456,7 +456,7 @@ $\displaystyle{m(x_{i}) \approx  a_{0} + a_{1}(x_{i}-x) + \frac{a_{2}}{2}(x_{i}-
 
 \vspace*{0.2 cm}
 
-\hspace*{0.4 cm} La aproximaci\'on local puede ser ajustada a trav\'es de m\'inimos cuadrados ponderados localmente. Una funci\'on Kernel y un bandwidth son definidos como en la regresi\'on Kernel. Los coeficientes $\hat{a}_{0}$ y $\hat{a}_{1}$, son escogidos de tal forma que se pueda minimizar la expresi\'on,
+\hspace*{0.4 cm} La aproximaci\'on local puede ser ajustada a trav\'es de m\'inimos cuadrados ponderados localmente. Una funci\'on de n\'ucleo y un bandwidth son definidos como en la regresi\'on de n\'ucleo. Los coeficientes $\hat{a}_{0}$ y $\hat{a}_{1}$, son escogidos de tal forma que se pueda minimizar la expresi\'on,
 
 \vspace*{0.2 cm}
 
