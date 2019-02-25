@@ -176,13 +176,13 @@ diferenciales. La expresi\'on param\'etrica propuesta por Nelson y Siegel
 
 
 \begin{center}
-$\displaystyle{f(m) = \beta_{0} + \beta_{1} e^{\frac{-m}{\tau}} +\beta_{2} \left(\frac{-m}{\tau}\right)e^{\frac{-m}{\tau}}}$
+$\displaystyle{f(m) = \beta_{0} + \beta_{1} e^{\frac{-m}{\tau}} +\beta_{2} \left(\frac{m}{\tau}\right)e^{\frac{-m}{\tau}}}$
 \end{center}
 
 \vspace*{0.2 cm}
 
 \noindent donde $m$ denota la madurez del activo y $\beta_{0}$, $\beta_{1}$, $\beta_{2}$ y $\tau$ los par\'ametros a ser
-estimados. Puesto que las tasas spot pueden ser obtenidas a trav\'es de tasas
+estimados. La ecuaci\'on anterior es la soluci\'on de la ecuaci\'on diferencial homog\'enea de segundo orden $y'' + 2y' + 1 = 0$, la cual tiene por soluci\'on dos raices reales iguales. Puesto que las tasas spot pueden ser obtenidas a trav\'es de tasas
 forward por medio de la expresi\'on:
 
 \vspace*{0.2 cm}
@@ -237,14 +237,14 @@ contribuye en el comportamiento de las tasas forward en el corto,
 mediano y largo plazo; no obstante, Svensson \cite{Sv} propone una nueva
 versi\'on de la curva de Nelson-Siegel donde un cuarto t\'ermino es incluido
 para producir un efecto adicional y semejante al proporcionado por:
-$\beta_{3}(\frac{m}{\tau_{2}})e^{\frac{-m}{\tau_{2}}}$.
+$\beta_{2}(\frac{m}{\tau_{1}})e^{\frac{-m}{\tau_{1}}}$.
 
 \hspace*{0.4 cm} En este caso, la funci\'on para describir la din\'amica de las tasas forward es,
 
 \vspace*{0.2 cm}
 
 \begin{center}
-$\displaystyle{f(m) = \beta_{0} + \beta_{1} e^{\frac{-m}{\tau_{1}}} +\beta_{2} \left(\frac{-m}{\tau_{1}}\right)e^{\frac{-m}{\tau_{1}}} + \beta_{3}\left(\frac{-m}{\tau_{2}}\right)e^{\frac{-m}{\tau_{2}}} }$
+$\displaystyle{f(m) = \beta_{0} + \beta_{1} e^{\frac{-m}{\tau_{1}}} +\beta_{2} \left(\frac{m}{\tau_{1}}\right)e^{\frac{-m}{\tau_{1}}} + \beta_{3}\left(\frac{m}{\tau_{2}}\right)e^{\frac{-m}{\tau_{2}}} }$
 \end{center}
 
 \vspace*{0.2 cm}
