@@ -28,7 +28,7 @@ informaci\'on de valores $f(x_{i})$ m\'as distantes son incorporadas. El procedi
   \item Interpolaci\'on lineal.
   \item Interpolaci\'on de Hermite.
   \item Interpolaci\'on polin\'omica.
-  \item Interpolaci\'on de Splines.
+  \item Interpolaci\'on de splines.
 
 \end{itemize}
 
@@ -56,7 +56,7 @@ $\displaystyle{f_{i}(x_{0},x_{1},...,x_{i-1},x_{i}) = \frac{f_{i-1}(x_{1},...,x_
 
 \noindent donde  $\displaystyle{x_{i}-x_{j}}$ representa la distancia entre dos elementos.
 
-\hspace{0.4cm} Puede apreciarse c\'omo en la definici\'on general se usa la pendiente del paso anterior, $f_{i-1}(x_{1},...,x_{i-1},x_{i})$, a la cual se le resta la pendiente previa de mismo orden, es decir, el sub\'indice de los t\'erminos se decrementa en 1, como si se desplazara, para obtener $f_{i-1}(x_{0},x_{1},...,x_{i-1})$.
+\hspace{0.4cm} Puede apreciarse c\'omo en la definici\'on general se usa la pendiente del paso anterior, $f_{i-1}(x_{1},...,x_{i-1},x_{i})$, a la cual se le resta la pendiente previa de mismo orden, es decir, el sub\'indice de los t\'erminos se reduce en 1, como si se desplazara, para obtener $f_{i-1}(x_{0},x_{1},...,x_{i-1})$.
 
 \hspace{0.4cm} N\'otese tambi\'en que aunque el t\'ermino inicial siempre es $x_{0}$ este puede ser en realidad cualquier otro, por ejemplo, se puede definir $f_{1}(x_{i-1},x_{i})$ de manera an\'aloga al caso mostrado arriba. Una vez conocemos la pendiente, ya es posible definir el polinomio de grado $n$ de manera tambi\'en recursiva, as\'i,
 
@@ -137,7 +137,7 @@ $\displaystyle{L(x) = \sum_{j=0}^{k} y_{j} l_{j} (x) }$
 \noindent donde $l_{j}(x)$ son los polinomios de la base de Lagrange.
 
 
-\subsection{Interpolaci\'on Polin\'omica.\\}
+\subsection{Interpolaci\'on polin\'omica.\\}
 
 \hspace{0.4cm}Asumamos que se tiene una tabla con $n$ puntos, $(x_{1},y_{1})...,(x_{n},y_{n})$, donde los valores $x_{i}$, para $i=1,...,n$ est\'an ordenados de forma creciente y todos ellos son distintos. Supongamos que dichos puntos se representan en un plano cartesiano y se quiere determinar una curva suave que interpole dichos valores. As\'i, se desea determinar una curva que est\'e definida para todos los $x$ y tome los valores correspondientes de $y$, esto es, que interpole todos los datos de la tabla. Cabe destacar que los puntos considerados se les conoce como nodos.
 
@@ -189,13 +189,13 @@ $\displaystyle{S(x) = a_{j}x + b_{j} = S_{j}(x)}$
 \end{figure}
 
 
-\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas (Ver Figura \ref{spline_c}). Los polinomios $P(x)$ a trav\'es de los que construimos el Spline tienen grado 2. Esto quiere decir, que va a tener la forma $P(x) = ax^2 + bx + c$.
+\hspace{0.4cm} Un spline de segundo grado es una uni\'on de polinomios cuadr\'aticos tal que $S(x)$ y su derivada $S^{(1)}(x)$ son continuas (Ver Figura \ref{spline_c}). Los polinomios $P(x)$ a trav\'es de los que construimos el spline tienen grado 2. Esto quiere decir, que va a tener la forma $P(x) = ax^2 + bx + c$.
 
 \hspace{0.4cm} Como en la interpolaci\'on segmentaria lineal, vamos a tener $N-1$ ecuaciones (donde N son los puntos sobre los que se define la funci\'on). La interpolaci\'on cuadr\'atica nos va a asegurar que la funci\'on que nosotros generemos a trozos con los distintos $P(x)$ va a ser continua, ya que para sacar las condiciones que ajusten el polinomio, vamos a determinar como condiciones,
 
 \begin{itemize}
   \item Que las partes de la funci\'on a trozos P(x) pasen por ese punto. Es decir, que las dos Pn(x) que rodean al f(x) que queremos aproximar, sean igual a f(x) en cada uno de estos puntos.
-  \item Que la derivada en un punto siempre coincida para ambos "lados" de la funci\'on definida a trozos que pasa por tal punto com\'un.
+  \item Que la derivada en un punto siempre coincida para ambos ``lados" \hspace{0.01cm} de la funci\'on definida a trozos que pasa por tal punto com\'un.
   \item Esto sin embargo no es suficiente, y necesitamos una condici\'on m\'as, la cual se obtiene a partir de una condici\'on de borde.
 \end{itemize}
 

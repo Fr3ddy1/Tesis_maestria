@@ -83,9 +83,9 @@
 \hspace*{0.4 cm} La emisi\'on de deuda p\'ublica, al igual que la creaci\'on de dinero y los impuestos, son medios que tiene el Estado para financiar sus actividades. La deuda p\'ublica, de todos modos, tambi\'en puede utilizarse como un instrumento de la pol\'itica econ\'omica, de acuerdo a la estrategia escogida por las autoridades. Tendr\'iamos que hablar, por un lado, de tres tipos diferentes de deuda p\'ublica, aunque es cierto que hay diversas clasificaciones. Una clasificaci\'on de la deuda, es la siguiente,
 
 \begin{itemize}
-  \item \textbf{A corto plazo}: Dentro de esta categor\'ia se encuentran las Letras del Tesoro y se identifica por el hecho de que tiene un plazo de vencimiento que no supera el a\~no.
-  \item \textbf{A medio plazo}: Los bonos del Estado son los m\'aximos exponentes de esta clase de deuda p\'ublica que se suele utilizar para hacer frente a lo que ser\'an los gastos ordinarios.
-  \item \textbf{A largo plazo}: Como su propio nombre indica, este tipo de deuda tiene una duraci\'on muy larga, que se fijar\'a convenientemente, y que puede incluso llegar a ser perpetua. 
+  \item \textbf{A corto plazo}: dentro de esta categor\'ia se encuentran las Letras del Tesoro y se identifica por el hecho de que tiene un plazo de vencimiento que no supera el a\~no.
+  \item \textbf{A medio plazo}: los bonos del Estado son los m\'aximos exponentes de esta clase de deuda p\'ublica que se suele utilizar para hacer frente a lo que ser\'an los gastos ordinarios.
+  \item \textbf{A largo plazo}: como su propio nombre indica, este tipo de deuda tiene una duraci\'on muy larga, que se fijar\'a convenientemente, y que puede incluso llegar a ser perpetua. 
 \end{itemize}
 
 
@@ -387,7 +387,7 @@ $x$ y $M$ una constante.
 punto x se fija en el soporte de la funci\'on $m(.)$ y una ventana de
 suavizamiento es definida alrededor de x. Frecuentemente, la ventana de
 suavizamiento es simplemente un intervalo de la forma $(x - h, x + h)$,
-donde h es un par\'ametro conocido como bandwidth.
+donde h es un par\'ametro conocido como ancho de banda.
 
 \hspace*{0.4 cm} La estimaci\'on de n\'ucleo es un promedio ponderado de las observaciones
 dentro de la ventana de suavizamiento,
@@ -440,7 +440,7 @@ $\displaystyle{l_{i} = \frac{K(\frac{x_{i}-x}{h})}{\sum_{j=1}^{n} K(\frac{x_{j}-
 \vspace*{0.2 cm}
 
 
-\hspace*{0.4 cm} La estimaci\'on de n\'ucleo en la ecuaci\'on (\ref{kernel}) es llamada la estimaci\'on de Nadaray- Watson, en honor a sus creadores. Su simplicidad lo hace de f\'acil comprensi\'on e implementaci\'on; no obstante, se sabe que los ajustes en los extremos son sesgados. Una referencia ideal para un desarrollo m\'as completo sobre este tema puede encontrarse en Fan y Gijbels \cite{FG}.
+\hspace*{0.4 cm} La estimaci\'on de n\'ucleo en la ecuaci\'on (\ref{kernel}) es llamada la estimaci\'on de Nadaraya - Watson, en honor a sus creadores. Su simplicidad lo hace de f\'acil comprensi\'on e implementaci\'on; no obstante, se sabe que los ajustes en los extremos son sesgados. Una referencia ideal para un desarrollo m\'as completo sobre este tema puede encontrarse en Fan y Gijbels \cite{FG}.
 
 \subsection{Polinomios locales.\\}
 
@@ -456,7 +456,7 @@ $\displaystyle{m(x_{i}) \approx  a_{0} + a_{1}(x_{i}-x) + \frac{a_{2}}{2}(x_{i}-
 
 \vspace*{0.2 cm}
 
-\hspace*{0.4 cm} La aproximaci\'on local puede ser ajustada a trav\'es de m\'inimos cuadrados ponderados localmente. Una funci\'on de n\'ucleo y un bandwidth son definidos como en la regresi\'on de n\'ucleo. Los coeficientes $\hat{a}_{0}$ y $\hat{a}_{1}$, son escogidos de tal forma que se pueda minimizar la expresi\'on,
+\hspace*{0.4 cm} La aproximaci\'on local puede ser ajustada a trav\'es de m\'inimos cuadrados ponderados localmente. Una funci\'on de n\'ucleo y un ancho de banda son definidos como en la regresi\'on de n\'ucleo. Los coeficientes $\hat{a}_{0}$ y $\hat{a}_{1}$, son escogidos de tal forma que se pueda minimizar la expresi\'on,
 
 \vspace*{0.2 cm}
 
@@ -482,7 +482,7 @@ es un vector de ceros de tama\~no n, exceptuando la primera entrada cuyo valor e
 
 \hspace*{0.4 cm} Las funciones polinomiales se caracterizan por tener todas las derivadas en cualquier punto de su soporte; no obstante, cuando ciertas funciones no poseen un alto grado de suavidad en determinados puntos, el ajuste debido a estas funciones de polinomios no siempre ser\'a satisfactoria en estos tramos.
 
-\hspace*{0.4 cm} Para sobrellevar esta desventaja, el ajuste de polinomios de bajo orden localmente, con discontinuidades en ciertos puntos (knots), resulta en el conocido m\'etodo de splines.
+\hspace*{0.4 cm} Para sobrellevar esta desventaja, el ajuste de polinomios de bajo orden localmente, con discontinuidades en ciertos puntos (nodos), resulta en el conocido m\'etodo de splines.
 
 \subsection{Splines de polinomios.\\}
 
@@ -535,10 +535,10 @@ $\displaystyle{ \sum_{i=1}^{n} (y_{i}-m(x_{i})^2 + \lambda \int m''(x)^2dx  }$
 \subsection{Supersuavizador de Friedmann.\\}
 
 
-\hspace*{0.4 cm} Las metodolog\'ias usuales de suavizamiento asumen que el par\'ametro suavizador es constante, factor que sumado a la forma de la curva subyacente puede hacer que surjan problemas, tal como el aumento en la varianza de la componente del error y/o a variaciones incontrolables de la segunda derivada de la funci\'on subyacente sobre el conjunto predictor. El suavizador propuesto por Friedman \cite{F} intenta corregir estos problemas, asumiendo que el bandwidth es variable sobre el conjunto de predictores.
+\hspace*{0.4 cm} Las metodolog\'ias usuales de suavizamiento asumen que el par\'ametro suavizador es constante, factor que sumado a la forma de la curva subyacente puede hacer que surjan problemas, tal como el aumento en la varianza de la componente del error y/o a variaciones incontrolables de la segunda derivada de la funci\'on subyacente sobre el conjunto predictor. El suavizador propuesto por Friedman \cite{F} intenta corregir estos problemas, asumiendo que el ancho de banda es variable sobre el conjunto de predictores.
 
 
-\hspace*{0.4 cm} Formalmente, se puede estimar un bandwidth para cada $x$, al igual que el correspondiente valor \'optimo de suavizamiento, minimizando la expresi\'on $e^{2}(m,h) = E(Y - m(X|h(X)))^2$ con respecto a las funciones $m(x)$ y $h(x)$. La expresi\'on anterior puede reescribirse como,
+\hspace*{0.4 cm} Formalmente, se puede estimar un ancho de banda para cada $x$, al igual que el correspondiente valor \'optimo de suavizamiento, minimizando la expresi\'on $e^{2}(m,h) = E(Y - m(X|h(X)))^2$ con respecto a las funciones $m(x)$ y $h(x)$. La expresi\'on anterior puede reescribirse como,
 
 \vspace*{0.2 cm}
 
@@ -551,7 +551,7 @@ e^{2}(m,h) = E(E(Y - m(X|h(X)))^2|X)
 
 \noindent de tal forma que podemos minimizar el error con respecto a $m$ y $h$ para cada valor de $x$.
 
-\hspace*{0.4 cm} Como en el caso del bandwidth constante, se comienza aplicando un suavizador lineal local muchas veces sobre diferentes valores discretos de $h$, $0 < h < n$. Friedman \cite{F} propone utilizar tres conjuntos de valores, $h=0,05n$, $h=0,2n$ y $h=0,5n$, los cuales llama suavizadores ``tweeter", ``midrange" y ``woofer", respectivamente.
+\hspace*{0.4 cm} Como en el caso del ancho de banda constante, se comienza aplicando un suavizador lineal local muchas veces sobre diferentes valores discretos de $h$, $0 < h < n$. Friedman \cite{F} propone utilizar tres conjuntos de valores, $h=0,05n$, $h=0,2n$ y $h=0,5n$, los cuales llama suavizadores ``tweeter", ``midrange" \hspace*{0.01 cm} y ``woofer", respectivamente.
 
 \hspace*{0.4 cm} Para estimar la ecuaci\'on (\ref{friedman}) se utiliza el residual de la validaci\'on cruzada de la ecuaci\'on (\ref{friedman1}) cuya descripci\'on completa puede encontrarse en Friedman \cite{F},
 
@@ -564,12 +564,12 @@ e^{2}(m,h) = E(E(Y - m(X|h(X)))^2|X)
 
 \vspace*{0.2 cm}
 
-\noindent siendo $\bar{x}_{h}$ y $V_{h}$, la media y varianza de los $x$, bajo un $h$ preeestablecido. Igualmente, Friedman \cite{F} aconseja suavizar $|r_{i}(h)|$ contra $x_{i}$, utilizando los $\hat{e}(m, h|x_{i})$, en procura de seleccionar la mejor amplitud de intervalo o bandwith, $\hat{e}(m, h_{vc}(x_{i})|x_{i})=min_{h} \hat{e}(m, h|x_{i})$, donde $h_{vc} (x_{i})$ es el mejor bandwidth bajo la validaci\'on cruzada respecto a cada $x_{i}$ , mientras que $h$ toma los valores de los suavizadores antes definidos.
+\noindent siendo $\bar{x}_{h}$ y $V_{h}$, la media y varianza de los $x$, bajo un $h$ preeestablecido. Igualmente, Friedman \cite{F} aconseja suavizar $|r_{i}(h)|$ contra $x_{i}$, utilizando los $\hat{e}(m, h|x_{i})$, en procura de seleccionar la mejor amplitud de intervalo o bandwith, $\hat{e}(m, h_{vc}(x_{i})|x_{i})=min_{h} \hat{e}(m, h|x_{i})$, donde $h_{vc} (x_{i})$ es el mejor ancho de banda bajo la validaci\'on cruzada respecto a cada $x_{i}$ , mientras que $h$ toma los valores de los suavizadores antes definidos.
 
-\hspace*{0.4 cm} De esta manera, el mejor valor suavizado dado $x_{i}$, siguiendo la notaci\'on de Friedman \cite{F}, $s^{*}(x_{i})$, estar\'a asociado con el bandwidth: ``tweeter", ``midrange" \hspace*{0.01 cm} o ``woofer" que minimice el error bajo la validaci\'on cruzada. Es posible a trav\'es de esta metodolog\'ia obtener para cada vecindad en torno a $x_{i}$ diferentes bandwith y suavizados que proporcionan resultados \'optimos, por tal raz\'on, Friedman \cite{F} propone seleccionar la mejor amplitud de intervalo, suavizando los $h_{vc} (x_{i})$ contra $x_{i}$ utilizando el suavizador ``midrange", mientras que la curva estimada es obtenida interpolando entre los dos suavizadores con los bandwith estimados m\'as parecidos.
+\hspace*{0.4 cm} De esta manera, el mejor valor suavizado dado $x_{i}$, siguiendo la notaci\'on de Friedman \cite{F}, $s^{*}(x_{i})$, estar\'a asociado con el ancho de banda: ``tweeter", ``midrange" \hspace*{0.01 cm} o ``woofer" que minimice el error bajo la validaci\'on cruzada. Es posible a trav\'es de esta metodolog\'ia obtener para cada vecindad en torno a $x_{i}$ diferentes anchos de banda y suavizados que proporcionan resultados \'optimos, por tal raz\'on, Friedman \cite{F} propone seleccionar la mejor amplitud de intervalo, suavizando los $h_{vc} (x_{i})$ contra $x_{i}$ utilizando el suavizador ``midrange", mientras que la curva estimada es obtenida interpolando entre los dos suavizadores con los anchos de banda estimados m\'as parecidos.
 
 
-\hspace*{0.4 cm} Una suposici\'on general establece que la curva subyacente que describe el comportamiento de los datos es suave, as\'i que ser\'ia posible modificar el bandwidth en procura de un mayor suavizamiento, sacrificando exactitud num\'erica. Con este fin, Friedman \cite{F} propone un m\'etodo de c\'alculo del bandwidth,
+\hspace*{0.4 cm} Una suposici\'on general establece que la curva subyacente que describe el comportamiento de los datos es suave, as\'i que ser\'ia posible modificar el ancho de banda en procura de un mayor suavizamiento, sacrificando exactitud num\'erica. Con este fin, Friedman \cite{F} propone un m\'etodo de c\'alculo del ancho de banda,
 
 \vspace*{0.2 cm}
 
@@ -592,14 +592,14 @@ $\displaystyle{R_{i} = \left[\frac{\hat{e}(h_{vc}(x_{i})|x_{i})}{\hat{e}(h_{w}(x
 \noindent donde $0 < \alpha < 10$, $h_{w}$ es la amplitud calculada utilizando 
 el suavizador ``woofer"\hspace*{0.01 cm} y $h_{vc}(.)$ la amplitud obtenida bajo la validaci\'on cruzada para cada observaci\'on. Sin importar el $\alpha$, cuando la contribuci\'on relativa de cada una de estas amplitudes no difiere significativamente, la amplitud de intervalo o bandwidth seleccionada es la determinada por el suavizador ``woofer"\hspace*{0.01 cm}; no obstante, si la eficiencia relativa est\'a asociada con la amplitud bajo la validaci\'on cruzada, entonces, la ecuaci\'on en proporcionar\'a esta amplitud. En otros casos, dependiendo del desempe\~no relativo y el par\'ametro $\alpha$ definido por el usuario, la ecuaci\'on proporcionar\'a una amplitud, resultado de la combinaci\'on lineal entre el suavizador ``woofer" \hspace*{0.01 cm} y el obtenido bajo validaci\'on cruzada.
 
-\hspace*{0.4 cm} Una vez el bandwidth de suavizaci\'on variable ha sido obtenido, los siguientes pasos son realizados sobre el conjunto de observaciones,
+\hspace*{0.4 cm} Una vez el ancho de banda de suavizaci\'on variable ha sido obtenido, los siguientes pasos son realizados sobre el conjunto de observaciones,
 
 \begin{itemize}
-  \item[1)] Suavice los datos con los bandwidth ``tweeter"\hspace*{0.01 cm}, ``midrange"\hspace*{0.01 cm} y ``woofer"\hspace*{0.01 cm}.
-  \item[2)] Suavice los residuales absolutos (12) obtenidos bajo cada bandwidth en el paso anterior, utilizando una amplitud de intervalo ``midrange"\hspace*{0.01 cm}.
-  \item[3)] Seleccione el mejor bandwidth para cada observaci\'on, minimizando el error sobre la salida del paso (2).
-  \item[4)] Suavice los mejores bandwidth estimados en el paso (3) utilizando amplitud de intervalo ``midrange"\hspace*{0.01 cm}.
-  \item[5)] Utilice los bandwidth suavizados para interpolar entre los valores suavizados obtenidos en el paso 1.
+  \item[1)] Suavice los datos con los anchos de banda ``tweeter"\hspace*{0.01 cm}, ``midrange"\hspace*{0.01 cm} y ``woofer"\hspace*{0.01 cm}.
+  \item[2)] Suavice los residuales absolutos (12) obtenidos bajo cada ancho de banda en el paso anterior, utilizando una amplitud de intervalo ``midrange"\hspace*{0.01 cm}.
+  \item[3)] Seleccione el mejor ancho de banda para cada observaci\'on, minimizando el error sobre la salida del paso (2).
+  \item[4)] Suavice los mejores anchos de banda estimados en el paso (3) utilizando amplitud de intervalo ``midrange"\hspace*{0.01 cm}.
+  \item[5)] Utilice los anchos de banda suavizados para interpolar entre los valores suavizados obtenidos en el paso 1.
 \end{itemize}
 
 
@@ -624,7 +624,7 @@ el suavizador ``woofer"\hspace*{0.01 cm} y $h_{vc}(.)$ la amplitud obtenida bajo
 \hspace*{0.4 cm} Los datos de entrenamiento son ingresados a la red en forma de vectores de variables o como patrones de entrada. Cada elemento en el vector de entrada es asociado con un nodo de la capa de entrada; de esta forma, el n\'umero de entradas a la red es igual a la dimensi\'on del vector de entrada. Para el pron\'ostico de series temporales el n\'umero de variables de entrada es dif\'icil de establecer, no obstante, una ventana de rezagos fija es constituida a lo largo de la serie. El total de datos disponible es usualmente dividido en un conjunto de entrenamiento y otro de prueba. El primero es utilizado para estimar los pesos de la red, mientras que el segundo es empleado para evaluar la capacidad de generalizaci\'on de la red.
 
 
-\hspace*{0.4 cm} Para el proceso de entrenamiento, patrones de entrada son ingresados a la red. Los valores de activaci\'on de los nodos de entrada son multiplicados por su peso respectivo y acumulados en cada nodo sobre la primera capa. El total es evaluado en una funci\'on de activaci\'on y asumido como la salida del respectivo nodo. A esta salida algunos investigadores la identifican como la activaci\'on del nodo y es la entrada de otros nodos en capas siguientes de la red hasta que los valores de activaci\'on de la salida sean encontrados. El algoritmo de entrenamiento es utilizado para encontrar los pesos que minimicen una medida global de error tal como la suma de cuadrados del error (SSE).
+\hspace*{0.4 cm} Para el proceso de entrenamiento, patrones de entrada son ingresados a la red. Los valores de activaci\'on de los nodos de entrada son multiplicados por su peso respectivo y acumulados en cada nodo sobre la primera capa. El total es evaluado en una funci\'on de activaci\'on y asumido como la salida del respectivo nodo. A esta salida algunos investigadores la identifican como la activaci\'on del nodo y es la entrada de otros nodos en capas siguientes de la red hasta que los valores de activaci\'on de la salida sean encontrados. El algoritmo de entrenamiento es utilizado para encontrar los pesos que minimicen una medida global de error tal como la suma de cuadrados del error (SSE, por sus siglas en ingles).
 
 
 \hspace*{0.4 cm} En el pron\'ostico con series temporales, un patr\'on de entrenamiento consiste de un conjunto de valores fijos de variables en rezago de la serie. Suponga que tenemos N observaciones $y_{1}, y_{2}, ..., y_{N}$ para el proceso de entrenamiento y se requiere pronosticar un paso al frente, entonces con una red neuronal de n nodos de entrada, tenemos $N-n$ patrones de entrenamiento. El primer patr\'on de entrenamiento estar\'a conformado por $y_{1}, y_{2}, ..., y_{n}$ como las entradas y $y_{n+1}$ como el valor objetivo. El segundo patr\'on de entrenamiento ser\'a $y_{2}$, $y_{3}$, ..., $y_{n+1}$ y el valor de salida deseado $y_{n+2}$. Finalmente, el \'ultimo patr\'on de entrada ser\'a $y_{N-n}, y_{N-n+1}, ..., y_{N-1}$ y $y_{N}$ el valor objetivo. Frecuentemente, una funci\'on objetivo basada en la SSE es minimizada durante el proceso de entrenamiento,
@@ -658,7 +658,7 @@ $\displaystyle{E = \frac{1}{2} \sum_{i=n+1}^{N}(y{i}-a{i})^2 }$
 \subsection{Objetivos  generales del trabajo.}
 
 \begin{itemize}
-  \item Estimar la curva de rendimientos mediante el uso de los Splines C\'ubicos Suavizados.
+  \item Estimar la curva de rendimientos mediante el uso de los splines c\'ubicos suavizados.
 \end{itemize}
 
 \subsection{Objetivos espec\'ificos del trabajo.}
